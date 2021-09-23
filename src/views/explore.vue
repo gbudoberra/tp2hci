@@ -7,7 +7,7 @@
           <v-btn
               elevation="2"
               text
-          ></v-btn>
+          >Hola</v-btn>
 
   </div>
 </template>
