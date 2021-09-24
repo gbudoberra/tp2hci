@@ -6,54 +6,45 @@
         app
         class="primary"
     >
-      <v-list
-          dense
-          nav
-          two-line >
-        <v-list-item>
-          <v-list-item-content>
+      <v-container fluid>
 
-            <v-list-item-title>
-              <v-icon>explore</v-icon>
-              <router-link to="/explore" id="sideBarIcon">Explore</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-row justify="space-around">
+          <v-col align-self="center" align="center"><v-icon>explore</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link to="/explore" id="sideBarIcon">Explore</router-link></v-col>
+          <v-col></v-col>
+        </v-row>
 
-        <v-divider></v-divider>
+        <v-row><v-divider></v-divider></v-row>
 
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-icon>star</v-icon>
-              <router-link to="/favorites" id="sideBarIcon">Favorites</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
 
-        <v-divider></v-divider>
 
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-icon>person</v-icon>
-              <router-link to="/profile" id="sideBarIcon">Profile</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-row justify="space-around">
+          <v-col align-self="center" align="center"><v-icon>star</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link to="/favorites" id="sideBarIcon">Favorites</router-link></v-col>
+          <v-col></v-col>
+        </v-row>
 
-        <v-divider></v-divider>
+        <v-row><v-divider></v-divider></v-row>
 
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-icon>fitness_center</v-icon>
-              <router-link to="/MyRoutines" id="sideBarIcon">MyRoutines</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
 
-      </v-list>
+        <v-row justify="space-around">
+          <v-col align-self="center" align="center"><v-icon>person</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link to="/profile" id="sideBarIcon">Profile</router-link></v-col>
+          <v-col></v-col>
+        </v-row>
+
+        <v-row><v-divider></v-divider></v-row>
+
+
+        <v-row justify="space-around">
+          <v-col align-self="center" align="center"><v-icon>fitness_center</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link to="/MyRoutines" id="sideBarIcon">MyRoutines</router-link></v-col>
+          <v-col></v-col>
+        </v-row>
+
+
+
+      </v-container>
 
 
       <!--  -->
