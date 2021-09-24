@@ -62,19 +62,23 @@
     <v-app-bar app
     class="secondary">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-container>
+      <v-container fluid>
         <v-row justify="space-between">
           <v-col align="left" align-self="center">
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
+          <v-col></v-col>
+          <v-col></v-col>
+          <v-col align="right" align-self="end">
+            <v-text-field append-icon="search" hide-details="true" loader-height="5" label="Search"></v-text-field>
+            <!--
 
-          <v-col align="right" align-self="center">
             <v-btn
                 fab
                 text
 
             ><v-icon size="35px">search</v-icon>
-            </v-btn>
+            </v-btn>-->
 
           </v-col>
 
