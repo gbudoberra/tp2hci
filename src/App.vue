@@ -10,13 +10,13 @@
       <v-list
           dense
           nav
-          two-line>
+          two-line >
         <v-list-item>
           <v-list-item-content>
 
             <v-list-item-title>
               <v-icon>explore</v-icon>
-              <router-link to="/explore">Explore</router-link>
+              <router-link to="/explore" id="sideBarIcon">Explore</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -27,7 +27,7 @@
           <v-list-item-content>
             <v-list-item-title>
               <v-icon>star</v-icon>
-              <router-link to="/favorites">Favorites</router-link>
+              <router-link to="/favorites" id="sideBarIcon">Favorites</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -38,7 +38,7 @@
           <v-list-item-content>
             <v-list-item-title>
               <v-icon>person</v-icon>
-              <router-link to="/profile">Profile</router-link>
+              <router-link to="/profile" id="sideBarIcon">Profile</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -49,7 +49,7 @@
           <v-list-item-content>
             <v-list-item-title>
               <v-icon>fitness_center</v-icon>
-              <router-link to="/MyRoutines">MyRoutines</router-link>
+              <router-link to="/MyRoutines" id="sideBarIcon">MyRoutines</router-link>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -69,7 +69,7 @@
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
 
-          <v-col align="end" align-self="center">
+          <v-col align="right" align-self="center">
             <v-btn
                 fab
                 text
@@ -111,7 +111,10 @@ export default {
   margin-top: 60px;
 }
 
-
-
+#sideBarIcon {
+  font-size: large;
+  color: aliceblue;
+  alignment: center;
+}
 
 </style>
