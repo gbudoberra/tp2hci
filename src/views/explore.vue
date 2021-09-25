@@ -1,20 +1,17 @@
 
 <template>
   <div>
-    <h1> Explore en proceso... </h1>
-    <h2> texto de prueba</h2>
+    <explore-routine>
 
-          <v-btn
-              elevation="2"
-              text
-          >Hola</v-btn>
-
+    </explore-routine>
   </div>
 </template>
 
 <script>
+import ExploreRoutine from "../components/exploreRoutine";
 export default {
   name: "Explore",
+  components: {ExploreRoutine},
 };
 </script>
 
