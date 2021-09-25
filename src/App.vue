@@ -4,78 +4,72 @@
     <v-navigation-drawer
         v-model="drawer"
         app
-        color="blue lighten-1"
+        class="primary"
     >
+      <v-container fluid>
 
-      <v-list
-          dense
-          nav
-          two-line >
-        <v-list-item>
-          <v-list-item-content>
+        <v-row justify="space-around">
+          <v-col align-self="center" align="center"><v-icon>explore</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link to="/explore" id="sideBarIcon">Explore</router-link></v-col>
+          <v-col></v-col>
+        </v-row>
 
-            <v-list-item-title>
-              <v-icon>explore</v-icon>
-              <router-link to="/explore" id="sideBarIcon">Explore</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-row><v-divider></v-divider></v-row>
 
-        <v-divider></v-divider>
 
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-icon>star</v-icon>
-              <router-link to="/favorites" id="sideBarIcon">Favorites</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
 
-        <v-divider></v-divider>
+        <v-row justify="space-around">
+          <v-col align-self="center" align="center"><v-icon>star</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link to="/favorites" id="sideBarIcon">Favorites</router-link></v-col>
+          <v-col></v-col>
+        </v-row>
 
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-icon>person</v-icon>
-              <router-link to="/profile" id="sideBarIcon">Profile</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-row><v-divider></v-divider></v-row>
 
-        <v-divider></v-divider>
 
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              <v-icon>fitness_center</v-icon>
-              <router-link to="/MyRoutines" id="sideBarIcon">MyRoutines</router-link>
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+        <v-row justify="space-around">
+          <v-col align-self="center" align="center"><v-icon>person</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link to="/profile" id="sideBarIcon">Profile</router-link></v-col>
+          <v-col></v-col>
+        </v-row>
 
-      </v-list>
+        <v-row><v-divider></v-divider></v-row>
+
+
+        <v-row justify="space-around">
+          <v-col align-self="center" align="center"><v-icon>fitness_center</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link to="/MyRoutines" id="sideBarIcon">MyRoutines</router-link></v-col>
+          <v-col></v-col>
+        </v-row>
+
+
+
+      </v-container>
 
 
       <!--  -->
     </v-navigation-drawer>
 
     <v-app-bar app
-    color="blue lighten-4">
+    class="secondary">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-container>
+      <v-container fluid>
         <v-row justify="space-between">
-          <v-col align="start" align-self="center">
+          <v-col align="left" align-self="center">
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
+          <v-col></v-col>
+          <v-col></v-col>
+          <v-col align="right" align-self="end">
+            <v-text-field append-icon="search" hide-details="true" loader-height="5" label="Search"></v-text-field>
+            <!--
 
-          <v-col align="right" align-self="center">
             <v-btn
                 fab
                 text
 
             ><v-icon size="35px">search</v-icon>
-            </v-btn>
+            </v-btn>-->
 
           </v-col>
 
@@ -107,7 +101,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 
@@ -115,6 +108,15 @@ export default {
   font-size: large;
   color: aliceblue;
   alignment: center;
+  text-decoration: none;
 }
+
+#sideBarIconSelected {
+  font-size: large;
+  color: #19ff47;
+  alignment: center;
+  text-decoration: none;
+}
+
 
 </style>
