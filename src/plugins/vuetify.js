@@ -13,6 +13,7 @@ export default new Vuetify({
                 primary: '#BBDEFB',
                 secondary: '#769FCD',
                 accent: '#000000',
+
             },
             dark:{
                 primary: '#01135e',

@@ -1,20 +1,26 @@
 <template>
 
   <v-app id="inspire">
+    <div id="nav">
     <v-navigation-drawer
         v-model="drawer"
         app
         class="primary"
     >
-      <v-container fluid>
-<!--      Hacerlo dinamico    -->
+      <v-container>
+
+        <v-row><v-col><v-divider></v-divider></v-col></v-row>
+
         <v-row justify="space-around">
           <v-col align-self="center" align="center"><v-icon>explore</v-icon></v-col>
           <v-col align-self="center" align="start"><router-link to="/explore" id="sideBarIcon">Explore</router-link></v-col>
           <v-col></v-col>
         </v-row>
 
-        <v-row><v-divider></v-divider></v-row>
+
+        <v-row><v-col><v-divider></v-divider></v-col></v-row>
+
+
 
 
 
@@ -24,7 +30,7 @@
           <v-col></v-col>
         </v-row>
 
-        <v-row><v-divider></v-divider></v-row>
+        <v-row><v-col><v-divider></v-divider></v-col></v-row>
 
 
         <v-row justify="space-around">
@@ -33,7 +39,7 @@
           <v-col></v-col>
         </v-row>
 
-        <v-row><v-divider></v-divider></v-row>
+        <v-row><v-col><v-divider></v-divider></v-col></v-row>
 
 
         <v-row justify="space-around">
@@ -42,13 +48,40 @@
           <v-col></v-col>
         </v-row>
 
+        <v-row><v-col><v-divider></v-divider></v-col></v-row>
+
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+        <v-row><v-col></v-col></v-row>
+
+        <v-row><v-col><v-divider></v-divider></v-col></v-row>
+
+        <v-row>
+                <v-col align-self="center" align="center"><v-icon>settings</v-icon></v-col>
+                <v-col align-self="center" align="start" id="sideBarIcon">Settings</v-col>
+                <v-col></v-col>
+        </v-row>
+
+        <v-row><v-col><v-divider></v-divider></v-col></v-row>
+
+
+
+
+
 
 
       </v-container>
 
-
-      <!--  -->
     </v-navigation-drawer>
+      </div>
 
     <v-app-bar app
     class="secondary">
@@ -106,11 +139,16 @@ export default {
 
 #sideBarIcon {
   font-size: large;
-  color: aliceblue;
+  color: black;
   alignment: center;
   text-decoration: none;
 }
 
+
+
+#nav a.router-link-exact-active {
+  color: #7f8a93;
+}
 #sideBarIcon:hover{
   font-size: large;
   color: lightskyblue;
@@ -119,12 +157,7 @@ export default {
   font-weight: bold;
 }
 
-#sideBarIconSelected {
-  font-size: large;
-  color: #19ff47;
-  alignment: center;
-  text-decoration: none;
-}
+
 
 
 </style>
