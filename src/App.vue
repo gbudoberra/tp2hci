@@ -7,7 +7,7 @@
         class="primary"
     >
       <v-container fluid>
-
+<!--      Hacerlo dinamico    -->
         <v-row justify="space-around">
           <v-col align-self="center" align="center"><v-icon>explore</v-icon></v-col>
           <v-col align-self="center" align="start"><router-link to="/explore" id="sideBarIcon">Explore</router-link></v-col>
@@ -80,7 +80,7 @@
     </v-app-bar>
 
     <v-main>
-      <router-view/>
+      <router-view :key="$route.path"/>
       <!--  -->
     </v-main>
   </v-app>
@@ -109,6 +109,14 @@ export default {
   color: aliceblue;
   alignment: center;
   text-decoration: none;
+}
+
+#sideBarIcon:hover{
+  font-size: large;
+  color: lightskyblue;
+  alignment: center;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 #sideBarIconSelected {
