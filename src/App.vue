@@ -64,9 +64,9 @@
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
 
-        <v-row>
+        <v-row justify="space-around">
                 <v-col align-self="center" align="center"><v-icon>settings</v-icon></v-col>
-                <v-col align-self="center" align="start" id="sideBarIcon">Settings</v-col>
+          <v-col align-self="center" align="start"><router-link to="/settings" id="sideBarIcon">Settings</router-link></v-col>
                 <v-col></v-col>
         </v-row>
 
@@ -91,7 +91,7 @@
           <v-col align="left" align-self="center">
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
-          <v-col></v-col>
+          <v-col><go-back></go-back></v-col>
           <v-col></v-col>
           <v-col align="right" align-self="end">
             <v-text-field append-icon="search" hide-details="true" loader-height="5" label="Search"></v-text-field>
@@ -115,8 +115,10 @@
 
 <script>
 
+import GoBack from "./components/goBack";
 export default {
   name: 'App',
+  components: {GoBack},
   data: () => ({ drawer: null }),
 
 }
@@ -141,13 +143,13 @@ export default {
 
 
 #nav a.router-link-exact-active {
-  color: #7f8a93;
+  color: lightskyblue;
 }
 #sideBarIcon:hover{
   font-size: large;
   color: lightskyblue;
   alignment: center;
-  text-decoration: none;
+  text-decoration: blink underline;
   font-weight: bold;
 }
 

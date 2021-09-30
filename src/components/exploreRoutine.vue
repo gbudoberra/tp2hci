@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+
 
     <v-container>
       <v-row fluid
@@ -54,11 +54,11 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-container>
+
 </template>
 
 <script>
-import store from "../store";
+import store from "../store/routines";
 import ratingStars from "./ratingStars";
 import MainCardAvatar from "./mainCardAvatar";
 import FavBtn from "./favBtn";

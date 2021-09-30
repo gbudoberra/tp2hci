@@ -18,7 +18,7 @@
 
 
 <script>
-import store from "../store";
+import store from "../store/routines";
 import RoutineTitleCard from "../components/routineDetailTitleCard";
 import WorkoutBlock from "../components/workoutBlock";
 export default {

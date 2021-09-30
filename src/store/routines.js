@@ -140,6 +140,9 @@ export default {
         // Esto deberia ser un array general o algo así
         favRoutines: [
             1, 3, 9
+        ],
+        myRoutines: [
+
         ]
     }),
     methods:{

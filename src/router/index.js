@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import profile from "../views/profile";
+import profile from "../store/user";
 // import Favorites from "../views/favorites.vue";
 // import Profile from "../views/profile.vue";
 // import MyRoutines from "../views/myRoutines.vue";
@@ -19,24 +19,31 @@ const routes = [
     name:"Login",
     component: () => import( /* webpackChunkName: "Login" */ '../views/Login')
   },
+  {
+    path: "/settings",
+    name:"Settings",
+    meta: { requiresAuth: true},
+    component: () => import( /* webpackChunkName: "settings" */ '../views/settings'),
+
+  },
 
   {
     path: "/profile",
     name:"Profile",
-    meta: { requiresAuth: true},
+    //meta: { requiresAuth: true},
     component: () => import( /* webpackChunkName: "profile" */ '../views/profile'),
 
   },
   {
     path: "/favorites",
     name: "Favorites",
-    meta: { requiresAuth: true},
+    //meta: { requiresAuth: true},
     component: () => import( /* webpackChunkName: "favs" */ '../views/favorites')
   },
   {
     path: "/MyRoutines",
     name: "MyRoutines",
-    meta: { requiresAuth: true},
+    //meta: { requiresAuth: true},
     component: () => import( /* webpackChunkName: "myRoutines" */ '../views/myRoutines')
   },
   {
@@ -74,7 +81,7 @@ const router = new VueRouter(
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth){
     if(!profile.user){
-      next({name:"Login"})
+      next({name:"Login" /*, query: { redirect: to.fullPath }*/ })
     }
     else next()
   } else {

@@ -1,12 +1,12 @@
 <template>
-  <v-container>
+<div>
 
-  </v-container>
+</div>
 </template>
 
 <script>
 export default {
-  name: "MyRoutines"
+  name: "settings"
 }
 </script>
 
