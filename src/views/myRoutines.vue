@@ -69,7 +69,8 @@ import blocksCarousel from "../components/blocksCarousel";
 export default {
   name: "MyRoutines",
   data:()=>({
-    routines: store.data().myRoutines,
+    // Hay que hacer esto general
+    routines: store.data().routines.filter(routine => {return routine.pName==='Esteban Quito'}),
     favRoutines: store.data().favRoutines,
   }),
 

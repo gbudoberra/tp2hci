@@ -5,27 +5,8 @@
         <v-row align="center" justify="center">
           <h3> {{blocks.blockName}}: {{blocks.sets}} sets </h3>
         </v-row>
-
-
-        <v-row align="center"
-               justify="center">
-          <v-col cols="1"></v-col>
-          <v-col v-for="excercises in blocks.exercises" v-bind:key="excercises.id" align-self="center" >
-            <v-card rounded elevation="5" color="grey lighten-2">
-              <v-card-title>
-                {{excercises.eName}}
-              </v-card-title>
-              <v-card-text>
-                {{excercises.quantity}} {{excercises.units}}
-              </v-card-text>
-            </v-card>
-          </v-col>
-          <v-col cols="1"></v-col>
-
-        </v-row>
+        <exercise-list :exercises="blocks.exercises"></exercise-list>
       </v-container>
-
-
 
     </v-carousel-item>
 
@@ -37,8 +18,10 @@
 
 
 
+import ExerciseList from "./excersiceList";
 export default {
   name: "blocksCarousel",
+  components: {ExerciseList},
   props: ['workouts'],
 
 }
