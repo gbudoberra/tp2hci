@@ -38,7 +38,8 @@
             </v-col>
 
             <v-col cols="1">
-              <v-btn fab color="blue-grey lighten-3" :to="{name: 'routineDetails', params: { id: routine.id}}"><v-icon dark>edit</v-icon></v-btn>
+<!--              <v-btn fab color="blue-grey lighten-3" :to="{name: 'routineDetails', params: { id: routine.id}}"><v-icon dark>edit</v-icon></v-btn>-->
+              <v-btn fab color="blue-grey lighten-3" :to="{name: 'routineDetails', params: { id: routine.id}}">detail</v-btn>
             </v-col>
 
           </v-row>
