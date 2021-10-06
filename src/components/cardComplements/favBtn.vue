@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import store from "../store/routines";
+import store from "../../store/routines";
 export default {
   name: "favBtn",
   data: () => ({

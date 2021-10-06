@@ -10,6 +10,7 @@ export default {
                 difficulty: 'Easy',
                 rating: 4,
                 color: 'blue',
+                pID:0,
                 pPic: 'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg',
                 pName: 'Esteban Quito',
                 pDes: 'Hola, soy Esteban',
@@ -72,6 +73,7 @@ export default {
                 difficulty: 'Hard',
                 rating: 2,
                 color: 'green',
+                pID:1,
                 pPic: 'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg',
                 pName: 'Juan Pedro',
                 pDes: 'Hola, soy Juan',
@@ -102,6 +104,7 @@ export default {
                 color: 'red',
                 pPic: 'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg',
                 pName: 'Pedro Juan',
+                pID:2,
                 pDes: 'Hola, soy Pedro',
                 workoutBlocks: [{
                     id: 1, blockName: 'BlockA', sets: 2, exercises: [
@@ -128,6 +131,7 @@ export default {
                 difficulty: 'Medium',
                 rating: 5,
                 color: 'brown',
+                pID:3,
                 pPic: 'https://cdn.vuetifyjs.com/images/profiles/marcus.jpg',
                 pName: 'Bad Bunny',
                 pDes: 'Hola, soy el conejo',
