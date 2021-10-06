@@ -35,7 +35,7 @@ const routes = [
   {
     path: "/profile",
     name:"Profile",
-    //meta: { requiresAuth: true},
+    meta: { requiresAuth: true},
     component: () => import( /* webpackChunkName: "profile" */ '../views/profile'),
 
   },
@@ -97,7 +97,7 @@ const router = new VueRouter(
 // router.beforeEach(
 //     (to, from, next) => {
 //       if(to.meta.requiresAuth){
-//         // login
+//         next({name:"Login" /*, query: { redirect: to.fullPath }*/ })
 //       } else {
 //         next()
 //       }

@@ -75,8 +75,33 @@
 </template>
 
 <script>
+import {Credentials} from "../api/user";
+
 export default {
-  name: "login"
+  name: "login",
+    components:{},
+    data() {
+      return {
+          username: null,
+          password: null
+      }
+    },
+    computed: {},
+    methods: {
+        async login(){
+          try {
+              const credential = new Credentials('johndoe', '1234567890');
+              await this.$login(credential);
+          }catch (e){
+              this.setResult(e)
+          }
+        },
+        async logout(){
+          await this.$store.dispatch('scurity/logout')
+            this.setResult()
+        }
+
+    }
 }
 </script>
 

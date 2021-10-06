@@ -1,9 +1,9 @@
-import {Api} from './api.js';
+import { Api } from './api';
 export { SportApi, Sport};
 
 class SportApi{
     static getUrl(slug){
-        return `${Api.baseUrl}/sports${ slug ? `/${slug}` : '' } `;
+        return `${Api.baseURL}/sports${ slug ? `/${slug}` : '' } `;
     }
 
     static async add(sport, controller){
