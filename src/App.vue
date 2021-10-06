@@ -64,20 +64,13 @@
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
 
-        <v-row justify="space-around">
+        <v-row justify="space-around" align-content-lg="end">
                 <v-col align-self="center" align="center"><v-icon>settings</v-icon></v-col>
           <v-col align-self="center" align="start"><router-link to="/settings" id="sideBarIcon">Settings</router-link></v-col>
                 <v-col></v-col>
         </v-row>
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
-
-
-
-
-
-
-
       </v-container>
 
     </v-navigation-drawer>
@@ -135,7 +128,7 @@ export default {
 
 #sideBarIcon {
   font-size: large;
-  color: black;
+  color: white;
   alignment: center;
   text-decoration: none;
 }
