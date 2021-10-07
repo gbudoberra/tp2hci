@@ -42,6 +42,12 @@ class Api {
         return Api.fetch(url, secure, {}, controller);
     }
 
+    static async getWithInit(url, secure, data, controller){
+        return Api.fetch(url, secure,
+            data , controller
+        );
+    }
+
     static async post(url, secure, data, controller) {
         return await Api.fetch(url, secure,
             {

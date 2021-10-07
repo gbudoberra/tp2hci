@@ -15,7 +15,13 @@ class UserApi{
         Api.token = undefined;
     }
     static async get(controller){
-        return Api.get(UserApi.getUrl('current'), true, controller);
+        return await Api.get(UserApi.getUrl('current'), true, controller);
+    }
+    static async modify(body, controller){
+        return await Api.put(UserApi.getUrl('current'), true, body, controller);
+    }
+    static async remove(controller){
+        return await Api.put(UserApi.getUrl('current'), true, controller);
     }
 }
 
