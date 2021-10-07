@@ -13,7 +13,7 @@ export default {
     birthdate: 284007600000,
     email: "johndoe@email.com",
     phone: "98295822",
-    avatarUrl: "https://flic.kr/p/3ntH2u",
+    avatarUrl: "https://thispersondoesnotexist.com/image",
     metadata: null,
     date: 1633635692753,
     lastActivity: 1633635692753,

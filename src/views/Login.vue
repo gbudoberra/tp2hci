@@ -88,9 +88,10 @@
 <script>
 import profile from "../store/user";
 import {Credentials} from "../api/user";
+import security from "../store/modules/security";
 export default {
     name: "Login",
-    data() {
+    data: () => {
         return {
             show1: false,
             show2: false,
@@ -102,8 +103,8 @@ export default {
     },
     methods: {
         async login() {
-             const credentials = new Credentials(this.data().usernameLI, this.data().passwordLI);
-             await this.$login(credentials)
+            const credentials = new Credentials(this.data.usernameLI, this.data.passwordLI);
+            await security.actions.login(credentials)
             profile.user = this.usernameLI;
             const redirectPath = this.$route.query.redirect || "/";
             this.$router.push(redirectPath);

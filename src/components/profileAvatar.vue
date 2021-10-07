@@ -1,6 +1,6 @@
 <template>
 <v-card>
-  <v-avatar size="100%">
+  <v-avatar size="60%">
     <v-img :src="user.avatarUrl"/>
   </v-avatar>
   <h1>{{user.username + " " + user.firstName + " " + user.lastName}}</h1>
