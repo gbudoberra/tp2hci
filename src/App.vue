@@ -50,19 +50,6 @@
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
 
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-        <v-row><v-col></v-col></v-row>
-
-        <v-row><v-col><v-divider></v-divider></v-col></v-row>
 
         <v-row justify="space-around" align-content-lg="end">
                 <v-col align-self="center" align="center"><v-icon>settings</v-icon></v-col>

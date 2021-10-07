@@ -18,13 +18,13 @@ export default {
         },
         replaceAll(state, routines) {
             state.routines = routines
-        }
+        },
 
     },
     getters: {
         findIndex(state) {
             return (routine) => {
-                return state.items.findIndex(item => item.id === routine.id)
+                return state.routines.findIndex(item => item.id === routine.id)
             }
         },
 

@@ -22,7 +22,7 @@ export default {
     getters: {
         findIndex(state) {
             return (exercise) => {
-                return state.items.findIndex(item => item.id === exercise.id)
+                return state.exercises.findIndex(item => item.id === exercise.id)
             }
         },
 
@@ -52,7 +52,7 @@ export default {
         async get({state, getters, commit}, exercise) {
             const index = getters.findIndex(exercise)
             if (index >= 0)
-                return state.items[index]
+                return state.exercises[index]
 
             const result = await ExerciseApi.get()
             commit('push', result)
