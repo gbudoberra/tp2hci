@@ -1,57 +1,56 @@
 import {ExerciseApi} from "@/api/exercises";
-import {RoutinesApi} from "@/api/routines";
 
 
 export default {
     state:{
-        excercises: []
+        exercises: []
     },
     mutations: {
-        push(state, excercise) {
-            state.routines.push( excercise)
+        push(state, exercise) {
+            state.routines.push( exercise)
         },
-        replace(state, index,  excercise) {
-            state.routines[index] =  excercise
+        replace(state, index,  exercise) {
+            state.routines[index] =  exercise
         },
         splice(state, index) {
             state.routines.splice(index, 1)
         },
-        replaceAll(state, excercises) {
-            state.routines = excercises
+        replaceAll(state, exercises) {
+            state.routines = exercises
         }
     },
     getters: {
         findIndex(state) {
-            return (excercise) => {
-                return state.items.findIndex(item => item.id === excercise.id)
+            return (exercise) => {
+                return state.items.findIndex(item => item.id === exercise.id)
             }
         },
 
 
     },
     actions:{
-        async create({getters, commit}, excercise) {
-            const result = await ExerciseApi.add(excercise)
+        async create({getters, commit}, exercise) {
+            const result = await ExerciseApi.add(exercise)
             if (!getters.findIndex(result))
                 commit('push', result)
             return result
         },
 
-        async modify({getters, commit}, excercise) {
-            const result = await ExerciseApi.modify(excercise)
+        async modify({getters, commit}, exercise) {
+            const result = await ExerciseApi.modify(exercise)
             const index = getters.findIndex(result)
             if (index >= 0)
                 commit('replace', index, result)
             return result
         },
-        async delete({getters, commit}, excercise) {
-            await ExerciseApi.delete(excercise.id)
-            const index = getters.findIndex(excercise)
+        async delete({getters, commit}, exercise) {
+            await ExerciseApi.delete(exercise.id)
+            const index = getters.findIndex(exercise)
             if (index >= 0)
                 commit('splice', index)
         },
-        async get({state, getters, commit}, excercise) {
-            const index = getters.findIndex(excercise)
+        async get({state, getters, commit}, exercise) {
+            const index = getters.findIndex(exercise)
             if (index >= 0)
                 return state.items[index]
 
