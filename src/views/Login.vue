@@ -6,13 +6,11 @@
                 <v-row>&nbsp;</v-row>
 
                 <v-row>
-                    <v-card color="white" raised outlined rounded="xl">
+                    <v-card color="white" raised outlined rounded="xl" align="center">
                         <v-container>
-                            <v-row>
-                                <v-col>
+                                <v-row>
                                     <v-card-title class="text-h5">Login</v-card-title>
-                                </v-col>
-                                <v-col cols="5" align="end" align-self="center">
+                                </v-row>
                                     <v-row>
                                         <v-text-field v-model="usernameLI" hide-details="true" loader-height="5"
                                                       label="Username"></v-text-field>
@@ -26,13 +24,10 @@
                                             @click:append="show1 = !show1"
                                         ></v-text-field>
                                     </v-row>
-                                    <v-row>
+                                    <v-row align="center">
                                         <v-btn @click="login">LOGIN</v-btn>
                                     </v-row>
                                     <v-row>&nbsp;</v-row>
-                                </v-col>
-                                <v-col cols="1"></v-col>
-                            </v-row>
                         </v-container>
                     </v-card>
                 </v-row>
@@ -42,11 +37,9 @@
                 <v-row>
                     <v-card color="white" raised outlined rounded="xl">
                         <v-container>
-                            <v-row>
-                                <v-col>
+                                <v-row>
                                     <v-card-title class="text-h5">Create account</v-card-title>
-                                </v-col>
-                                <v-col cols="5" align="end" align-self="center">
+                                </v-row>
                                     <v-row>
                                         <v-text-field v-model="usernameR" hide-details="true" loader-height="5"
                                                       label="Username"></v-text-field>
@@ -73,9 +66,6 @@
                                         <v-btn>REGISTER</v-btn>
                                     </v-row>
                                     <v-row>&nbsp;</v-row>
-                                </v-col>
-                                <v-col cols="1"></v-col>
-                            </v-row>
                         </v-container>
                     </v-card>
                 </v-row>
@@ -88,7 +78,7 @@
 <script>
 import profile from "../store/user";
 import {Credentials} from "../api/user";
-import security from "../store/modules/security";
+import {mapActions} from 'vuex'
 export default {
     name: "Login",
     data: () => {
@@ -102,9 +92,12 @@ export default {
         }
     },
     methods: {
+        ...mapActions('security', {
+           $login: 'login'
+        }),
         async login() {
             const credentials = new Credentials(this.data.usernameLI, this.data.passwordLI);
-            await security.actions.login(credentials)
+            await this.$login(credentials)
             profile.user = this.usernameLI;
             const redirectPath = this.$route.query.redirect || "/";
             this.$router.push(redirectPath);
