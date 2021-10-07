@@ -1,9 +1,9 @@
 <template>
 <v-card>
   <v-avatar size="100%">
-    <v-img :src="user.pic"/>
+    <v-img :src="user.avatarUrl"/>
   </v-avatar>
-  <h1>{{user.name + ' ' + user.surname}}</h1>
+  <h1>{{user.username + " " + user.firstName + " " + user.lastName}}</h1>
 </v-card>
 </template>
 

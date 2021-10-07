@@ -97,7 +97,7 @@ export default {
           }
         },
         async logout(){
-          await this.$store.dispatch('scurity/logout')
+          await this.$store.dispatch('security/logout')
             this.setResult()
         }
 

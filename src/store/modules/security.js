@@ -3,7 +3,7 @@ import { UserApi } from "../../api/user";
 export default {
     namespaced: true,
     state: {
-        isLoggedn: false,
+        isLoggedIn: false,
         user: null
     },
     mutations: {

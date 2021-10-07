@@ -14,20 +14,20 @@
                                 </v-col>
                                 <v-col cols="5" align="end" align-self="center">
                                     <v-row>
-                                        <v-text-field hide-details="true" loader-height="5"
+                                        <v-text-field v-model="usernameLI" hide-details="true" loader-height="5"
                                                       label="Username"></v-text-field>
                                     </v-row>
                                     <v-row>
                                         <v-text-field
-                                            v-model="password"
-                                            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                                            :type="show ? 'text' : 'password'"
+                                            v-model="passwordLI"
+                                            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                            :type="show1 ? 'text' : 'password'"
                                             label="Password"
-                                            @click:append="show = !show"
+                                            @click:append="show1 = !show1"
                                         ></v-text-field>
                                     </v-row>
                                     <v-row>
-                                        <v-btn>LOGIN</v-btn>
+                                        <v-btn @click="login">LOGIN</v-btn>
                                     </v-row>
                                     <v-row>&nbsp;</v-row>
                                 </v-col>
@@ -36,6 +36,8 @@
                         </v-container>
                     </v-card>
                 </v-row>
+            </v-col>
+            <v-col>
                 <v-row>&nbsp;</v-row>
                 <v-row>
                     <v-card color="white" raised outlined rounded="xl">
@@ -46,16 +48,16 @@
                                 </v-col>
                                 <v-col cols="5" align="end" align-self="center">
                                     <v-row>
-                                        <v-text-field hide-details="true" loader-height="5"
+                                        <v-text-field v-model="usernameR" hide-details="true" loader-height="5"
                                                       label="Username"></v-text-field>
                                     </v-row>
                                     <v-row>
                                         <v-text-field
-                                            v-model="password"
-                                            :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
-                                            :type="show ? 'text' : 'password'"
+                                            v-model="passwordR"
+                                            :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+                                            :type="show2 ? 'text' : 'password'"
                                             label="Password"
-                                            @click:append="show = !show"
+                                            @click:append="show2 = !show2"
                                         ></v-text-field>
                                     </v-row>
                                     <v-row>
@@ -85,18 +87,24 @@
 
 <script>
 import profile from "../store/user";
+import {Credentials} from "../api/user";
 export default {
     name: "Login",
     data() {
         return {
-            show: false,
-            username: null,
-            password: null
+            show1: false,
+            show2: false,
+            usernameLI: null,
+            passwordLI: null,
+            usernameR: null,
+            passwordR: null
         }
     },
     methods: {
-        login() {
-            profile.user = this.username;
+        async login() {
+             const credentials = new Credentials(this.data().usernameLI, this.data().passwordLI);
+             await this.$login(credentials)
+            profile.user = this.usernameLI;
             const redirectPath = this.$route.query.redirect || "/";
             this.$router.push(redirectPath);
         },
