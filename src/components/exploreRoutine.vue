@@ -57,7 +57,6 @@
 </template>
 
 <script>
-import store from "../store/routines";
 import ratingStars from "./cardComplements/ratingStars";
 import MainCardAvatar from "./cardComplements/mainCardAvatar";
 import FavBtn from "./cardComplements/favBtn";
@@ -66,11 +65,8 @@ import RoutineMainCard from "./mainCard";
 
 export default {
   name: "exploreRoutine",
-  data: () => ({
-    routines: store.data().routines,
-  }),
   props: ["routine"],
-  components: {RoutineMainCard, ColorPill, FavBtn, MainCardAvatar, ratingStars}
+  components: {RoutineMainCard, ColorPill, FavBtn, MainCardAvatar, ratingStars},
 }
 </script>
 
