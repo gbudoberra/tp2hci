@@ -31,7 +31,7 @@ class ExerciseApi {
     static async modify(exerciseId, body, controller){
         return await Api.put(this.getUrl(`exercises/${exerciseId}`), true, body, controller);
     }
-    static async remove(exerciseId, controller){
+    static async delete(exerciseId, controller){
         return await Api.delete(this.getUrl(`exercises/${exerciseId}`), true, controller);
     }
 }

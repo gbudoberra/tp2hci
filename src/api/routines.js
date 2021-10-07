@@ -83,7 +83,7 @@ class RoutinesApi {
         return await Api.post(this.getUrl('routines'), true, body, controller)
     }
 
-    static async removeRoutine(routineId, controller){
+    static async delete(routineId, controller){
         return await Api.delete(this.getUrl(`routines/${routineId}`), true, controller)
     }
 
