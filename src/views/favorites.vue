@@ -1,24 +1,28 @@
 <template>
   <v-container>
-    <v-row fluid v-for="routine in routines" :key="routine.id">
+    <v-row fluid v-for="routine in favorites.content" :key="routine.id">
       <routine :routine="routine"/>
     </v-row>
   </v-container>
 </template>
 
 <script>
-import store from "../store/routines";
+import store from "../store/modules/routines";
 import Routine from "../components/routine"
+import {mapState} from "vuex";
 export default {
   name: "Favorites",
-  data:()=>({
-    // Hay que hacer esto general
-    // Computed?
-     favRou: store.data().favRoutines,
-    routines: store.data().routines.filter(routine => {
-      return store.data().favRoutines.includes(routine.id)}),   // Computed?
-  }),
-  components: {Routine}
+  components: {Routine},
+  computed: {
+    ...mapState({
+      favorites: 'favorites',
+      Loading: 'Loading'
+    })
+  },
+  beforeMount() {
+    store.actions.getAllFavorites()
+    console.log('getAll')
+  }
 }
 </script>
 

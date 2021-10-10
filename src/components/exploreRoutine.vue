@@ -12,7 +12,7 @@
                 <v-row>
 
                   <v-col cols="1">
-<!--                    <color-pill :color="routine.color"></color-pill>-->
+                    <color-pill :color="routine.metadata.color"></color-pill>
                   </v-col>
 
                   <v-col>
@@ -31,7 +31,7 @@
                     <v-card-actions class="justify-start">
 
                       <v-col cols="8">
-<!--                        <fav-btn :routine-id="routine.id"></fav-btn>-->
+                        <fav-btn v-if="isLoggedIn" :routine-id="routine.id"></fav-btn>
                       </v-col>
 
                     </v-card-actions>
@@ -58,14 +58,20 @@
 <script>
 import ratingStars from "./cardComplements/ratingStars";
 import MainCardAvatar from "./cardComplements/mainCardAvatar";
-// import FavBtn from "./cardComplements/favBtn";
-// import ColorPill from "./cardComplements/colorPill";
+import FavBtn from "./cardComplements/favBtn";
+import ColorPill from "./cardComplements/colorPill";
 import RoutineMainCard from "./mainCard";
+import {mapState} from "vuex";
 
 export default {
   name: "exploreRoutine",
   props: ["routine"],
-  components: {RoutineMainCard, MainCardAvatar, ratingStars},
+  components: {RoutineMainCard, MainCardAvatar, ratingStars, ColorPill, FavBtn},
+  computed: {
+    ...mapState({
+      isLoggedIn: 'isLoggedIn'
+    })
+  }
 }
 </script>
 

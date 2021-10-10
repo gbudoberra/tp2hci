@@ -4,7 +4,11 @@ import {store} from "../index";
 export default {
 
     state:{
-        routines: []
+        routinePage: 0,
+        routines: [],
+        favoritesPage: 0,
+        favorites: [],
+        Loading: false
 
     },
     mutations: {
@@ -20,19 +24,15 @@ export default {
         replaceAll(state, routines) {
             state.routines = routines
         },
+        replaceAllFavorites(state, routines) {
+            state.favorites = routines
+        },
+        loading(state){
+            state.Loading = !state.Loading;
+        }
 
     },
     getters: {
-        findIndex(state) {
-            return (routine) => {
-                return state.routines.findIndex(item => item.id === routine.id)
-            }
-        },
-        getRoutines(state){
-            return () => {return state.routines}
-        }
-
-
     },
     actions:{
         async create({getters, commit}, routine) {
@@ -64,9 +64,19 @@ export default {
             commit('push', result)
             return result
         },
-        async getAll( controller) {
+        async getAll(controller) {
             const result = await RoutinesApi.getAll(controller)
             store.commit('replaceAll', result)
+            console.log('result',result)
+        },
+        async getAllFavorites(controller) {
+            const result = await RoutinesApi.getAllFavorites(controller)
+            store.commit('replaceAllFavorites', result)
+            console.log('result',result)
+        },
+
+        load(){
+            store.commit('loading')
         }
 
     }

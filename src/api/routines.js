@@ -18,22 +18,35 @@ class RoutinesApi {
     }
 
     static async getAll(categoryId, userId, difficulty, score, search, page, size, orderBy, direction, controller){
-        let init = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-            categoryId: categoryId,
-            userId: userId,
-            difficulty: difficulty,
-            score: score,
-            search: search,
-            page: page,
-            size: size,
-            orderBy: orderBy,
-            direction: direction
+        const init = {
+            // method: 'GET',
+            // headers: {
+            //     'Content-Type': 'application/json; charset=utf-8'
+            // },
+            // parameters:{
+            //     query:{
+            //
+            //         page: JSON.stringify(page)
+            //     }
+            // }
+            // categoryId: categoryId,
+            // userId: userId,
+            // difficulty: difficulty,
+            // score: score,
+            // search: search,
+            // page: page,
+                // orderBy: orderBy,
+                // direction: direction
+
         };
-        return await Api.getWithInit(this.getUrl('routines'), true, init, controller);
+        console.log(init)
+        return await Api.getWithInit(this.getUrl('routines'), false, init, controller);
+    }
+    static async getAllFavorites(controller){
+        const init = {
+        };
+        console.log(init)
+        return await Api.getWithInit(this.getUrl('favourites'), false, init, controller);
     }
 
 

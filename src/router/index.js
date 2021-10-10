@@ -12,7 +12,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path:"/",
-    name:"Explore",
+    name:"home",
     component: () => import( /* webpackChunkName: "explore" */ '../views/explore')
   },
     {
