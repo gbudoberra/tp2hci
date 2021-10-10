@@ -1,16 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import security from "@/store/modules/security";
-import routines from "@/store/modules/routines";
-import excercises from "@/store/modules/excercises";
-import sport from "@/store/modules/sport";
+import security from "./modules/security";
+import routines from "./modules/routines";
+import excercises from "./modules/excercises";
+import sport from "./modules/sport";
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+export const store = new Vuex.Store({
   state: { //data
+    userLogin: null,
+    passwordLogin: null,
+    isLoggedIn: false
   },
   mutations: {
+    setIsLoggedIn(state, loggedIn){
+      state.isLoggedIn = loggedIn;
+    }
   },
   actions: { //methods
   },

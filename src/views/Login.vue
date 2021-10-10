@@ -27,7 +27,7 @@
                                         ></v-text-field>
                                     </v-row>
                                     <v-row>
-                                        <v-btn @click="login">LOGIN</v-btn>
+                                        <v-btn @click="login(usernameLI, passwordLI)">LOGIN</v-btn>
                                     </v-row>
                                     <v-row>&nbsp;</v-row>
                                 </v-col>
@@ -86,8 +86,6 @@
 </template>
 
 <script>
-import profile from "../store/user";
-import {Credentials} from "../api/user";
 import security from "../store/modules/security";
 export default {
     name: "Login",
@@ -102,12 +100,11 @@ export default {
         }
     },
     methods: {
-        async login() {
-            const credentials = new Credentials(this.data.usernameLI, this.data.passwordLI);
-            await security.actions.login(credentials)
-            profile.user = this.usernameLI;
+        async login(user, password) {
+          console.log(user, password)
+            await security.actions.login(user, password)
             const redirectPath = this.$route.query.redirect || "/";
-            this.$router.push(redirectPath);
+            await this.$router.push(redirectPath);
         },
     },
 }

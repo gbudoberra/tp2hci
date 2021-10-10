@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import {store} from "../store/index";
 // import profile from "../store/user";
 // import Favorites from "../views/favorites.vue";
 // import Profile from "../views/profile.vue";
@@ -42,13 +43,13 @@ const routes = [
   {
     path: "/favorites",
     name: "Favorites",
-    //meta: { requiresAuth: true},
+    meta: { requiresAuth: true},
     component: () => import( /* webpackChunkName: "favs" */ '../views/favorites')
   },
   {
     path: "/MyRoutines",
     name: "MyRoutines",
-    //meta: { requiresAuth: true},
+    meta: { requiresAuth: true},
     component: () => import( /* webpackChunkName: "myRoutines" */ '../views/myRoutines')
   },
   {
@@ -83,16 +84,16 @@ const router = new VueRouter(
     }
 );
 
-// router.beforeEach((to, from, next) => {
-//   if (to.meta){
-//     if(!profile.user){
-//       next({name:"Login" /*, query: { redirect: to.fullPath }*/ })
-//     }
-//     else next()
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth){
+    if(!store.state.isLoggedIn){
+      next({name:"Login" /*, query: { redirect: to.fullPath }*/ })
+    }
+    else next()
+  } else {
+    next()
+  }
+})
 // vue add vuex
 // router.beforeEach(
 //     (to, from, next) => {

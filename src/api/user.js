@@ -4,11 +4,15 @@ export { UserApi, Credentials};
 
 class UserApi{
     static getUrl(slug){
-        return `${Api.baseURL}/user${ slug ? `/${slug}` : ''}`;
+        return `${Api.baseURL}/users${ slug ? `/${slug}` : ''}`;
     }
-    static async login(credentials, controller){
-        const result = await Api.post(UserApi.getUrl('login'), false, credentials, controller);
+    static async login(user, password, controller){
+        console.log('user '+user)
+        console.log('password '+password)
+        const result = await Api.post(UserApi.getUrl('login'), false, new Credentials(user, password), controller);
+        console.log(result)
         Api.token = result.token
+        console.log(Api.token)
     }
     static async logout(controller){
         await Api.post(UserApi.getUrl('logout'), true, controller);

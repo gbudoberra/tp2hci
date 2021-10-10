@@ -1,4 +1,5 @@
 import {RoutinesApi} from "@/api/routines";
+import {store} from "../index";
 
 export default {
 
@@ -27,6 +28,9 @@ export default {
                 return state.routines.findIndex(item => item.id === routine.id)
             }
         },
+        getRoutines(state){
+            return () => {return state.routines}
+        }
 
 
     },
@@ -60,10 +64,9 @@ export default {
             commit('push', result)
             return result
         },
-        async getAll({commit}, controller) {
+        async getAll( controller) {
             const result = await RoutinesApi.getAll(controller)
-            commit('replaceAll', result)
-            return result
+            store.commit('replaceAll', result)
         }
 
     }

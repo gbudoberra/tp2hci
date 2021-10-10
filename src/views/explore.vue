@@ -2,7 +2,7 @@
 <template>
   <div>
     <v-row fluid
-           v-for="routine in routines"
+           v-for="routine in routines.content"
            :key="routine.id"
     >
       <explore-routine :routine="routine"/>
@@ -15,13 +15,22 @@
 
 <script>
 import ExploreRoutine from "../components/exploreRoutine";
-import store from "../store/routines";
+import store from "../store/modules/routines";
+
 export default {
   name: "Explore",
   components: {ExploreRoutine},
   data: () => ({
-    routines: store.data().routines,
+    routines: store.state.routines,
   }),
+  // computed: {
+  //   // routines: store.getters.getRoutines(store.state)
+  // },
+
+  beforeCreate() {
+    store.actions.getAll()
+    console.log('getAll')
+  }
 };
 </script>
 
