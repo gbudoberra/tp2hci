@@ -55,7 +55,7 @@ const routes = [
   {
     path: "/details/:id",
     name: "routineDetails",
-    //meta: requiresAuth
+    meta: { requiresAuth: true},
     props: true,
     // beforeEnter: (to, from, next) => {
     //   const exists = store.routine.find(

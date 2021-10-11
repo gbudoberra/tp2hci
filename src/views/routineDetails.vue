@@ -1,57 +1,38 @@
 <template>
-<v-container>
+<v-container v-if="routines">
       <v-row>
         <v-col>
-        <routine-title-card :id="routine.id" :color="routine.color" :title="routine.title"></routine-title-card>
+        <routine-title-card :id="routines.routine.id" :color="routines.routine.metadata.color" :title="routines.routine.name"></routine-title-card>
         </v-col>
       </v-row>
 
 
-        <v-row v-for="block in routine.workoutBlocks" :key="block.id">
-          <v-col>
-          <workout-block :color="routine.color" :title="block.blockName" :units="block.units" :qty="block.sets" :exercises="block.exercises"></workout-block>
-          </v-col>
-        </v-row>
+<!--        <v-row v-for="block in routine.workoutBlocks" :key="block.id">-->
+<!--          <v-col>-->
+<!--          <workout-block :color="routine.color" :title="block.blockName" :units="block.units" :qty="block.sets" :exercises="block.exercises"></workout-block>-->
+<!--          </v-col>-->
+<!--        </v-row>-->
 
 </v-container>
 </template>
 
 
 <script>
-import store from "../store/routines";
+import store from "../store/modules/routines";
 import RoutineTitleCard from "../components/routineDetailTitleCard";
-import WorkoutBlock from "../components/workoutBlock";
+import {mapState} from "vuex";
+// import WorkoutBlock from "../components/workoutBlock";
 export default {
   name: "routineDetails",
-  components: {WorkoutBlock, RoutineTitleCard},
-  data() {
-    return{
-      routineId: Number(this.$route.params.id),
-      name: store.data().routines
-    }
-  },
-  props: {
-// routine:{
-//   type: string,
-//       required: true
-// }
-  },
+  components: { RoutineTitleCard},
   computed: {
-    routine: {
-      // getter
-      get: function () {
-        return store.data().routines.find(r => r.id===this.routineId)
-      },
-      },
-    blocks: {
-      get: function () {
-        return store.data().routines.find(r => r.id===this.routineId).workoutBlocks
-      }
-    }
+    ...mapState({
+      routines: 'routines'
+    })
     },
-  methods:{
-    favs: store.methods.favs,
-
+  beforeMount(){
+    store.actions.get(this.$route.params.id)
+    console.log('getRoutine')
   }
   }
 

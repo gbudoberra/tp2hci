@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-    <v-row fluid v-for="routine in favorites.content" :key="routine.id">
+  <v-container v-if="routines">
+    <v-row fluid v-for="routine in routines.favorites.content" :key="routine.id">
       <routine :routine="routine"/>
     </v-row>
   </v-container>
@@ -15,13 +15,13 @@ export default {
   components: {Routine},
   computed: {
     ...mapState({
-      favorites: 'favorites',
+      routines: 'routines',
       Loading: 'Loading'
     })
   },
   beforeMount() {
     store.actions.getAllFavorites()
-    console.log('getAll')
+    console.log('getAllFavs')
   }
 }
 </script>

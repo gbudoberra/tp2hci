@@ -9,6 +9,7 @@ export default {
     mutations: {
         setUser(state, user){
             state.user = user;
+            console.log('user', state.user)
         },
     },
     actions: {
@@ -22,12 +23,13 @@ export default {
              await UserApi.logout();
              commit('setIsLoggedIn', false);
         },
-        async getCurrentUser({state}, commit){
-            if(state.user)
-                return state.user;
+        async getCurrentUser(){
+            // if(state.user)
+            //     return state.user;
 
             const result = await UserApi.get();
-            commit('setUser', result)
+            await store.commit('security/setUser', result)
+
         }
     }
 }
