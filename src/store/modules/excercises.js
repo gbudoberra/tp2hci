@@ -20,21 +20,21 @@ export default {
         }
     },
     getters: {
-        findIndex(state) {
-            return (exercise) => {
-                return state.exercises.findIndex(item => item.id === exercise.id)
-            }
-        },
+        // findIndex(state) {
+        //     return (exercise) => {
+        //         return state.exercises.findIndex(item => item.id === exercise.id)
+        //     }
+        // },
 
 
     },
     actions:{
-        async create({getters, commit}, exercise) {
-            const result = await ExerciseApi.add(exercise)
-            if (!getters.findIndex(result))
-                commit('push', result)
-            return result
-        },
+        // async create({getters, commit}, exercise) {
+        //     const result = await ExerciseApi.add(exercise)
+        //     if (!getters.findIndex(result))
+        //         commit('push', result)
+        //     return result
+        // },
 
         async modify({getters, commit}, exercise) {
             const result = await ExerciseApi.modify(exercise)
