@@ -4,15 +4,19 @@ import myRoutines from './myRoutines';
     <v-row fluid v-for="routine in routines.routines.content" :key="routine.id">
       <routine :routine="routine"/>
     </v-row>
-<!--  <create-routine-btn/>-->
-    <pop-up></pop-up>
+    <v-row>
+      <v-col align="center" cols="10">
+        <pop-up></pop-up>
+      </v-col>
+
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import store from "../store/modules/routines";
 import Routine from "../components/routine";
-// import CreateRoutineBtn from "../components/createRoutineBtn";
+
 import {mapState} from "vuex";
 import PopUp from "../components/popUp";
 

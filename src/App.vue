@@ -71,8 +71,7 @@
           <v-col align="left" align-self="center">
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
-          <v-col><go-back></go-back></v-col>
-          <v-col></v-col>
+
           <v-col align="right" align-self="end">
             <v-text-field append-icon="search" hide-details="true" loader-height="5" label="Search"></v-text-field>
             <!--    <v-btn
@@ -95,10 +94,8 @@
 
 <script>
 
-import GoBack from "./components/goBack";
 export default {
   name: 'App',
-  components: {GoBack},
   data: () => ({ drawer: null }),
 
 }

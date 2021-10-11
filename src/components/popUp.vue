@@ -8,11 +8,11 @@
       <template v-slot:activator="{ on, attrs }">
           <v-btn
               x-large
-              color="blue"
               dark
               v-bind="attrs"
-              v-on="on"
-          >Create routine</v-btn>
+              v-on="on" color="blue darken-4" fixed bottom rounded>
+            Create routine
+          </v-btn>
       </template>
 
       <v-card color="white">

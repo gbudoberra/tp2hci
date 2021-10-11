@@ -16,8 +16,8 @@
         </v-col>
         <v-col cols="3" align="end" align-self="center">
           <v-row>
-            <v-col><fav-btn :routine-id="id"></fav-btn></v-col>
-            <v-col><v-btn>Edit</v-btn></v-col>
+            <v-col align-self="center"><fav-btn :routine-id="id"></fav-btn></v-col>
+            <v-col align-self="center"><v-btn rounded elevation="5" fab color="blue-grey lighten-3"><v-icon>edit</v-icon></v-btn></v-col>
           </v-row>
         </v-col>
         <v-col cols="1"></v-col>

@@ -1,11 +1,11 @@
 <template>
     <v-container fluid>
         <v-row justify="space-between">
-            <v-col></v-col>
+            <v-col cols="1"></v-col>
             <v-col align-self="center" align-content="center">
-                <v-row>&nbsp;</v-row>
 
-                <v-row>
+
+
                     <v-card color="white" raised outlined rounded="xl">
                         <v-container>
                             <v-row>
@@ -27,60 +27,18 @@
                                         ></v-text-field>
                                     </v-row>
                                     <v-row>
-                                        <v-btn @click="login(usernameLI, passwordLI)">LOGIN</v-btn>
-                                    </v-row>
-                                    <v-row>&nbsp;</v-row>
-                                </v-col>
-                                <v-col cols="1"></v-col>
-                            </v-row>
-                        </v-container>
-                    </v-card>
-                </v-row>
-            </v-col>
-            <v-col>
-                <v-row>&nbsp;</v-row>
-                <v-row>
-                    <v-card color="white" raised outlined rounded="xl">
-                        <v-container>
-                            <v-row>
-                                <v-col>
-                                    <v-card-title class="text-h5">Create account</v-card-title>
-                                </v-col>
-                                <v-col cols="5" align="end" align-self="center">
-                                    <v-row>
-                                        <v-text-field v-model="usernameR" hide-details="true" loader-height="5"
-                                                      label="Username"></v-text-field>
-                                    </v-row>
-                                    <v-row>
-                                        <v-text-field
-                                            v-model="passwordR"
-                                            :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
-                                            :type="show2 ? 'text' : 'password'"
-                                            label="Password"
-                                            @click:append="show2 = !show2"
-                                        ></v-text-field>
-                                    </v-row>
-                                    <v-row>
-                                        <v-text-field hide-details="true" loader-height="5" label="Name"></v-text-field>
-                                    </v-row>
-                                    <v-row>
-                                        <v-text-field hide-details="true" loader-height="5"
-                                                      label="Last Name"></v-text-field>
+                                        <v-col><v-btn @click="login(usernameLI, passwordLI)">LOGIN</v-btn></v-col>
+                                      <v-col><v-btn :to="{name: 'SignIn'}">Sign In</v-btn></v-col>
                                     </v-row>
 
-                                    <v-row>&nbsp;</v-row>
-                                    <v-row>
-                                        <v-btn>REGISTER</v-btn>
-                                    </v-row>
-                                    <v-row>&nbsp;</v-row>
                                 </v-col>
                                 <v-col cols="1"></v-col>
                             </v-row>
                         </v-container>
                     </v-card>
-                </v-row>
             </v-col>
-            <v-col></v-col>
+
+            <v-col cols="1"></v-col>
         </v-row>
     </v-container>
 </template>

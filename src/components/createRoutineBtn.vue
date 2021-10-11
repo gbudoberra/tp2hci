@@ -1,13 +1,7 @@
 <template>
-<v-container>
-  <v-row justify="center">
-    <v-btn
-        x-large
-        color="blue"
-        dark
-    >Create routine</v-btn>
-  </v-row>
-</v-container>
+  <v-btn x-large dark color="blue darken-4" fixed bottom rounded>
+    Create routine
+  </v-btn>
 </template>
 
 <script>

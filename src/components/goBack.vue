@@ -1,7 +1,10 @@
 <template>
-<span class="goBack">
-  <v-btn @click="goBack">Go back</v-btn>
-</span>
+
+  <v-btn @click="goBack"  rounded color="blue darken-4" dark large elevation="5">
+    <v-icon>
+      arrow_back
+    </v-icon>
+  </v-btn>
 </template>
 
 <script>
