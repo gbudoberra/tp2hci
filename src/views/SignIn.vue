@@ -33,7 +33,8 @@
 
               <v-row>&nbsp;</v-row>
               <v-row>
-                <v-btn>REGISTER</v-btn>
+                <v-col><v-btn color="#1E3163" dark>REGISTER</v-btn></v-col>
+                <v-col><v-btn :to="{name: 'Login'}">LOGIN</v-btn></v-col>
               </v-row>
               <v-row>&nbsp;</v-row>
             </v-col>
