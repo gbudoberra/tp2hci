@@ -12,12 +12,11 @@ export const store = new Vuex.Store({
     userLogin: null,
     passwordLogin: null,
     isLoggedIn: false,
-    Loading: false
   },
   mutations: {
     setIsLoggedIn(state, loggedIn){
       state.isLoggedIn = loggedIn;
-    }
+    },
   },
   getters:{
     get: state => {return state.Loading}

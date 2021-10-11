@@ -1,6 +1,6 @@
 
 <template>
-  <v-container >
+  <v-container v-if="routines">
       <v-row fluid
              v-for="routine in routines.routines.content"
              :key="routine.id"
@@ -23,12 +23,6 @@ import { mapState } from 'vuex'
 export default {
   name: "Explore",
   components: {ExploreRoutine},
-  // data: () => ({
-  //   routines: store.state.routines,
-  // }),
-  // computed: {
-  //   // routines: store.getters.getRoutines(store.state)
-  // },
   computed: {
     ...mapState({
       routines: 'routines',
@@ -36,7 +30,7 @@ export default {
     })
   },
   beforeMount() {
-    store.actions.getAll(2)
+    store.actions.getAll()
     console.log('getAll')
   }
 };

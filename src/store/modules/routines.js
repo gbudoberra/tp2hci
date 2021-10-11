@@ -8,7 +8,8 @@ export default {
         routines: [],
         favoritesPage: 0,
         favorites: [],
-        Loading: false
+        Loading: false,
+        routine: null
 
     },
     mutations: {
@@ -29,17 +30,25 @@ export default {
         },
         loading(state){
             state.Loading = !state.Loading;
+        },
+        replaceRoutine(state, routine){
+            state.routine = routine
         }
 
     },
     getters: {
+        findIndex(state) {
+            return (routine) => {
+                return state.routines.findIndex(item => item.id === routine.id)
+            }
+        },
     },
     actions:{
-        async create({getters, commit}, routine) {
-            const result = await RoutinesApi.add(routine)
-            if (!getters.findIndex(result))
-                commit('push', result)
-            return result
+        // async create(routine) {
+        //     await RoutinesApi.add(routine, null)
+        // },
+        async create(state, exercise) {
+            return await RoutinesApi.add(exercise)
         },
 
         async modify({getters, commit}, routine) {
@@ -55,17 +64,19 @@ export default {
             if (index >= 0)
                 commit('splice', index)
         },
-        async get({state, getters, commit}, sport) {
-            const index = getters.findIndex(sport)
-            if (index >= 0)
-                return state.items[index]
-
-            const result = await RoutinesApi.get()
-            commit('push', result)
+        async get(routineId, controller) {
+            const result = await RoutinesApi.get(routineId, controller)
+            store.commit('replaceRoutine', result)
+            console.log('result routine', result)
             return result
         },
         async getAll(controller) {
             const result = await RoutinesApi.getAll(controller)
+            store.commit('replaceAll', result)
+            console.log('result',result)
+        },
+        async getMyRoutines(controller){
+            const result = await RoutinesApi.getMyRoutines(controller)
             store.commit('replaceAll', result)
             console.log('result',result)
         },
@@ -81,3 +92,4 @@ export default {
 
     }
 }
+

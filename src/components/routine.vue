@@ -8,17 +8,16 @@
           <v-row>
 
             <v-col cols="1">
-              <color-pill :color="routine.color"></color-pill>
+              <color-pill :color="routine.metadata.color"></color-pill>
             </v-col>
 
             <v-col cols="3">
 
-              <v-card-title class="text-h5" v-text="routine.title">RTitle</v-card-title>
+              <v-card-title class="text-h5" v-text="routine.name">RTitle</v-card-title>
 
-              <v-card-subtitle v-text="routine.description">RDescription</v-card-subtitle>
+              <v-card-subtitle v-text="routine.detail">RDescription</v-card-subtitle>
 
-              <v-card-text >
-                <div>Duration: {{routine.duration}}</div>
+              <v-card-text>
                 <div>Difficulty: {{routine.difficulty}}</div>
 
               </v-card-text>
@@ -38,7 +37,6 @@
             </v-col>
 
             <v-col cols="1">
-<!--              <v-btn fab color="blue-grey lighten-3" :to="{name: 'routineDetails', params: { id: routine.id}}"><v-icon dark>edit</v-icon></v-btn>-->
               <v-btn fab color="blue-grey lighten-3" :to="{name: 'routineDetails', params: { id: routine.id}}">detail</v-btn>
             </v-col>
 
