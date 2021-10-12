@@ -4,56 +4,88 @@
       v-model="valid"
       lazy-validation
   >
-    <v-text-field
-        v-model="name"
-        :counter="25"
-        :rules="nameRules"
-        label="Name"
-        required
-    ></v-text-field>
+    <v-container>
 
-    <v-text-field
-        v-model="detail"
-        :rules="detailRules"
-        label="Detail"
-        required
-    ></v-text-field>
+      <v-row>
+        <v-col>
+          <v-text-field
+              v-model="name"
+              :counter="25"
+              :rules="nameRules"
+              label="Name"
+              required
+          ></v-text-field>
+        </v-col>
+      </v-row>
 
-    <v-select
-        v-model="difficulty"
-        :items="items"
-        :rules="[v => !!v || 'Difficulty is required']"
-        label="Difficulty"
-        required
-    ></v-select>
-    <v-select
-        v-model="color"
-        :items="colors"
-        :rules="[v => !!v || 'Color is required']"
-        label="Color"
-        required
-    ></v-select>
-    <v-checkbox
-        v-model="isPublic"
-        label="Is public?"
-    ></v-checkbox>
+      <v-row>
+        <v-col>
+          <v-text-field
+              v-model="detail"
+              :rules="detailRules"
+              label="Detail"
+              required
+          ></v-text-field>
+        </v-col>
+      </v-row>
 
-    <v-btn
-        :disabled="!valid"
-        color="success"
-        class="mr-4"
-        @click="validate"
-    >
-      Submit
-    </v-btn>
+      <v-row>
+        <v-col>
+          <v-select
+              v-model="difficulty"
+              :items="items"
+              :rules="[v => !!v || 'Difficulty is required']"
+              label="Difficulty"
+              required
+          ></v-select>
+        </v-col>
+      </v-row>
 
-    <v-btn
-        color="error"
-        class="mr-4"
-        @click="reset"
-    >
-      Reset Form
-    </v-btn>
+      <v-row>
+        <v-col>
+          <v-select
+              v-model="color"
+              :items="colors"
+              :rules="[v => !!v || 'Color is required']"
+              label="Color"
+              required
+          ></v-select>
+
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col>
+          <v-checkbox
+              v-model="isPublic"
+              label="Is public?"
+          ></v-checkbox>
+        </v-col>
+      </v-row>
+
+      <v-row>
+        <v-col align="center">
+          <v-btn
+              :disabled="!valid"
+              color="success"
+              class="mr-4"
+              @click="validate"
+          >
+            Submit
+          </v-btn>
+        </v-col>
+        <v-col align="center">
+          <v-btn
+              color="error"
+              class="mr-4"
+              @click="reset"
+          >
+            Reset Form
+          </v-btn>
+        </v-col>
+      </v-row>
+
+    </v-container>
   </v-form>
 </template>
 

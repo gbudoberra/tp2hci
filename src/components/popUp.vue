@@ -15,7 +15,7 @@
           </v-btn>
       </template>
 
-      <v-card color="white">
+      <v-card color="white" height="600" rounded>
         <v-card-title>New Routine</v-card-title>
         <create-routine-form>
 
