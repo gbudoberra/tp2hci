@@ -80,7 +80,7 @@
 
             ><v-icon size="35px">search</v-icon>
             </v-btn>-->
-            <v-btn fab v-if="$store.state.isLoggedIn" ><v-icon> logout</v-icon></v-btn>
+            <logout-btn/>
           </v-col>
         </v-row>
       </v-container>
@@ -95,8 +95,10 @@
 
 <script>
 
+import LogoutBtn from "./components/logoutBtn";
 export default {
   name: 'App',
+  components: {LogoutBtn},
   data: () => ({ drawer: null }),
   /*methods:{
     logout(){

@@ -92,7 +92,7 @@ const router = new VueRouter(
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth){
-    if(!store.state.isLoggedIn){
+    if(!store.state.security.isLoggedIn){
       next({name:"Login" /*, query: { redirect: to.fullPath }*/ })
     }
     else next()

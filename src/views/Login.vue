@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import security from "../store/modules/security";
+import {store} from "../store";
 export default {
     name: "Login",
     data: () => {
@@ -60,7 +60,7 @@ export default {
     methods: {
         async login(user, password) {
           console.log(user, password)
-            await security.actions.login(user, password)
+            await store.dispatch('security/login', {user, password})
             const redirectPath = this.$route.query.redirect || "/";
             await this.$router.push(redirectPath);
         },
