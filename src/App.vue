@@ -73,13 +73,14 @@
           </v-col>
 
           <v-col align="right" align-self="end">
-            <v-text-field append-icon="search" hide-details="true" loader-height="5" label="Search"></v-text-field>
+            <!--v-text-field append-icon="search" hide-details="true" loader-height="5" label="Search"></v-text-field-->
             <!--    <v-btn
                 fab
                 text
 
             ><v-icon size="35px">search</v-icon>
             </v-btn>-->
+            <v-btn fab v-if="$store.state.isLoggedIn" ><v-icon> logout</v-icon></v-btn>
           </v-col>
         </v-row>
       </v-container>
@@ -97,6 +98,11 @@
 export default {
   name: 'App',
   data: () => ({ drawer: null }),
+  /*methods:{
+    logout(){
+      security.actions.logout()
+    }
+  }*/
 
 }
 </script>
