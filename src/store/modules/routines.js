@@ -44,11 +44,8 @@ export default {
         },
     },
     actions:{
-        // async create(routine) {
-        //     await RoutinesApi.add(routine, null)
-        // },
-        async create(state, exercise) {
-            return await RoutinesApi.add(exercise)
+        async create(state, routine) {
+            return await RoutinesApi.add(routine)
         },
 
         async modify({getters, commit}, routine) {
@@ -64,15 +61,15 @@ export default {
             if (index >= 0)
                 commit('splice', index)
         },
-        async get(routineId, controller) {
-            const result = await RoutinesApi.get(routineId, controller)
-            store.commit('replaceRoutine', result)
+        async getRoutine({commit}, payload, controller) {
+            const result = await RoutinesApi.get(payload.routineId, controller)
+            commit('replaceRoutine', result)
             console.log('result routine', result)
-            return result
+            // return result
         },
-        async getAll(controller) {
+        async getAllRoutines({commit}, controller) {
             const result = await RoutinesApi.getAll(controller)
-            store.commit('replaceAll', result)
+            commit('replaceAll', result)
             console.log('result',result)
         },
         async getMyRoutines(controller){
@@ -85,10 +82,6 @@ export default {
             store.commit('replaceAllFavorites', result)
             console.log('result',result)
         },
-
-        load(){
-            store.commit('loading')
-        }
 
     }
 }

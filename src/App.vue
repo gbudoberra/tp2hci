@@ -71,8 +71,10 @@
           <v-col align="left" align-self="center">
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
-
           <v-col align="right" align-self="end">
+            <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{$store.state.security.username}}</v-toolbar-title>
+          </v-col>
+          <v-col align="right" align-self="end" cols="1">
             <!--v-text-field append-icon="search" hide-details="true" loader-height="5" label="Search"></v-text-field-->
             <!--    <v-btn
                 fab
@@ -80,6 +82,11 @@
 
             ><v-icon size="35px">search</v-icon>
             </v-btn>-->
+              <router-link to="/login">
+                <v-btn fab v-if="!$store.state.security.isLoggedIn"><v-icon>login</v-icon></v-btn>
+              </router-link>
+
+
             <logout-btn/>
           </v-col>
         </v-row>

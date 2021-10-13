@@ -95,21 +95,18 @@ import {store} from "../store";
 export default {
   data: () => ({
     valid: true,
-    name: '',
     nameRules: [
       v => !!v || 'Name is required',
       v => (v && v.length <= 25) || 'Name must be less than 25 characters',
     ],
-    detail: '',
     detailRules: [
       v => !!v || 'Detail is required',
     ],
-    difficulty: null,
     items: [ 'rookie', 'beginner', 'intermediate', 'advanced', 'expert' ],
-    color: null,
     colors: [ 'green', 'blue', 'red', 'orange', 'yellow' ],
-    isPublic: false,
   }),
+  props:['name', 'detail', 'difficulty', 'isPublic', 'color']
+  ,
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {

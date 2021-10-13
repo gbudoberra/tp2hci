@@ -5,6 +5,7 @@ export default {
     namespaced: true,
     state: {
         user: null,
+        username: null,
         isLoggedIn: false,
     },
     mutations: {
@@ -15,13 +16,18 @@ export default {
         setIsLoggedIn(state, loggedIn){
             state.isLoggedIn = loggedIn;
         },
+        setUsername(state, username){
+            state.username = username
+        }
     },
     actions: {
         async login({commit}, payload){
+            if(payload.user === undefined || payload.password === null)
             console.log('security.login')
             await UserApi.login(payload.user, payload.password, null);
             console.log("paso UserApi")
             commit('setIsLoggedIn', true)
+            commit('setUsername', payload.user)
         },
         async logout({commit}){
              await UserApi.logout();

@@ -18,8 +18,8 @@
 
 <script>
 import ExploreRoutine from "../components/exploreRoutine";
-import store from "../store/modules/routines";
 import { mapState } from 'vuex'
+import {store} from "../store";
 export default {
   name: "Explore",
   components: {ExploreRoutine},
@@ -30,7 +30,7 @@ export default {
     })
   },
   beforeMount() {
-    store.actions.getAll()
+    store.dispatch('getAllRoutines');
     console.log('getAll')
   }
 };

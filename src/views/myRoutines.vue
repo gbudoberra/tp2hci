@@ -6,7 +6,7 @@ import myRoutines from './myRoutines';
     </v-row>
     <v-row>
       <v-col align="center" cols="10">
-        <pop-up></pop-up>
+        <pop-up title="New Routine"></pop-up>
       </v-col>
 
     </v-row>

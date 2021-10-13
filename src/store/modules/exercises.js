@@ -14,7 +14,7 @@ export default {
     },
     actions:{
         async getFromCycle({commit}, payload) {
-            const result = await ExerciseApi.getFromCycle(payload.id)
+            const result = await ExerciseApi.getFromCycle(payload[0])
             commit('replaceAllExercises', result)
             console.log('result exercises', result)
             return result

@@ -16,10 +16,8 @@
       </template>
 
       <v-card color="white" height="600" rounded>
-        <v-card-title>New Routine</v-card-title>
-        <create-routine-form>
-
-        </create-routine-form>
+        <v-card-title>{{title}}</v-card-title>
+        <create-routine-form :color="null" name='' detail='' :is-public="false" :difficulty="null" :id="null"/>
       </v-card>
 
     </v-dialog>
@@ -35,5 +33,6 @@ export default {
       dialog: false,
     }
   },
+  props: ['title']
 }
 </script>
