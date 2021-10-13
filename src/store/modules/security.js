@@ -39,15 +39,15 @@ export default {
         },
 
         async register({commit}, payload){
-            await UserApi.register(payload.username, payload.password, payload.name,
-            payload.lastname, payload.gender, payload.email, payload.img);
+            await UserApi.register(payload.username, payload.password, payload.firstName,
+            payload.lastName, payload.gender, payload.email, payload.avatarUrl);
             commit('setEmail', payload.email)
             commit('setUsername', payload.user)
         },
         async verify({commit}, payload){
-            // let mailV = payload.email || this.state.email
-            console.log('this.state.email: ', payload.email)
-          await UserApi.verifyEmail(payload.code, payload.email)
+            let mailV = payload.email || this.state.email
+            console.log('this.state.email: ', mailV)
+           await UserApi.verifyEmail(payload.code, mailV)
             commit('setIsLoggedIn', true)
         },
         async getCurrentUser(){
