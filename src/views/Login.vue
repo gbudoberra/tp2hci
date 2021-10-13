@@ -15,7 +15,7 @@
                                 <v-col cols="5" align="end" align-self="center">
                                     <v-row>
                                         <v-text-field v-model="usernameLI" hide-details="true" loader-height="5"
-
+                                                      @keyup.enter="login(usernameLI, passwordLI)"
                                                       label="Username"></v-text-field>
                                     </v-row>
                                     <v-row>

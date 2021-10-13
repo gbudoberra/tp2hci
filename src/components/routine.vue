@@ -32,8 +32,8 @@
               </v-card-actions>
             </v-col>
 
-            <v-col align-self="center">
-              <blocks-carousel :workouts="cycles.cycles"></blocks-carousel>
+            <v-col align-self="center" v-if="cycles">
+              <blocks-carousel :workouts="cycles"></blocks-carousel>
             </v-col>
 
             <v-col cols="1">
@@ -62,21 +62,22 @@ import RoutineMainCard from "./mainCard";
 import ColorPill from "./cardComplements/colorPill";
 import FavBtn from "./cardComplements/favBtn";
 import BlocksCarousel from "./cardComplements/blocksCarousel";
-import {mapState} from "vuex";
 import {store} from "@/store";
 
 export default {
   name: "myRoutinesRoutine",
   components: {BlocksCarousel, FavBtn, ColorPill, RoutineMainCard},
   props: ["routine"],
-  computed: {
-    ...mapState({
-      cycles: 'cycles'
-    })
+  data() {
+    return {
+      cycles: null
+    }
   },
-  created() {
+  async created() {
     let aux=this.$props.routine.id
-    store.dispatch('get',{routineId: aux})
+    let result = await store.dispatch('get', {routineId: aux})
+    console.log(result)
+    this.$data.cycles = result
   }
 }
 

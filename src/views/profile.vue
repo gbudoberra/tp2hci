@@ -9,15 +9,46 @@
         </v-col>
         <v-col align-self="center">
           <v-card height="100%" align="center" >
-            <v-container>
-              {{mainUser.user.email}}
-            </v-container>
+
+              <v-list>
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon color="indigo">
+                      mdi-phone
+                    </v-icon>
+                  </v-list-item-icon>
+
+                  <v-list-item-content>
+                    <v-list-item-title>{{mainUser.user.phone}}</v-list-item-title>
+                  </v-list-item-content>
+
+                </v-list-item>
+
+                <v-divider inset></v-divider>
+
+                <v-list-item>
+                  <v-list-item-icon>
+                    <v-icon color="indigo">
+                      mdi-email
+                    </v-icon>
+                  </v-list-item-icon>
+
+                  <v-list-item-content>
+                    <v-list-item-title>{{mainUser.user.email}}</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+
+              </v-list>
+
           </v-card>
         </v-col>
       </v-row>
-      <!--    <v-row v-for="routine in routines" :key="routine.id">-->
-      <!--      <exercise-list v-for="blocks in routine.workoutBlocks" v-bind:key="blocks.id" :exercises="blocks.exercises"></exercise-list>-->
-      <!--    </v-row>-->
+      <v-row>
+        <full-exercise-list>
+
+        </full-exercise-list>
+      </v-row>
     </v-container>
   </v-container>
 </template>
@@ -27,9 +58,10 @@ import ProfileAvatar from "../components/profileAvatar";
 // import ExerciseList from "../components/cardComplements/excersiceList";
 import store from "../store/modules/security";
 import {mapState} from "vuex";
+import FullExerciseList from "./fullExerciseList";
 export default {
   name: "Profile",
-  components: { ProfileAvatar},
+  components: {FullExerciseList, ProfileAvatar},
   computed: {
     ...mapState({
       mainUser: 'security'

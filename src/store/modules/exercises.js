@@ -18,6 +18,12 @@ export default {
             commit('replaceAllExercises', result)
             console.log('result exercises', result)
             return result
+        },
+        async getAllExercises({commit}, controller){
+            const result = await ExerciseApi.getAll(controller)
+            commit('replaceAllExercises', result)
+            console.log('result getAll exercises', result)
+            return result
         }
 
 

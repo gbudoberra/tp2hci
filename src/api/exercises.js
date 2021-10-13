@@ -9,4 +9,7 @@ class ExerciseApi {
     static async getFromCycle(cycleId, page, size, controller){
         return await Api.get(this.getUrl(`cycles/${cycleId}/exercises`),true,controller)
     }
+    static async getAll(controller){
+        return await Api.get(this.getUrl(`exercises`),true,controller)
+    }
 }

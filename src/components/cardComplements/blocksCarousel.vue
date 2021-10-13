@@ -1,11 +1,23 @@
 <template>
   <v-carousel height="150"  hide-delimiter-background hide-delimiters>
-    <v-carousel-item v-for="blocks in workouts.content" v-bind:key="blocks.id">
+    <v-carousel-item v-for="block in workouts.content" v-bind:key="block.id">
       <v-container>
         <v-row align="center" justify="center">
-          <h3> {{blocks.name}}: {{blocks.repetitions}} sets </h3>
+          <v-col cols="3" align-self="left"/>
+          <v-col cols="6" align-self="center">
+            <v-card height="100%" width="100%" rounded elevation="5" color="grey lighten-2">
+              <v-row>
+                <v-col cols="12">
+                  <v-card-title>{{block.name}}</v-card-title>
+                  <v-card-subtitle>Sets: {{block.repetitions}}</v-card-subtitle>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-col>
+          <v-col cols="3" align-self="right"/>
+          <!--          <h3> {{block.name}}: {{block.repetitions}} sets </h3>-->
         </v-row>
-        <exercise-list :exercises="blocks.detail"></exercise-list>
+<!--        <exercise-list :exercises="block.detail"></exercise-list>-->
       </v-container>
 
     </v-carousel-item>
@@ -18,13 +30,13 @@
 
 
 
-import ExerciseList from "./excersiceList";
+// import ExerciseList from "./excersiceList";
 export default {
   name: "blocksCarousel",
-  components: {ExerciseList},
+  components: {},
   props: ['workouts'],
   created() {
-    console.log(this.$props.workouts)
+    console.log('workouts',this.$props.workouts)
   }
 
 }

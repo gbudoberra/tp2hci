@@ -60,9 +60,8 @@ export default {
   }
   ,
   async created() {
-
     let result = await store.dispatch('getFromCycle', [this.$props.id])
-    console.log(result)
+    console.log('exercises from cycle', result)
     this.$data.exercises = result
   }
 }
