@@ -41,7 +41,8 @@ class UserApi{
         // console.log(controller)
     }
 
-    static async resendVerify(controller, email){
+    static async resendVerify(email, controller){
+        console.log("email2: ", email)
         const result = await Api.post(UserApi.getUrl('resend_verification'), false, {email}, controller)
         console.log(result)
     }

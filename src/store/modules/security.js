@@ -58,8 +58,10 @@ export default {
             const result = await UserApi.get();
             await store.commit('security/setUser', result)
         },
-        async resendVerify(){
-            await UserApi.resendVerify(this.state.email);
+        async resendVerify({commit}, payload){
+            console.log(payload)
+            await UserApi.resendVerify(payload.email);
+            commit('setIsLoggedIn', false)
         }
     }
 }

@@ -18,7 +18,7 @@
                                     <v-text-field v-model="email" hide-details="true" loader-height="5" label="Email"></v-text-field>
                                 </v-row>
                                 <v-row>
-                                    <v-col align="center"><v-btn @click="resend" color="#ff5252" dark>RESEND CODE</v-btn></v-col>
+                                    <v-col align="center"><v-btn @click="resend(email)" color="#ff5252" dark>RESEND CODE</v-btn></v-col>
                                     <v-col align="center"><v-btn @click="verify(code, email)"  color="#388E3C" dark>VERIFY</v-btn></v-col>
                                 </v-row>
 
@@ -52,8 +52,8 @@ export default {
             await this.$router.push(`/login`)
 
         },
-        async resend(){
-            let result = await store.dispatch('security/resendVerify')
+        async resend(email){
+            let result = await store.dispatch('security/resendVerify', {email})
             console.log(result)
         }
     }
