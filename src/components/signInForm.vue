@@ -101,7 +101,7 @@ import {store} from "../store";
 
 export default {
   data: () => ({
-      userRegister: 'hola',
+      userRegister: null,
       password: null,
       name: null,
       lastname: null,
@@ -136,7 +136,7 @@ export default {
             email: this.email,
             avatarUrl: "https://i.stack.imgur.com/34AD2.jpg"
         })
-          if(result != 200)
+          if(result !== 200)
               console.error("error")
         await this.$router.push(`/verifyEmail`)
       } else

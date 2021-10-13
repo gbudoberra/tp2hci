@@ -47,9 +47,7 @@ export default {
         async verify({commit}, payload){
             let mailV = payload.email || this.state.email
             console.log('this.state.email: ', mailV)
-           let result = await UserApi.verifyEmail(payload.code, mailV)
-            if(result!=200)
-                return 200;
+           await UserApi.verifyEmail(payload.code, mailV)
             commit('setIsLoggedIn', true)
         },
         async getCurrentUser(){
