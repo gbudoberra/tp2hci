@@ -13,7 +13,7 @@
 
         <v-row justify="space-around">
           <v-col align-self="center" align="center"><v-icon>explore</v-icon></v-col>
-          <v-col align-self="center" align="start"><router-link to="/explore" id="sideBarIcon">Explore</router-link></v-col>
+          <v-col align-self="center" align="start"><router-link to="/explore"  id="sideBarIcon">Explore</router-link></v-col>
           <v-col></v-col>
         </v-row>
 
@@ -74,28 +74,21 @@
           <v-col align="right" align-self="end">
             <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{$store.state.security.username}}</v-toolbar-title>
           </v-col>
-          <v-col align="right" align-self="end" cols="1">
-            <!--v-text-field append-icon="search" hide-details="true" loader-height="5" label="Search"></v-text-field-->
-            <!--    <v-btn
-                fab
-                text
-
-            ><v-icon size="35px">search</v-icon>
-            </v-btn>-->
+          <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
               <router-link to="/login">
-                <v-btn fab v-if="!$store.state.security.isLoggedIn"><v-icon>login</v-icon></v-btn>
+                <v-btn outlined rounded x-large plain><v-icon large>login</v-icon></v-btn>
               </router-link>
-
-
+          </v-col>
+          <v-col align="right" align-self="center" cols="1" v-else>
             <logout-btn/>
           </v-col>
+
         </v-row>
       </v-container>
     </v-app-bar>
 
     <v-main>
       <router-view :key="$route.path"/>
-      <!--  -->
     </v-main>
   </v-app>
 </template>
@@ -103,10 +96,14 @@
 <script>
 
 import LogoutBtn from "./components/logoutBtn";
+
 export default {
   name: 'App',
+
   components: {LogoutBtn},
-  data: () => ({ drawer: null }),
+  data: () => ({
+    drawer: null
+  }),
   /*methods:{
     logout(){
       security.actions.logout()

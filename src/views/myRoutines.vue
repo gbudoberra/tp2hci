@@ -14,7 +14,7 @@ import myRoutines from './myRoutines';
 </template>
 
 <script>
-import store from "../store/modules/routines";
+import {store} from "@/store";
 import Routine from "../components/routine";
 
 import {mapState} from "vuex";
@@ -31,7 +31,7 @@ export default {
     })
   },
   beforeMount() {
-    store.actions.getMyRoutines()
+    store.dispatch('getMyRoutines')
     console.log('getAll')
   },
   components: {PopUp, Routine}

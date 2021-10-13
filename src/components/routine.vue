@@ -33,7 +33,7 @@
             </v-col>
 
             <v-col align-self="center">
-              <blocks-carousel :workouts="routine.workoutBlocks"></blocks-carousel>
+              <blocks-carousel :workouts="cycles.cycles"></blocks-carousel>
             </v-col>
 
             <v-col cols="1">
@@ -62,11 +62,24 @@ import RoutineMainCard from "./mainCard";
 import ColorPill from "./cardComplements/colorPill";
 import FavBtn from "./cardComplements/favBtn";
 import BlocksCarousel from "./cardComplements/blocksCarousel";
+import {mapState} from "vuex";
+import {store} from "@/store";
+
 export default {
   name: "myRoutinesRoutine",
   components: {BlocksCarousel, FavBtn, ColorPill, RoutineMainCard},
-  props: ["routine"]
+  props: ["routine"],
+  computed: {
+    ...mapState({
+      cycles: 'cycles'
+    })
+  },
+  created() {
+    let aux=this.$props.routine.id
+    store.dispatch('get',{routineId: aux})
+  }
 }
+
 </script>
 
 <style scoped>

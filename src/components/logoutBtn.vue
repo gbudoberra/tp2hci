@@ -1,11 +1,12 @@
 <template>
   <v-row justify="end">
     <v-btn
-        fab v-if="$store.state.security.isLoggedIn"
-        color="primary"
+         v-if="$store.state.security.isLoggedIn"
+
         @click.stop="dialog = true"
+        outlined rounded x-large plain
     >
-      <v-icon>logout</v-icon>
+      <v-icon large>logout</v-icon>
     </v-btn>
 
     <v-dialog
@@ -30,7 +31,7 @@
           <v-btn
               color="green darken-1"
               text
-              @click="dialog = false; logoutBtn();"
+              @click="dialog = false; logoutBtn(); refresh();"
           >
             Yes
           </v-btn>
@@ -52,6 +53,9 @@ export default {
   methods:{
     logoutBtn(){
       store.dispatch('security/logout')
+    },
+    refresh(){
+      location.reload()
     }
   }
 }
