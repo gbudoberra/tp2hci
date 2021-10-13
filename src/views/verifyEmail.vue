@@ -48,19 +48,12 @@ export default {
         async verify(code, email){
             console.log('email', email)
             let result = await store.dispatch('security/verify', {code, email})
-            if(result != 200)
-                console.error("error")
-            else {
-                console.log(result)
-                await this.$router.push(`/`)
-            }
+            console.log(result)
+            await this.$router.push(`/login`)
+
         },
         async resend(){
-            console.log('holas')
-
             let result = await store.dispatch('security/resendVerify')
-            if(result != 200)
-                console.error("error")
             console.log(result)
         }
     }

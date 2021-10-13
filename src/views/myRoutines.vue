@@ -1,7 +1,6 @@
-import myRoutines from './myRoutines';
 <template>
-  <v-container v-if="routines">
-    <v-row fluid v-for="routine in routines.routines.content" :key="routine.id">
+  <v-container v-if="myRoutines">
+    <v-row fluid v-for="routine in myRoutines.routines.content" :key="routine.id">
       <routine :routine="routine"/>
     </v-row>
     <v-row>
@@ -26,7 +25,7 @@ export default {
   name: "MyRoutines",
   computed: {
     ...mapState({
-      routines: 'routines',
+      myRoutines: 'myRoutines',
       Loading: 'Loading',
     })
   },

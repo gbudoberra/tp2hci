@@ -117,7 +117,7 @@ export default {
       nameRules: [
         v => !!v || 'Lastname is required',
       ],
-      genders: [ 'Female', 'male', 'Other' ],
+      genders: [ 'female', 'male', 'other' ],
       gender: 'Other',
       passwordRules: [
           v => !! v || 'password is Required'
@@ -127,7 +127,7 @@ export default {
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
-        let result = await store.dispatch('security/register', {
+        await store.dispatch('security/register', {
             username: this.userRegister,
             password: this.password,
             firstName: this.name,
@@ -136,8 +136,6 @@ export default {
             email: this.email,
             avatarUrl: "https://i.stack.imgur.com/34AD2.jpg"
         })
-          if(result !== 200)
-              console.error("error")
         await this.$router.push(`/verifyEmail`)
       } else
         console.log('Rejected')
