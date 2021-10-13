@@ -1,57 +1,51 @@
 <template>
-<v-container>
+<v-container v-if="routines.routine">
       <v-row>
         <v-col>
-        <routine-title-card :id="routine.id" :color="routine.color" :title="routine.title"></routine-title-card>
+          <go-back/>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <routine-title-card :id="routines.routine.id" :color="routines.routine.metadata.color" :title="routines.routine.name"></routine-title-card>
         </v-col>
       </v-row>
 
-
-        <v-row v-for="block in routine.workoutBlocks" :key="block.id">
+      <v-row v-if="cycles.cycles">
+      <v-row v-for="cycle in cycles.cycles.content" :key="cycle.id">
           <v-col>
-          <workout-block :color="routine.color" :title="block.blockName" :units="block.units" :qty="block.sets" :exercises="block.exercises"></workout-block>
+          <workout-block :title="cycle.name" :detail="cycle.detail" :repetitions="cycle.repetitions" :id="cycle.id"/>
           </v-col>
-        </v-row>
-
+      </v-row>
+      </v-row>
 </v-container>
 </template>
 
 
 <script>
-import store from "../store/routines";
+// import storeR from "../store/modules/routines";
+// import storeC from "../store/modules/cycles";
 import RoutineTitleCard from "../components/routineDetailTitleCard";
+import {mapState} from "vuex";
 import WorkoutBlock from "../components/workoutBlock";
+import GoBack from "../components/goBack";
+import {store} from "../store";
 export default {
   name: "routineDetails",
-  components: {WorkoutBlock, RoutineTitleCard},
-  data() {
-    return{
-      routineId: Number(this.$route.params.id),
-      name: store.data().routines
-    }
-  },
-  props: {
-// routine:{
-//   type: string,
-//       required: true
-// }
-  },
+  components: {WorkoutBlock, RoutineTitleCard , GoBack},
   computed: {
-    routine: {
-      // getter
-      get: function () {
-        return store.data().routines.find(r => r.id===this.routineId)
-      },
-      },
-    blocks: {
-      get: function () {
-        return store.data().routines.find(r => r.id===this.routineId).workoutBlocks
-      }
-    }
+    ...mapState({
+      routines: 'routines',
+      cycles: 'cycles'
+    })
     },
-  methods:{
-    favs: store.methods.favs,
-
+  beforeMount(){
+    // storeR.actions.getRoutine(this.$route.params.id)
+    let ID = this.$route.params.id;
+    store.dispatch('getRoutine', {routineId:ID})
+    store.dispatch('get', {routineId:ID})
+    // storeC.actions.get(this.$route.params.id)
+    console.log('getDetail')
   }
   }
 

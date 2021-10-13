@@ -1,27 +1,38 @@
 
 <template>
-  <div>
-    <v-row fluid
-           v-for="routine in routines"
-           :key="routine.id"
-    >
-      <explore-routine :routine="routine"/>
-    </v-row>
+  <v-container v-if="routines">
+      <v-row fluid
+             v-for="routine in routines.routines.content"
+             :key="routine.id"
+      >
+        <explore-routine :routine="routine"/>
+      </v-row>
 
 
 
-  </div>
+
+
+
+  </v-container>
 </template>
 
 <script>
 import ExploreRoutine from "../components/exploreRoutine";
-import store from "../store/routines";
+import { mapState } from 'vuex'
+import {store} from "../store";
 export default {
   name: "Explore",
   components: {ExploreRoutine},
-  data: () => ({
-    routines: store.data().routines,
-  }),
+  computed: {
+    ...mapState({
+      routines: 'routines',
+      Loading: 'Loading',
+    })
+  },
+  beforeMount() {
+    store.dispatch('getAllRoutines');
+    console.log('getAll')
+  }
 };
 </script>
 

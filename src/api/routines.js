@@ -9,7 +9,7 @@ import { Api } from "./api";
 * modify(body, controller)
 * removeRoutine(routineId, controller)
 * */
-export { RoutinesApi, Routine };
+export { RoutinesApi };
 
 class RoutinesApi {
 
@@ -18,22 +18,35 @@ class RoutinesApi {
     }
 
     static async getAll(categoryId, userId, difficulty, score, search, page, size, orderBy, direction, controller){
-        let init = {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-            categoryId: categoryId,
-            userId: userId,
-            difficulty: difficulty,
-            score: score,
-            search: search,
-            page: page,
-            size: size,
-            orderBy: orderBy,
-            direction: direction
+        const init = {
+            // method: 'GET',
+            // headers: {
+            //     'Content-Type': 'application/json; charset=utf-8'
+            // },
+            // parameters:{
+            //     query:{
+            //
+            //         page: JSON.stringify(page)
+            //     }
+            // }
+            // categoryId: categoryId,
+            // userId: userId,
+            // difficulty: difficulty,
+            // score: score,
+            // search: search,
+            // page: page,
+                // orderBy: orderBy,
+                // direction: direction
+
         };
-        return await Api.getWithInit(this.getUrl('routines'), true, init, controller);
+        console.log(init)
+        return await Api.getWithInit(this.getUrl('routines'), false, init, controller);
+    }
+    static async getAllFavorites(controller){
+        const init = {
+        };
+        console.log(init)
+        return await Api.getWithInit(this.getUrl('favourites'), true, init, controller);
     }
 
 
@@ -72,7 +85,7 @@ class RoutinesApi {
     }
 
     static async get(routineId, controller){
-        return await Api.get(this.getUrl(`routines/${routineId}`, true, controller))
+        return await Api.get(this.getUrl(`routines/${routineId}`), true, controller)
     }
 
     static async add(body, controller){
@@ -88,22 +101,4 @@ class RoutinesApi {
     }
 
 
-}
-
-class Routine {
-    constructor(id, name, detail, date, score, isPublic, difficulty, user, category,metadata) {
-        if(id){
-            this.id = id;
-        }
-        this.name=name;
-        this.detail=detail;
-        this.date=date;
-        this.score=score;
-        this.isPublic=isPublic;
-        this.difficulty=difficulty;
-        this.user=user;
-        this.category=category;
-        this.metadata=metadata;
-
-    }
 }

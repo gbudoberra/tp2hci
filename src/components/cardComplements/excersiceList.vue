@@ -4,8 +4,8 @@
     <v-row align="center"
            justify="center">
       <v-col cols="1"></v-col>
-      <v-col v-for="exercise in exercises" v-bind:key="exercise.id" align-self="center" >
-        <exercise-v-card :e-name="exercise.eName" :quantity="exercise.quantity" :units="exercise.units" :id="exercise.id"/>
+      <v-col v-for="exercise in exercises.content" v-bind:key="exercise.exercise.id" align-self="center" >
+        <exercise-v-card :name="exercise.exercise.name" :reps="exercise.repetitions" :duration="exercise.duration" :id="exercise.exercise.id"/>
       </v-col>
       <v-col cols="1"></v-col>
 

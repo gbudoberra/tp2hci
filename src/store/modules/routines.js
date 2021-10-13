@@ -1,9 +1,15 @@
 import {RoutinesApi} from "@/api/routines";
+import {store} from "../index";
 
 export default {
 
     state:{
-        routines: []
+        routinePage: 0,
+        routines: [],
+        favoritesPage: 0,
+        favorites: [],
+        Loading: false,
+        routine: null
 
     },
     mutations: {
@@ -18,24 +24,28 @@ export default {
         },
         replaceAll(state, routines) {
             state.routines = routines
+        },
+        replaceAllFavorites(state, routines) {
+            state.favorites = routines
+        },
+        loading(state){
+            state.Loading = !state.Loading;
+        },
+        replaceRoutine(state, routine){
+            state.routine = routine
         }
 
     },
     getters: {
         findIndex(state) {
             return (routine) => {
-                return state.items.findIndex(item => item.id === routine.id)
+                return state.routines.findIndex(item => item.id === routine.id)
             }
         },
-
-
     },
     actions:{
-        async create({getters, commit}, routine) {
-            const result = await RoutinesApi.add(routine)
-            if (!getters.findIndex(result))
-                commit('push', result)
-            return result
+        async create(state, routine) {
+            return await RoutinesApi.add(routine)
         },
 
         async modify({getters, commit}, routine) {
@@ -51,20 +61,28 @@ export default {
             if (index >= 0)
                 commit('splice', index)
         },
-        async get({state, getters, commit}, sport) {
-            const index = getters.findIndex(sport)
-            if (index >= 0)
-                return state.items[index]
-
-            const result = await RoutinesApi.get()
-            commit('push', result)
-            return result
+        async getRoutine({commit}, payload, controller) {
+            const result = await RoutinesApi.get(payload.routineId, controller)
+            commit('replaceRoutine', result)
+            console.log('result routine', result)
+            // return result
         },
-        async getAll({commit}, controller) {
+        async getAllRoutines({commit}, controller) {
             const result = await RoutinesApi.getAll(controller)
             commit('replaceAll', result)
-            return result
-        }
+            console.log('result',result)
+        },
+        async getMyRoutines(controller){
+            const result = await RoutinesApi.getMyRoutines(controller)
+            store.commit('replaceAll', result)
+            console.log('result',result)
+        },
+        async getAllFavorites(controller) {
+            const result = await RoutinesApi.getAllFavorites(controller)
+            store.commit('replaceAllFavorites', result)
+            console.log('result',result)
+        },
 
     }
 }
+

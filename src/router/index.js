@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import {store} from "../store/index";
 // import profile from "../store/user";
 // import Favorites from "../views/favorites.vue";
 // import Profile from "../views/profile.vue";
@@ -11,7 +12,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path:"/",
-    name:"Explore",
+    name:"home",
     component: () => import( /* webpackChunkName: "explore" */ '../views/explore')
   },
     {
@@ -23,6 +24,12 @@ const routes = [
     path:"/login",
     name:"Login",
     component: () => import( /* webpackChunkName: "Login" */ '../views/Login')
+  },
+  {
+    path:"/signin",
+    name:"SignIn",
+    component: () => import( /* webpackChunkName: "Login" */ '../views/SignIn')
+
   },
   {
     path: "/settings",
@@ -42,19 +49,19 @@ const routes = [
   {
     path: "/favorites",
     name: "Favorites",
-    //meta: { requiresAuth: true},
+    meta: { requiresAuth: true},
     component: () => import( /* webpackChunkName: "favs" */ '../views/favorites')
   },
   {
     path: "/MyRoutines",
     name: "MyRoutines",
-    //meta: { requiresAuth: true},
+    meta: { requiresAuth: true},
     component: () => import( /* webpackChunkName: "myRoutines" */ '../views/myRoutines')
   },
   {
     path: "/details/:id",
     name: "routineDetails",
-    //meta: requiresAuth
+    meta: { requiresAuth: true},
     props: true,
     // beforeEnter: (to, from, next) => {
     //   const exists = store.routine.find(
@@ -83,16 +90,16 @@ const router = new VueRouter(
     }
 );
 
-// router.beforeEach((to, from, next) => {
-//   if (to.meta){
-//     if(!profile.user){
-//       next({name:"Login" /*, query: { redirect: to.fullPath }*/ })
-//     }
-//     else next()
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth){
+    if(!store.state.security.isLoggedIn){
+      next({name:"Login" /*, query: { redirect: to.fullPath }*/ })
+    }
+    else next()
+  } else {
+    next()
+  }
+})
 // vue add vuex
 // router.beforeEach(
 //     (to, from, next) => {

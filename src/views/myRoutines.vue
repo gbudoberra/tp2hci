@@ -1,30 +1,40 @@
 import myRoutines from './myRoutines';
 <template>
-  <v-container>
-    <v-row fluid v-for="routine in routines" :key="routine.id">
+  <v-container v-if="routines">
+    <v-row fluid v-for="routine in routines.routines.content" :key="routine.id">
       <routine :routine="routine"/>
     </v-row>
-  <create-routine-btn/>
+    <v-row>
+      <v-col align="center" cols="10">
+        <pop-up title="New Routine"></pop-up>
+      </v-col>
+
+    </v-row>
   </v-container>
 </template>
 
 <script>
-import store from "../store/routines";
-import user from "../store/user"
+import {store} from "@/store";
 import Routine from "../components/routine";
-import CreateRoutineBtn from "../components/createRoutineBtn";
+
+import {mapState} from "vuex";
+import PopUp from "../components/popUp";
 
 
 
 export default {
   name: "MyRoutines",
-  data:()=>({
-    // Hay que hacer esto general
-    // Computed?
-    routines: store.data().routines.filter(routine => {return routine.pID===user.user.id}),
-  }),
-
-  components: {CreateRoutineBtn, Routine}
+  computed: {
+    ...mapState({
+      routines: 'routines',
+      Loading: 'Loading',
+    })
+  },
+  beforeMount() {
+    store.dispatch('getMyRoutines')
+    console.log('getAll')
+  },
+  components: {PopUp, Routine}
 }
 </script>
 
