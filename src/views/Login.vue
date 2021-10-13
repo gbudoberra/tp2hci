@@ -9,8 +9,8 @@
                     <v-card color="white" raised outlined rounded="xl">
                         <v-container>
                             <v-row>
-                                <v-col>
-                                    <v-card-title class="text-h5">Login</v-card-title>
+                                <v-col align-self="center">
+                                    <v-card-title class="text-h4">Login</v-card-title>
                                 </v-col>
                                 <v-col cols="5" align="end" align-self="center">
                                     <v-row>
