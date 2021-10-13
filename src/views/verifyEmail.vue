@@ -19,7 +19,7 @@
                                 </v-row>
                                 <v-row>
                                     <v-col align="center"><v-btn @click="resend" color="#ff5252" dark>RESEND CODE</v-btn></v-col>
-                                    <v-col align="center"><v-btn @click="verify"  color="#388E3C" dark>VERIFY</v-btn></v-col>
+                                    <v-col align="center"><v-btn @click="verify(code, email)"  color="#388E3C" dark>VERIFY</v-btn></v-col>
                                 </v-row>
 
                             </v-col>
@@ -45,15 +45,15 @@ export default {
         }
     },
     methods:{
-        async verify(){
-            console.log('holas')
-            // // let result = await store.dispatch('security/verify', {code, email})
-            // if(result != 200)
-            //     console.error("error")
-            // else {
-            //     console.log(result)
-            //     await this.$router.push(`/`)
-            // }
+        async verify(code, email){
+            console.log('email', email)
+            let result = await store.dispatch('security/verify', {code, email})
+            if(result != 200)
+                console.error("error")
+            else {
+                console.log(result)
+                await this.$router.push(`/`)
+            }
         },
         async resend(){
             console.log('holas')

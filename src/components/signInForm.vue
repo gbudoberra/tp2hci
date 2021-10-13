@@ -130,11 +130,11 @@ export default {
         let result = await store.dispatch('security/register', {
             username: this.userRegister,
             password: this.password,
-            name: this.name,
-            lastname: this.lastname,
+            firstName: this.name,
+            lastName: this.lastname,
             gender: this.gender,
             email: this.email,
-            img: "https://i.stack.imgur.com/34AD2.jpg"
+            avatarUrl: "https://i.stack.imgur.com/34AD2.jpg"
         })
           if(result != 200)
               console.error("error")
