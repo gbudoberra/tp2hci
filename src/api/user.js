@@ -17,8 +17,8 @@ class UserApi{
     static async register(username, password, firstName, lastName, gender, email, avatarUrl, controller){
         let data = {username, password, firstName, lastName, gender, email, avatarUrl}
         console.log('data user: ',data)
-        const result = await  Api.post(UserApi.getUrl(), false, data, controller)
-        console.log(result)
+        await  Api.post(UserApi.getUrl(), false, data, controller)
+        // console.log(result)
     }
     static async logout(controller){
         await Api.post(UserApi.getUrl('logout'), true, controller);
@@ -36,13 +36,13 @@ class UserApi{
     static async verifyEmail(code, email, controller){
         let data = {code, email}
         console.log(data)
-        const result = await Api.post(UserApi.getUrl('verify_email'), false, data, controller)
-        console.log(result)
-        // console.log(controller)
+        await Api.post(UserApi.getUrl('verify_email'), false, data, controller)
+        // console.log(result)
+        console.log(controller)
     }
 
     static async resendVerify(email, controller){
-        console.log("email2: ", email)
+        // console.log("email2: ", email)
         const result = await Api.post(UserApi.getUrl('resend_verification'), false, {email}, controller)
         console.log(result)
     }

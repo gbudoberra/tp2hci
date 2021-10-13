@@ -27,9 +27,9 @@ export default {
     actions: {
         async login({commit}, payload){
             if(payload.user === undefined || payload.password === null)
-            console.log('security.login')
+                console.log('security.login esta fallanmdo')
             await UserApi.login(payload.user, payload.password, null);
-            console.log("paso UserApi")
+             console.log("paso UserApi")
             commit('setIsLoggedIn', true)
             commit('setUsername', payload.user)
         },
