@@ -29,8 +29,8 @@
                                         ></v-text-field>
                                     </v-row>
                                     <v-row>
-                                        <v-col><v-btn @click="login(usernameLI, passwordLI)"  color="#1E3163" dark>LOGIN</v-btn></v-col>
-                                      <v-col><v-btn :to="{name: 'SignIn'}">Sign In</v-btn></v-col>
+                                        <v-col align="center"><v-btn @click="login(usernameLI, passwordLI)"  color="#1E3163" dark>LOGIN</v-btn></v-col>
+                                      <v-col align="center"><v-btn :to="{name: 'SignIn'}">Sign In</v-btn></v-col>
                                     </v-row>
 
                                 </v-col>
@@ -52,11 +52,8 @@ export default {
     data: () => {
         return {
             show1: false,
-            show2: false,
             usernameLI: null,
             passwordLI: null,
-            usernameR: null,
-            passwordR: null
         }
     },
     methods: {

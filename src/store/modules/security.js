@@ -7,11 +7,15 @@ export default {
         user: null,
         username: null,
         isLoggedIn: false,
+        email: null
     },
     mutations: {
         setUser(state, user){
             state.user = user;
             console.log('user', state.user)
+        },
+        setEmail(state, email){
+            state.email = email
         },
         setIsLoggedIn(state, loggedIn){
             state.isLoggedIn = loggedIn;
@@ -33,13 +37,28 @@ export default {
              await UserApi.logout();
              commit('setIsLoggedIn', false);
         },
+
+        async register({commit}, payload){
+            await UserApi.register(payload.username, payload.password, payload.name,
+            payload.lastname, payload.gender, payload.email, payload.img);
+            commit('setEmail', payload.email)
+            commit('setUsername', payload.user)
+        },
+        async verify({commit}, payload){
+            // let mailV = payload.email || this.state.email
+            console.log('this.state.email: ', payload.email)
+          await UserApi.verifyEmail(payload.code, payload.email)
+            commit('setIsLoggedIn', true)
+        },
         async getCurrentUser(){
             // if(state.user)
             //     return state.user;
 
             const result = await UserApi.get();
             await store.commit('security/setUser', result)
-
+        },
+        async resendVerify(){
+            await UserApi.resendVerify(this.state.email);
         }
     }
 }

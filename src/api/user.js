@@ -14,6 +14,12 @@ class UserApi{
         Api.token = result.token
         console.log(Api.token)
     }
+    static async register(username, password, name, lastname, gender, email, img, controller){
+        let data = {username, password, name, lastname, gender, email, img}
+        console.log('data user: ',data)
+        const result = await  Api.post(UserApi.getUrl(), false, data, controller)
+        console.log(result)
+    }
     static async logout(controller){
         await Api.post(UserApi.getUrl('logout'), true, controller);
         Api.token = undefined;
@@ -26,6 +32,17 @@ class UserApi{
     }
     static async remove(controller){
         return await Api.put(UserApi.getUrl('current'), true, controller);
+    }
+    static async verifyEmail(controller, code, email){
+        let data = {code, email    }
+        console.log(data)
+        const result = await Api.post(UserApi.getUrl('verify_email'), false, data, controller)
+        console.log(result)
+    }
+
+    static async resendVerify(controller, email){
+        const result = await Api.post(UserApi.getUrl('resend_verification'), false, {email}, controller)
+        console.log(result)
     }
 }
 

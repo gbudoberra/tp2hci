@@ -10,7 +10,7 @@
         <v-col>
           <v-text-field
               class="textField"
-              v-model="username"
+              v-model="userRegister"
               :counter="25"
               :rules="usernameRules"
               label="Username *"
@@ -18,6 +18,17 @@
           ></v-text-field>
         </v-col>
       </v-row>
+        <v-row>
+            <v-col>
+                <v-text-field
+                    class="textField"
+                    v-model="password"
+                    label="Password *"
+                    :rules="passwordRules"
+                    required
+                ></v-text-field>
+            </v-col>
+        </v-row>
       <v-row>
         <v-col>
           <v-text-field
@@ -33,7 +44,7 @@
         <v-col>
           <v-text-field
               class="textField"
-              v-model="lastName"
+              v-model="lastname"
               :rules="lastnameRules"
               label="Lastname *"
               required
@@ -90,39 +101,50 @@ import {store} from "../store";
 
 export default {
   data: () => ({
-    valid: true,
-    usernameRules: [
-      v => !!v || 'Username is required',
-      v => (v && v.length <= 25) || 'Name must be less than 25 characters',
-    ],
-    lastnameRules: [
-      v => !!v || 'Lastname is required',
-    ],
-    nameRules: [
-      v => !!v || 'Lastname is required',
-    ],
-    genders: [ 'Female', 'Male', 'Other' ],
-    gender: 'Other'
-  }),
-  props:['username', 'name', 'lastName', 'email']
+      userRegister: 'hola',
+      password: null,
+      name: null,
+      lastname: null,
+      email: null,
+      valid: true,
+      usernameRules: [
+        v => !!v || 'Username is required',
+        v => (v && v.length <= 25) || 'Name must be less than 25 characters',
+      ],
+      lastnameRules: [
+        v => !!v || 'Lastname is required',
+      ],
+      nameRules: [
+        v => !!v || 'Lastname is required',
+      ],
+      genders: [ 'Female', 'male', 'Other' ],
+      gender: 'Other',
+      passwordRules: [
+          v => !! v || 'password is Required'
+      ]
+    })
   ,
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
-        let result = await store.dispatch('create', {
-          name: this.name,
-          detail: this.detail,
-          difficulty: this.difficulty,
-          isPublic: this.isPublic,
-          metadata: {color: this.color}
+        let result = await store.dispatch('security/register', {
+            username: this.userRegister,
+            password: this.password,
+            name: this.name,
+            lastname: this.lastname,
+            gender: this.gender,
+            email: this.email,
+            img: "https://i.stack.imgur.com/34AD2.jpg"
         })
-        await this.$router.push(`/details/${result.id}`)
+          if(result != 200)
+              console.error("error")
+        await this.$router.push(`/verifyEmail`)
       } else
         console.log('Rejected')
     },
-    reset () {
-      this.$refs.form.reset()
-    },
+    // reset () {
+    //   this.$refs.form.reset()
+    // },
   },
 }
 </script>
