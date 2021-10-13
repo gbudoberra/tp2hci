@@ -15,7 +15,7 @@
                                 <v-col cols="5" align="end" align-self="center">
                                     <v-row>
                                         <v-text-field v-model="usernameLI" hide-details="true" loader-height="5"
-                                                      @keydown="login(usernameLI, passwordLI)"
+
                                                       label="Username"></v-text-field>
                                     </v-row>
                                     <v-row>
@@ -25,11 +25,11 @@
                                             :type="show1 ? 'text' : 'password'"
                                             label="Password"
                                             @click:append="show1 = !show1"
-                                            @keydown="login(usernameLI, passwordLI)"
+                                            @keyup.enter="login(usernameLI, passwordLI)"
                                         ></v-text-field>
                                     </v-row>
                                     <v-row>
-                                        <v-col><v-btn @click="login(usernameLI, passwordLI)" color="#1E3163" dark>LOGIN</v-btn></v-col>
+                                        <v-col><v-btn @click="login(usernameLI, passwordLI)"  color="#1E3163" dark>LOGIN</v-btn></v-col>
                                       <v-col><v-btn :to="{name: 'SignIn'}">Sign In</v-btn></v-col>
                                     </v-row>
 
