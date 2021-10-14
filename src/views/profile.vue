@@ -1,4 +1,3 @@
-<!--Esto es un intento de perfil bastante feo. Si quieren borrenlo.-->
 <template>
 
   <v-container align="center">

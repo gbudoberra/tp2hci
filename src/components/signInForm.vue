@@ -92,7 +92,7 @@
           <v-btn color="#1E3163" dark :disabled="!valid" @click="validate">REGISTER</v-btn>
         </v-col>
         <v-col align="center">
-          <v-btn :to="{name: 'Login'}">GO TO LOGIN</v-btn>
+          <v-btn :to="{name: 'Login'}">BACK TO LOGIN</v-btn>
         </v-col>
       </v-row>
 
@@ -137,10 +137,10 @@ export default {
       nameRules: [
         v => !!v || 'Name is required',
       ],
-      genders: [ 'female', 'male', 'other' ],
+      genders: [ 'Female', 'Male', 'Other' ],
       gender: 'other',
       passwordRules: [
-          v => !! v || 'password is Required'
+          v => !! v || 'Password is required'
       ]
     })
   ,
