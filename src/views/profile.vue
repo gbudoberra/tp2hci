@@ -22,7 +22,10 @@
                 <template v-slot:activator="{ on, attrs }">
                   <v-btn
                       v-bind="attrs"
-                      v-on="on">
+                      v-on="on"
+                      @click="getUser"
+
+                  >
                     Edit Profile
                   </v-btn>
                 </template>
@@ -30,12 +33,15 @@
                   <v-container>
                   <v-card-title>Edit Profile</v-card-title>
                   <v-card-subtitle>(Don't want to edit a field? Leave blank)</v-card-subtitle>
+
+
+
                   <v-form ref="form"
                           v-model="valid"
                           lazy-validation>
                     <v-row>
                       <v-col>
-                        <v-text-field v-model="name" label="Name"/>
+                        <v-text-field v-model="name" label="Name"></v-text-field>
                       </v-col>
                     </v-row>
                     <v-row>
@@ -50,7 +56,7 @@
                     </v-row>
                     <v-row>
                       <v-col>
-                        <v-text-field v-model="phone" type="number" label="Phone"/>
+                        <v-text-field v-model="phone" type="number" label="Phone"></v-text-field>
                       </v-col>
                     </v-row>
                     <v-row>
@@ -101,7 +107,7 @@ export default {
   components: {ProfileInfoList, FullExerciseList, ProfileAvatar},
   computed: {
     ...mapState({
-      mainUser: 'security'
+      mainUser: 'security',
     })
   },
   data() {
@@ -125,6 +131,13 @@ export default {
     }
   },
   methods:{
+    async getUser(){
+      await store.dispatch('security/getCurrentUser')
+      this.name=this.mainUser.user.firstName
+      this.lastname=this.mainUser.user.lastName
+      this.phone=this.mainUser.user.phone
+      this.avatarUrl=this.mainUser.user.avatarUrl
+    },
     async validate(name, lastname, phone, avatarUrl) {
       try {
         if (this.$refs.form.validate()) {
