@@ -8,10 +8,14 @@ export default {
         routines: [],
         routinesPage: 0,
         isRoutinesLast: false,
+        favorites: [],
         routine: null
 
     },
     mutations: {
+        setFavs(state, result){
+            state.favorites=result
+        },
         push(state, routine) {
             state.routines.push(routine)
         },
@@ -101,6 +105,11 @@ export default {
             commit('replaceAll', result)
             commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)
+        },
+        async getFavs({commit}, payload){
+            const result = await FavoritesApi.getFavorites(payload.pNum, payload.items)
+            commit('setFavs', result)
+            return result
         },
         async favRoutine({state}, payload){
             await FavoritesApi.fav(payload.id)
