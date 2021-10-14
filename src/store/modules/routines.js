@@ -1,14 +1,11 @@
 import {RoutinesApi} from "@/api/routines";
-import {store} from "../index";
 
 export default {
 
     state:{
-        routinePage: 0,
         routines: [],
-        favoritesPage: 0,
-        favorites: [],
-        Loading: false,
+        routinesPage: 0,
+        isRoutinesLast: false,
         routine: null
 
     },
@@ -25,14 +22,30 @@ export default {
         replaceAll(state, routines) {
             state.routines = routines
         },
-        replaceAllFavorites(state, routines) {
-            state.favorites = routines
-        },
         loading(state){
             state.Loading = !state.Loading;
         },
         replaceRoutine(state, routine){
             state.routine = routine
+        },
+        nextPageRoutines(state){
+            console.log(state.routinesPage, 'page')
+            if(!state.isRoutinesLast){
+                state.routinesPage++
+            }
+            console.log(state.routinesPage, 'pageNow')
+        },
+        prevPageRoutines(state){
+            if(state.routinesPage>0){
+                state.routinesPage--
+            }
+        },
+        setRoutinesLastPage(state, bool){
+            state.isRoutinesLast = bool
+        },
+        resetPage(state){
+            state.isRoutinesLast = false
+            state.routinesPage = 0
         }
 
     },
@@ -67,19 +80,24 @@ export default {
             console.log('result routine', result)
             // return result
         },
-        async getAllRoutines({commit}, controller) {
-            const result = await RoutinesApi.getAll(controller)
+        async getAllRoutines({commit, state}, controller) {
+            const result = await RoutinesApi.getAll(state.routinesPage, controller)
             commit('replaceAll', result)
+            commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)
         },
-        async getMyRoutines({commit},controller){
-            const result = await RoutinesApi.getMyRoutines(controller)
+        async getMyRoutines({commit, state},controller){
+            const result = await RoutinesApi.getMyRoutines(state.routinesPage, controller)
             commit('replaceAll', result)
+            commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)
         },
-        async getAllFavorites(controller) {
+
+
+        async getAllFavorites({commit}, controller) {
             const result = await RoutinesApi.getAllFavorites(controller)
-            store.commit('replaceAllFavorites', result)
+            commit('replaceAll', result)
+            commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)
         },
 

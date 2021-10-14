@@ -135,6 +135,7 @@ export default {
 
         })
         this.dialog=false
+        this.$emit('update')
       } else
         console.log('Rejected')
     },

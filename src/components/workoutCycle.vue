@@ -27,7 +27,7 @@
                     <v-icon>delete</v-icon>
                   </template>
                 </confirmation-pop-up>
-                <pop-up-edit-cycle title="Edit Cycle" :routine-id="routineId" :cycle-id="id"
+                <pop-up-edit-cycle title="Edit Cycle" :routine-id="routineId" :cycle-id="id" v-on:update="updateExercises"
                                    :old-title="title" :old-detail="detail" :old-repetitions="repetitions" :old-type="type" :old-order="order"
                 >
                   <template v-slot:button>
@@ -90,6 +90,8 @@ export default {
     deleteCycle() {
       store.dispatch('deleteCycle',{routineId: this.$props.routineId,
       cycleId: this.$props.id})
+    },async updateExercises(){
+      this.$data.cycleExercises=await store.dispatch('getFromCycle', {cycleId: this.$props.id, page: 0})
     }
   },
   async created() {
@@ -98,6 +100,7 @@ export default {
     await store.dispatch('getAllExercises')
     console.log('hola')
   },
+
 
 }
 </script>

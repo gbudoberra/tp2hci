@@ -132,14 +132,11 @@ export default {
             lastName: lastname || security.user.lastname,
             phone: phone || security.user.phone,
             avatarUrl: avatarUrl|| security.user.avatarUrl,
-            birthdate: security.user.birthdate,
-            gender: security.user.gender,
-            metadata: null
           })
           this.$data.dialog = false
       }
       }catch (error){
-          console.log('Profile error')
+          console.log('Profile error', error)
           this.$data.profileError = error;
           this.$data.errorFunction = 'Update profile'
           // this.$data.dialog = false

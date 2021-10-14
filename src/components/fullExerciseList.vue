@@ -8,23 +8,7 @@
           <h1 class="text-h4">MyExercises</h1>
         </v-row>
         <v-row>
-
-          <div v-show="allExercises.exercisePage!==0">
-            <v-btn class="ma-2" color="blue lighten-3" dark @click="prevPage">
-              <v-icon dark left>
-                mdi-arrow-left
-              </v-icon>
-              Previous
-            </v-btn>
-          </div>
-          <div>
-            <v-btn class="ma-2" color="blue lighten-3" dark @click="nextPage" v-show="!allExercises.exerciseLastPage">
-              Next
-              <v-icon dark left>
-                mdi-arrow-right
-              </v-icon>
-            </v-btn>
-          </div>
+          <page-arrows v-on:nextPage="nextPage" v-on:prevPage="prevPage" :prev-condition="allExercises.exercisePage!==0" :next-condition="!allExercises.isRoutinesLast"/>
           <div>
             <pop-up-exercise title="New Exercise" :exercise-already-exists="false">
               <template v-slot:button>
@@ -98,10 +82,11 @@ import {mapState} from "vuex";
 import {store} from "../store";
 import PopUpExercise from "./popUpExercise";
 import ConfirmationPopUp from "./confirmationPopUp";
+import PageArrows from "./pageArrows";
 
 export default {
   name: "fullExerciseList",
-  components: {ConfirmationPopUp, PopUpExercise},
+  components: {PageArrows, ConfirmationPopUp, PopUpExercise},
   computed:{
     ...mapState({
       allExercises: 'exercises',
