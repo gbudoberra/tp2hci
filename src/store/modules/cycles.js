@@ -26,6 +26,21 @@ export default {
             let result= await cyclesApi.modify(payload.routineId, payload.cycleId, payload.body)
             dispatch('get', {routineId: payload.routineId})
             return result
+        },
+
+        async deleteCycle({dispatch}, payload){
+            await cyclesApi.delete(payload.routineId,payload.cycleId)
+            dispatch('get', {routineId: payload.routineId})
+        },
+        async deleteCycleExercise({state}, payload){
+            await cyclesApi.deleteCycleExercise(payload.cycleId,payload.exerciseId)
+            console.log(state.cycles)
+
+        },
+        async addCycleExercise({state},payload){
+            await cyclesApi.addCycleExercise(payload.cycleId,payload.exerciseId,payload.body)
+            console.log(state.cycles)
         }
+
     }
 }
