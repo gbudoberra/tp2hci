@@ -32,34 +32,12 @@
       <v-row>
         <v-col>
           <v-select
-              v-model="difficulty"
+              v-model="type"
               :items="items"
-              :rules="[v => !!v || 'Difficulty is required']"
-              label="Difficulty"
-              required
-          ></v-select>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col>
-          <v-select
-              v-model="color"
-              :items="colors"
-              :rules="[v => !!v || 'Color is required']"
-              label="Color"
+              label="Type"
               required
           ></v-select>
 
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col>
-          <v-checkbox
-              v-model="isPublic"
-              label="Is public?"
-          ></v-checkbox>
         </v-col>
       </v-row>
 
@@ -102,26 +80,21 @@ export default {
     detailRules: [
       v => !!v || 'Detail is required',
     ],
-    items: [ 'rookie', 'beginner', 'intermediate', 'advanced', 'expert' ],
-    colors: [ 'green', 'blue', 'red', 'orange', 'yellow' ],
+    items: [ 'exercise', 'rest' ],
     name: null,
     detail: null,
-    difficulty: null,
-    isPublic: false,
-    color: null
+    type: 'exercise'
   }),
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
         console.log('WTF')
-        let result = await store.dispatch('create', {
+        await store.dispatch('newExercise', {
           name: this.name,
           detail: this.detail,
-          difficulty: this.difficulty,
-          isPublic: this.isPublic,
-          metadata: {color: this.color}
+          type: this.type
         })
-        await this.$router.push(`/details/${result.id}`)
+
       } else
         console.log('Rejected')
     },

@@ -59,6 +59,10 @@ export default {
         },
         async resendVerify(){
             await UserApi.resendVerify(this.state.email);
+        },
+        async updateProfile({dispatch},payload){
+            await UserApi.modify(payload)
+            dispatch('getCurrentUser')
         }
     }
 }

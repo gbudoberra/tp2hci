@@ -11,13 +11,15 @@
               dark
               v-bind="attrs"
               v-on="on" color="blue darken-4" fixed bottom rounded>
-            Create routine
+            {{title}}
           </v-btn>
       </template>
 
       <v-card color="white" height="600" rounded>
         <v-card-title>{{title}}</v-card-title>
-        <create-routine-form :color="null" name='' detail='' :is-public="false" :difficulty="null" :id="null"/>
+        <slot name="formSlot">
+          Form
+        </slot>
       </v-card>
 
     </v-dialog>
@@ -25,9 +27,8 @@
 </template>
 
 <script>
-import CreateRoutineForm from "./createRoutineForm";
 export default {
-  components: { CreateRoutineForm},
+  components: {},
   data () {
     return {
       dialog: false,

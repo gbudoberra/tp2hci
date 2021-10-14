@@ -2,7 +2,30 @@
 <v-container v-if="allExercises">
   <v-row>
     <v-col align="center">
-      <h1 class="text-h4">MyExercises</h1>
+      <v-col>
+
+        <v-row>
+          <h1 class="text-h4">MyExercises</h1>
+        </v-row>
+        <v-row>
+
+          <div v-show="this.exercisePage!==0">
+            <v-btn class="ma-2" color="blue lighten-3" dark @click="prevPage">
+              <v-icon dark left>
+                mdi-arrow-left
+              </v-icon>
+              Previous
+            </v-btn>
+          </div>
+          <v-btn class="ma-2" color="blue lighten-3" dark @click="nextPage" v-show="!this.lastPage">
+            Next
+            <v-icon dark left>
+              mdi-arrow-right
+            </v-icon>
+          </v-btn>
+
+        </v-row>
+      </v-col>
     </v-col>
   </v-row>
   <v-row >
@@ -21,8 +44,8 @@
               <v-col cols="8">
                 <v-container>
 
-                  <v-card-title class="ceroPadding">{{exercise.name}}</v-card-title>
-                  <v-card-subtitle class="ceroPadding">{{exercise.detail}}</v-card-subtitle>
+                  <v-card-title class="Padding">{{exercise.name}}</v-card-title>
+                  <v-card-subtitle class="Padding">{{exercise.detail}}</v-card-subtitle>
 
                 </v-container>
               </v-col>
@@ -45,22 +68,44 @@
           </v-container>
 
       </v-flex>
+
     </v-layout>
+    <pop-up title="Add Exercise">
+      <template v-slot:formSlot>
+        <add-exercise-form/>
+      </template>
+    </pop-up>
   </v-row>
+
 </v-container>
 </template>
 
 <script>
 import {mapState} from "vuex";
 import {store} from "../store";
+import PopUp from "../components/popUp";
+import AddExerciseForm from "../components/addExerciseForm";
 
 export default {
   name: "fullExerciseList",
-  components: {},
+  components: {AddExerciseForm, PopUp},
   computed:{
     ...mapState({
-      allExercises: 'exercises'
+      allExercises: 'exercises',
+      exercisePage: 'exercisePage',
+      lastPage: 'exerciseLastPage'
     })
+  },
+  methods:{
+    newExercise(){
+        store.dispatch('newExercise', )
+    },
+    nextPage(){
+      store.dispatch('exerciseNextPage')
+    },
+    prevPage(){
+      store.dispatch("exercisePrevPage")
+    }
   },
   beforeMount() {
       store.dispatch('getAllExercises');
@@ -74,7 +119,7 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.ceroPadding{
+.Padding{
   padding: 10px 0 0;
 }
 </style>

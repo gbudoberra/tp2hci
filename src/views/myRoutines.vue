@@ -6,7 +6,11 @@ import myRoutines from './myRoutines';
     </v-row>
     <v-row>
       <v-col align="center" cols="10">
-        <pop-up title="New Routine"></pop-up>
+        <pop-up title="New Routine">
+          <template v-slot:formSlot>
+            <create-routine-form/>
+          </template>
+        </pop-up>
       </v-col>
 
     </v-row>
@@ -19,6 +23,7 @@ import Routine from "../components/routine";
 
 import {mapState} from "vuex";
 import PopUp from "../components/popUp";
+import CreateRoutineForm from "../components/createRoutineForm";
 
 
 
@@ -34,7 +39,7 @@ export default {
     store.dispatch('getMyRoutines')
     console.log('getAll')
   },
-  components: {PopUp, Routine}
+  components: {PopUp, Routine, CreateRoutineForm}
 }
 </script>
 
