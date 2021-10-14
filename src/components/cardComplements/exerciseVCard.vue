@@ -17,8 +17,13 @@
       <v-row>
 
         <v-col align="end">
-          <v-btn outlined rounded small><v-icon>delete</v-icon></v-btn>
-          <v-btn outlined rounded small><v-icon>edit</v-icon></v-btn>
+
+          <confirmation-pop-up v-on:confirmation="deleteCycleExercise" msg="Remove exercise from this cycle?" >
+            <template v-slot:button>
+              <v-icon>delete</v-icon>
+            </template>
+          </confirmation-pop-up>
+          <!--v-btn outlined rounded small><v-icon>edit</v-icon></v-btn-->
         </v-col>
       </v-row>
 
@@ -31,9 +36,21 @@
 </template>
 
 <script>
+import {store} from "@/store";
+import ConfirmationPopUp from "@/components/confirmationPopUp";
+
 export default {
   name: "exerciseVCard",
-  props: ['name', 'reps', 'duration', 'order']
+  props: ['name', 'reps', 'duration', 'order', 'id', 'cycleId', 'routineId'],
+  methods:{
+    async deleteCycleExercise(){
+      console.log(this.$props.id)
+      await store.dispatch('deleteCycleExercise',{cycleId: this.$props.cycleId, exerciseId: this.$props.id})
+       this.$emit('delete')
+
+    }
+  },
+  components:{ConfirmationPopUp},
 }
 </script>
 
