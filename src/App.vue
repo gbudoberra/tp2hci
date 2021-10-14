@@ -9,55 +9,21 @@
     >
       <v-container>
 
-        <v-row><v-col><v-divider></v-divider></v-col></v-row>
-
-        <v-row justify="space-around">
-          <v-col align-self="center" align="center"><v-icon>explore</v-icon></v-col>
-          <v-col align-self="center" align="start"><router-link to="/explore"  id="sideBarIcon">Explore</router-link></v-col>
-          <v-col></v-col>
-        </v-row>
-
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
 
 
-
-
+        <v-template v-for="item in menu" :key="item.title">
 
         <v-row justify="space-around">
-          <v-col align-self="center" align="center"><v-icon>star</v-icon></v-col>
-          <v-col align-self="center" align="start"><router-link to="/favorites" id="sideBarIcon">Favorites</router-link></v-col>
+          <v-col align-self="center" align="center"><v-icon>{{item.icon}}</v-icon></v-col>
+          <v-col align-self="center" align="start"><router-link :to=item.rout  id="sideBarIcon">{{ item.title }}</router-link></v-col>
           <v-col></v-col>
         </v-row>
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
+        </v-template>
 
-
-        <v-row justify="space-around">
-          <v-col align-self="center" align="center"><v-icon>person</v-icon></v-col>
-          <v-col align-self="center" align="start"><router-link to="/profile" id="sideBarIcon">Profile</router-link></v-col>
-          <v-col></v-col>
-        </v-row>
-
-        <v-row><v-col><v-divider></v-divider></v-col></v-row>
-
-
-        <v-row justify="space-around">
-          <v-col align-self="center" align="center"><v-icon>fitness_center</v-icon></v-col>
-          <v-col align-self="center" align="start"><router-link to="/MyRoutines" id="sideBarIcon">MyRoutines</router-link></v-col>
-          <v-col></v-col>
-        </v-row>
-
-        <v-row><v-col><v-divider></v-divider></v-col></v-row>
-
-
-        <v-row justify="space-around" align-content-lg="end">
-                <v-col align-self="center" align="center"><v-icon>settings</v-icon></v-col>
-          <v-col align-self="center" align="start"><router-link to="/settings" id="sideBarIcon">Settings</router-link></v-col>
-                <v-col></v-col>
-        </v-row>
-
-        <v-row><v-col><v-divider></v-divider></v-col></v-row>
       </v-container>
 
     </v-navigation-drawer>
@@ -102,7 +68,33 @@ export default {
 
   components: {LogoutBtn},
   data: () => ({
-    drawer: null
+    drawer: null,
+    menu:[
+      {
+        rout: "/explore",
+        title: "Explore",
+        icon: "explore"
+      },
+      {
+        rout: "/favorites",
+        title: "Favorites",
+        icon: "star"
+      },
+      {
+        rout: "/profile",
+        title: "Profile",
+        icon: "person"
+      },
+      {
+        rout: "/MyRoutines",
+        title: "MyRoutines",
+        icon: "fitness_center"
+      },
+      {
+        rout: "/settings",
+        title: "Settings",
+        icon: "settings"
+      }]
   }),
   /*methods:{
     logout(){

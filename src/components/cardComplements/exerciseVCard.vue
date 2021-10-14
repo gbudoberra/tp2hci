@@ -1,7 +1,7 @@
 <template>
   <v-card rounded elevation="5" color="grey lighten-2">
     <v-card-title class="font-weight-bold">
-      {{id + '. ' + name}}
+      {{order + '. ' + name}}
     </v-card-title>
     <v-card-subtitle>
       {{reps}} Repetitions
@@ -15,7 +15,7 @@
 <script>
 export default {
   name: "exerciseVCard",
-  props: ['name', 'reps', 'duration', 'id']
+  props: ['name', 'reps', 'duration', 'order']
 }
 </script>
 
