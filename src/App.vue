@@ -91,9 +91,9 @@ export default {
         icon: "fitness_center"
       },
       {
-        rout: "/settings",
-        title: "Settings",
-        icon: "settings"
+        rout: "/help",
+        title: "Help",
+        icon: "help"
       }]
   }),
   /*methods:{

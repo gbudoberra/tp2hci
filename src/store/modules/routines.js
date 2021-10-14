@@ -1,4 +1,6 @@
 import {RoutinesApi} from "@/api/routines";
+import {FavoritesApi} from "../../api/favorites";
+import {store} from "../index";
 
 export default {
 
@@ -99,6 +101,15 @@ export default {
             commit('replaceAll', result)
             commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)
+        },
+        async favRoutine({state}, payload){
+            await FavoritesApi.fav(payload.id)
+            console.log(state)
+        },
+        async unFavRoutine({state}, payload){
+            const result = await FavoritesApi.unFav(payload.id)
+            console.log(result)
+            console.log(state)
         },
 
     }

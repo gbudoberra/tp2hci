@@ -32,10 +32,10 @@ const routes = [
 
   },
   {
-    path: "/settings",
-    name:"Settings",
-    meta: { requiresAuth: true},
-    component: () => import( /* webpackChunkName: "settings" */ '../views/settings'),
+    path: "/help",
+    name:"Help",
+    meta: { requiresAuth: false},
+    component: () => import( /* webpackChunkName: "settings" */ '../views/help'),
 
   },
 

@@ -7,6 +7,9 @@ class FavoritesApi{
         return await Api.get(`${Api.baseURL}/favourites`, true, controller)
     }
     static async fav(routineId, controller){
-        await Api.put(`${Api.baseURL}/favourites`, true, controller)
+        await Api.post(`${Api.baseURL}/favourites/${routineId}`, true, controller)
+    }
+    static async unFav(routineId, controller){
+        await Api.delete(`${Api.baseURL}/favourites/${routineId}`, true, controller)
     }
 }
