@@ -88,7 +88,9 @@
         </v-col>
       </v-row>
       <v-row>
-        <full-exercise-list/>
+        <v-col>
+          <full-exercise-list/>
+        </v-col>
       </v-row>
     </v-container>
 
