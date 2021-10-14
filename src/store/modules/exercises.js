@@ -6,7 +6,9 @@ export default {
     state:{
         exercises: null,
         exercisePage: 0,
-        exerciseLastPage: false
+        exerciseLastPage: false,
+        cyclePage: 0,
+        cycleLastPage: false
     },
     mutations: {
         replaceAllExercises(state, result) {
@@ -29,13 +31,18 @@ export default {
         },
         setExerciseLastPage(state, bool){
             state.exerciseLastPage = bool
-        }
+        },
+        setCycleLastPage(state, bool){
+            state.cycleLastPage = bool
+        },
+
     },
     getters: {
     },
     actions:{
-        async getFromCycle(payload) {
-            const result = await ExerciseApi.getFromCycle(payload.id, payload.page)
+        async getFromCycle({commit}, payload) {
+            const result = await ExerciseApi.getFromCycle(payload.cycleId, payload.page)
+            commit("setCycleLastPage", result.isLastPage)
             console.log('result exercises', result)
             return result
         },

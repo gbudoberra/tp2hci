@@ -61,9 +61,8 @@ export default {
   }
   ,
   async created() {
-    let result = await store.dispatch('getFromCycle', {id:this.$props.id})
-    console.log('exercises from cycle', result)
-    this.$data.exercises = result
+    let id = this.$props.id;
+    this.$data.exercises = await store.dispatch('getFromCycle', {cycleId: id, page: 0})
   }
 }
 </script>
