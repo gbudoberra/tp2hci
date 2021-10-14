@@ -50,7 +50,7 @@
               class="textField"
               v-model="lastname"
               :rules="lastnameRules"
-              label="Lastname *"
+              label="Last Name *"
               required
           ></v-text-field>
         </v-col>
@@ -132,7 +132,7 @@ export default {
         v => (v && v.length <= 25) || 'Name must be less than 25 characters',
       ],
       lastnameRules: [
-        v => !!v || 'Lastname is required',
+        v => !!v || 'Last Name is required',
       ],
       nameRules: [
         v => !!v || 'Name is required',
