@@ -1,4 +1,5 @@
 <template>
+    <div>
   <v-form
       ref="form"
       v-model="valid"
@@ -97,13 +98,26 @@
 
     </v-container>
   </v-form>
+    <v-row>
+        <v-col align="center" cols="12">
+            <v-alert type="error"
+                     v-model="alert"
+                     dismissible
+            >
+                {{this.errorMsg}}
+            </v-alert>
+        </v-col>
+    </v-row>
+    </div>
 </template>
 
 <script>
 import {store} from "../store";
+// import ErrorPopUp from "./errorPopUp";
 
 export default {
-  data: () => ({
+    // components: {ErrorPopUp},
+    data: () => ({
       userRegister: null,
       password: null,
       name: null,
@@ -111,6 +125,8 @@ export default {
       email: null,
       valid: true,
       show: false,
+        alert:false,
+        errorMsg: null,
       usernameRules: [
         v => !!v || 'Username is required',
         v => (v && v.length <= 25) || 'Name must be less than 25 characters',
@@ -119,10 +135,10 @@ export default {
         v => !!v || 'Lastname is required',
       ],
       nameRules: [
-        v => !!v || 'Lastname is required',
+        v => !!v || 'Name is required',
       ],
       genders: [ 'female', 'male', 'other' ],
-      gender: 'Other',
+      gender: 'other',
       passwordRules: [
           v => !! v || 'password is Required'
       ]
@@ -144,11 +160,21 @@ export default {
               await this.$router.push(`/verifyEmail`)
           }catch (error){
               if(error.code === 2){
-                  if (error.details[0]===("UNIQUE constraint failed: User.email"))
-                      console.log('error del mail')
-                  else if (error.details[0]===("UNIQUE constraint failed: User.username"))
-                      console.log('error del user')
-
+                  if (error.details[0]===("UNIQUE constraint failed: User.email")) {
+                      this.$data.errorMsg = 'Mail already registered. Try Login?'
+                      this.$data.alert=true
+                  }
+                  else if (error.details[0]===("UNIQUE constraint failed: User.username")) {
+                      this.$data.errorMsg = 'Username already registered. Try Login?'
+                      this.$data.alert=true
+                  }
+              }
+              else if (error.code === 1){
+                  console.log('ERROR !')
+                  if (error.details[0].includes("Object didn't pass validation for format email:")) {
+                      this.$data.errorMsg = 'Please provide a valid email'
+                      this.$data.alert=true
+                  }
               }
               console.log(error)
           }

@@ -83,10 +83,12 @@ const routes = [
   },
   {
     path: "/verification",
-    alias: "/verification*",
+    alias: "/verification?*",
+    // 'http://localhost:8081/verification?user=<%EMAIL%>&code=<%CODE%>'
     name: "verified",
     meta: {requiresAuth: false},
-    component: () => import( /* webpackChunkName: "verified" */ '../views/verifyEmail'),
+    // props: (route) => ({ user: route.query.user ,code: route.query.code}),
+    component: () => import( /* webpackChunkName: "verified" */ '../views/verifyAuto'),
   },
   {
     path: '/notFound',

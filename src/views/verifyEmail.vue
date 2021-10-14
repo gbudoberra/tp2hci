@@ -27,6 +27,17 @@
                         </v-row>
                     </v-container>
                 </v-card>
+                <v-row>&nbsp;</v-row>
+                <v-row>
+                    <v-col align="center" cols="12">
+                        <v-alert type="error"
+                                 v-model="alert"
+                                 dismissible
+                        >
+                            {{this.errorMsg}}
+                        </v-alert>
+                    </v-col>
+                </v-row>
             </v-col>
 
             <v-col cols="1"></v-col>
@@ -41,16 +52,39 @@ export default {
     data: () => {
         return {
             code: null,
-            email: null
+            email: null,
+            alert:false,
+            errorMsg: null,
         }
     },
     methods:{
         async verify(code, email){
-            console.log('email', email)
-            let result = await store.dispatch('security/verify', {code, email})
-            console.log(result)
-            await this.$router.push(`/login`)
+            try {
+                console.log('email', email)
+                await store.dispatch('security/verify', {code, email})
+                await this.$router.push(`/login`)
+            }catch (error){
+                console.log(error)
+                if(error.code === 1){
+                    if (error.details[0].includes("Object didn't pass validation for format email: ")) {
+                        this.$data.errorMsg = 'Please provide a valid email'
+                        this.$data.alert=true
+                    }
+                }
+                else if(error.code === 3){
+                    if (error.details[0].includes("not found")) {
+                        this.$data.errorMsg = 'No account registered with that email'
+                        this.$data.alert=true
+                    }
 
+                }
+                else if(error.code === 8) {
+                    if (error.details[0].includes("Invalid verification code")) {
+                        this.$data.errorMsg = 'Invalid verification code'
+                        this.$data.alert = true
+                    }
+                }
+            }
         },
         async resend(email){
             let result = await store.dispatch('security/resendVerify', {email})

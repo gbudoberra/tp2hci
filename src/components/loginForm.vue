@@ -1,4 +1,5 @@
 <template>
+    <div>
     <v-form
         ref="form"
         v-model="valid"
@@ -43,7 +44,17 @@
 
         </v-container>
     </v-form>
-
+    <v-row>
+        <v-col align="center" cols="12">
+            <v-alert type="error"
+                     v-model="alert"
+                     dismissible
+            >
+                {{this.errorMsg}}
+            </v-alert>
+        </v-col>
+    </v-row>
+</div>
 </template>
 
 <script>
@@ -56,6 +67,8 @@ export default {
         password: null,
         show: false,
         valid: true,
+        alert:false,
+        errorMsg: null,
         usernameRules: [
             v => !!v || 'Username is required',
             v => (v && v.length <= 25) || 'Name must be less than 25 characters',
@@ -77,6 +90,28 @@ export default {
                     const redirectPath = this.$route.query.redirect || "/";
                     await this.$router.push(redirectPath);
                 }catch (error){
+                    if(error.code === 4){
+                        if (error.details[0]===("Username does not exist")) {
+                            this.$data.errorMsg = 'Username does not exist'
+                            this.$data.alert=true
+                        }
+                        else if (error.details[0]===("Password does not match")) {
+                            this.$data.errorMsg = 'Password does not match'
+                            this.$data.alert=true
+                        }
+                    }
+                    else if (error.code === 1){
+                        if (error.details[0].includes("Object didn't pass validation for format email:")) {
+                            this.$data.errorMsg = 'Please provide a valid email'
+                            this.$data.alert=true
+                        }
+                    }
+                    else if (error.code === 8){
+                        if (error.details[0].includes("Email not verified")) {
+                            this.$data.errorMsg = 'Email not verified'
+                            this.$data.alert=true
+                        }
+                    }
                     console.log(error)
                 }
             }else
