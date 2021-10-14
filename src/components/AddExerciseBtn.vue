@@ -13,7 +13,7 @@
       >
 
 
-        <v-card color="white" height="600" rounded>
+        <v-card color="white" rounded>
           <v-card-title>Complete form</v-card-title>
 
           <v-form
@@ -28,7 +28,7 @@
                 <v-col>
                   <v-text-field
                       v-model="repetitions"
-
+                      :rules="[v => !!v || 'Repetition is required']"
                       type="number"
                       label="repetitions"
                       required
@@ -43,7 +43,7 @@
                   <v-text-field
                       v-model="order"
                       type="number"
-
+                      :rules="[v => !!v || 'Order is required']"
                       label="order"
                       required
                   ></v-text-field>
@@ -57,14 +57,24 @@
                 <v-col>
                   <v-text-field
                       v-model="duration"
-
                       type="number"
-
+                      :rules="[v => !!v || 'Duration is required']"
                       label="duration"
                       required
                   ></v-text-field>
                 </v-col>
                 <v-col cols="2"></v-col>
+              </v-row>
+              <v-row>
+                <v-col>
+                  <v-alert type="error"
+                           v-model="alert"
+                           dismissible
+                  >
+                    {{this.errorMsg}}
+                  </v-alert>
+                </v-col>
+
               </v-row>
             </v-container>
           </v-form>
@@ -112,7 +122,7 @@
                           v-for="exercise in exercises.exercises.content" v-bind:key="exercise.id"
                       >
 
-                        <v-card height="100%" class="elevation-5 flexCard" :disabled="!valid" @click="validate(exercise.id)">
+                        <v-card height="100%" class="elevation-5 flexCard" :disabled="!valid" @click="validate(exercise.id,exercise.name)">
                           <v-col cols="8">
 
 
@@ -164,7 +174,9 @@ export default {
     repetitions:null,
     duration:null,
     order:null,
-    valid:true
+    valid:true,
+    alert:false,
+    errorMsg: null,
   }),
   methods:{
     nextPage(){
@@ -173,8 +185,8 @@ export default {
     prevPage(){
       store.dispatch("exercisePrevPage")
     },
-    addCycleExercise(exerciseId) {
-      store.dispatch('addCycleExercise',{
+    async addCycleExercise(exerciseId) {
+      await store.dispatch('addCycleExercise',{
         cycleId: this.$props.cycleId,
         exerciseId: exerciseId,
         body: {
@@ -183,21 +195,29 @@ export default {
         duration: parseInt(this.duration)}
 
       })
-      this.dialog=false
+
     },
-    async validate(exerciseId) {
+    async validate(exerciseId,exerciseName) {
       if (this.$refs.form.validate()) {
-        console.log('WTF')
-        await store.dispatch('addCycleExercise',{
-          cycleId: this.$props.cycleId,
-          exerciseId: exerciseId,
-          body: {repetitions: parseInt(this.repetitions),
-            order:parseInt(this.order),
-            duration: parseInt(this.duration)}})
-        this.$emit('updateExercises')
-        this.dialog=false
+        try{
+          this.alert=false
+        await this.addCycleExercise(exerciseId)
+        this.$emit('updateExercises')}
 
-
+        catch(error) {
+          console.log(error)
+          if (error.code === 2) {
+            if(error.details[0]===("UNIQUE constraint failed: Cycle_Exercise.cycleId, Cycle_Exercise.order")){
+              this.$data.errorMsg = 'Order '+ this.order + ' already exists'
+              this.$data.alert = true
+            }else if(error.details[0]==="UNIQUE constraint failed: Cycle_Exercise.cycleId, Cycle_Exercise.exerciseId"){
+              this.$data.errorMsg = 'Exercise '+ exerciseName + ' already exists'
+              this.$data.alert = true
+            }
+            }
+          }
+          if(!this.alert)
+            this.dialog=false
 
       } else
         console.log('Rejected')

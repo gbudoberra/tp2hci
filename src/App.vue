@@ -41,9 +41,14 @@
             <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{$store.state.security.username}}</v-toolbar-title>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
-              <router-link to="/login">
-                <v-btn outlined rounded x-large plain><v-icon large>login</v-icon></v-btn>
-              </router-link>
+            <router-link to="/login">
+              <v-btn rounded large>LOG IN</v-btn>
+            </router-link>
+          </v-col>
+          <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
+            <router-link to="/signin">
+              <v-btn  color="#1E3163" class="white--text" rounded large>SIGN UP</v-btn>
+            </router-link>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-else>
             <logout-btn/>
@@ -133,8 +138,5 @@ export default {
   text-decoration: blink underline;
   font-weight: bold;
 }
-
-
-
 
 </style>

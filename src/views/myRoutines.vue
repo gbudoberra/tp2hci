@@ -65,7 +65,6 @@ export default {
     this.$data.loading = false
   },
   components: {LoadingBar, PageArrows, PopUpRoutine, Routine, CreateRoutineForm}
-  // components: { PopUpRoutine, Routine}
 }
 </script>
 

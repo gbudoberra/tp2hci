@@ -11,7 +11,7 @@
       >
 
 
-        <v-card color="white" height="600" rounded>
+        <v-card color="white" height="500" rounded>
           <v-card-title>{{title}}</v-card-title>
           <v-form
               ref="form"
@@ -75,6 +75,17 @@
                   </v-btn>
                 </v-col>
               </v-row>
+              <v-row>
+                <v-col>
+                  <v-alert type="error"
+                           v-model="alert"
+                           dismissible
+                  >
+                    {{this.errorMsg}}
+                  </v-alert>
+                </v-col>
+
+              </v-row>
 
             </v-container>
           </v-form>
@@ -114,26 +125,39 @@ export default {
     newName: null,
     newDetail: null,
     newType:null,
+    alert:false,
+    errorMsg: null,
   }),
     methods: {
       async validate() {
         if (this.$refs.form.validate()) {
-
-          if (this.$props.exerciseAlreadyExists) {
+          try {
+            this.alert = false
+            if (this.$props.exerciseAlreadyExists) {
               await store.dispatch('modifyExercise', {
                 id: this.$props.id,
                 name: this.$data.newName || this.$props.name,
                 detail: this.$data.newDetail || this.$props.detail,
                 type: this.$data.newType || this.$props.type,
               })
-          } else {
-            await store.dispatch('newExercise', {
-              name: this.newName,
-              detail: this.newDetail,
-              type: this.newType
-            })
+            } else {
+              await store.dispatch('newExercise', {
+                name: this.newName,
+                detail: this.newDetail,
+                type: this.newType
+              })
+            }
+          }catch(error){
+            console.log(error)
+            if (error.code === 2) {
+              if (error.details[0] === ("UNIQUE constraint failed: Exercise.userId, Exercise.name")) {
+                this.$data.errorMsg = 'Exercise ' + this.newName + ' already exists'
+                this.$data.alert = true
+              }
+            }
           }
-          this.$data.dialog = false
+          if(!this.alert)
+            this.dialog=false
         } else
           console.log('Rejected')
       },

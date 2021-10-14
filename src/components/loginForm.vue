@@ -35,11 +35,14 @@
             </v-row>
             <v-row>
                 <v-col align="center">
-                    <v-btn color="#1E3163" class="white--text" :disabled="!valid" @click="validate">LOGIN</v-btn>
+                    <v-btn rounded color="#1E3163" class="white--text" :disabled="!valid" @click="validate">LOG IN</v-btn>
                 </v-col>
-                <v-col align="center">
-                    <v-btn :to="{name: 'SignIn'}">REGISTER</v-btn>
-                </v-col>
+            </v-row>
+            <v-row>
+              <v-col align="center">
+                New to TrainMe?
+                <router-link :to="{name: 'SignIn'}">SIGN UP</router-link>
+              </v-col>
             </v-row>
 
         </v-container>
