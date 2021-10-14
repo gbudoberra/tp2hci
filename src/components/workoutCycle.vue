@@ -15,7 +15,8 @@
           <v-col>
             <v-card-title class="text-h5" v-text="title">Title</v-card-title>
             <v-card-subtitle class="text-h6" v-text="detail">Detail</v-card-subtitle>
-            <v-card-subtitle class="text-h7">Sets: {{repetitions}}</v-card-subtitle>
+            <v-card-subtitle class="text-h7" v-text="type">Type</v-card-subtitle>
+            <v-card-subtitle class="text-h7">Repetitions: {{repetitions}}</v-card-subtitle>
           </v-col>
 
 <!--          <v-col cols="5" align="end" align-self="center">-->
@@ -51,7 +52,7 @@ import {store} from "../store";
 export default {
   name: "workoutBlock",
   components: {RoutineMainCard, ExerciseList},
-  props:['title', 'detail', 'id', 'repetitions'],
+  props:['title', 'detail', 'id', 'repetitions', 'type'],
   data() {
     return {
       // loading: false,

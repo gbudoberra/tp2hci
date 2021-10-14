@@ -58,7 +58,7 @@ import ProfileAvatar from "../components/profileAvatar";
 // import ExerciseList from "../components/cardComplements/excersiceList";
 import store from "../store/modules/security";
 import {mapState} from "vuex";
-import FullExerciseList from "./fullExerciseList";
+import FullExerciseList from "../components/fullExerciseList";
 export default {
   name: "Profile",
   components: {FullExerciseList, ProfileAvatar},
