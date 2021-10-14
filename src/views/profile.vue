@@ -130,7 +130,7 @@ export default {
             phone: phone || security.user.phone,
             avatarUrl: avatarUrl|| security.user.avatarUrl,
             birthdate: security.user.birthdate,
-            gender: 123,
+            gender: security.user.gender,
             metadata: null
           })
           this.$data.dialog = false
