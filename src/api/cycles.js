@@ -10,4 +10,7 @@ export class cyclesApi{
     static async add(routineId , body, controller){
         return await Api.post(this.getUrl(`routines/${routineId}/cycles`), true, body, controller)
     }
+    static async modify(routineId, cycleId, body, controller){
+        return await Api.put(this.getUrl(`routines/${routineId}/cycles/${cycleId}`), true, body, controller)
+    }
 }
