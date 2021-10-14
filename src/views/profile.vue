@@ -1,4 +1,3 @@
-<!--Esto es un intento de perfil bastante feo. Si quieren borrenlo.-->
 <template>
 
   <v-container align="center">
@@ -115,7 +114,7 @@ export default {
       dialog: false,
       valid: true,
       lastnameRules: [
-        v => !!v || 'Lastname is required',
+        v => !!v || 'Last Name is required',
       ],
       nameRules: [
         v => !!v || 'Name is required',

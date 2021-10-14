@@ -35,10 +35,10 @@
             </v-row>
             <v-row>
                 <v-col align="center">
-                    <v-btn color="#1E3163" dark :disabled="!valid" @click="validate">LOGIN</v-btn>
+                    <v-btn color="#1E3163" class="white--text" :disabled="!valid" @click="validate">LOGIN</v-btn>
                 </v-col>
                 <v-col align="center">
-                    <v-btn :to="{name: 'SignIn'}">GO TO REGISTER</v-btn>
+                    <v-btn :to="{name: 'SignIn'}">REGISTER</v-btn>
                 </v-col>
             </v-row>
 
@@ -74,7 +74,7 @@ export default {
             v => (v && v.length <= 25) || 'Name must be less than 25 characters',
         ],
         passwordRules: [
-            v => !! v || 'password is Required'
+            v => !! v || 'Password is required'
         ]
     }),
     methods: {

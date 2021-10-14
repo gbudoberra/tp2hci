@@ -50,7 +50,7 @@
               class="textField"
               v-model="lastname"
               :rules="lastnameRules"
-              label="Lastname *"
+              label="Last Name *"
               required
           ></v-text-field>
         </v-col>
@@ -89,10 +89,10 @@
       </v-row>
       <v-row>
         <v-col align="center">
-          <v-btn color="#1E3163" dark :disabled="!valid" @click="validate">REGISTER</v-btn>
+          <v-btn color="#1E3163" class="white--text" :disabled="!valid" @click="validate">REGISTER</v-btn>
         </v-col>
         <v-col align="center">
-          <v-btn :to="{name: 'Login'}">GO TO LOGIN</v-btn>
+          <v-btn :to="{name: 'Login'}">BACK TO LOGIN</v-btn>
         </v-col>
       </v-row>
 
@@ -132,15 +132,15 @@ export default {
         v => (v && v.length <= 25) || 'Name must be less than 25 characters',
       ],
       lastnameRules: [
-        v => !!v || 'Lastname is required',
+        v => !!v || 'Last Name is required',
       ],
       nameRules: [
         v => !!v || 'Name is required',
       ],
-      genders: [ 'female', 'male', 'other' ],
+      genders: [ 'Female', 'Male', 'Other' ],
       gender: 'other',
       passwordRules: [
-          v => !! v || 'password is Required'
+          v => !! v || 'Password is required'
       ]
     })
   ,
