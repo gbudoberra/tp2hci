@@ -40,7 +40,7 @@
                     </v-row>
                     <v-row>
                       <v-col>
-                        <v-text-field v-model="lastname" label="LastName"/>
+                        <v-text-field v-model="lastname" label="Last Name"/>
                       </v-col>
                     </v-row>
                     <v-row>
@@ -55,7 +55,7 @@
                     </v-row>
                     <v-row>
                       <v-col align="center">
-                        <v-btn color="green" dark @click="validate(name, lastname, phone, avatarUrl)">Confirm</v-btn>
+                        <v-btn color="green" dark @click="validate(name, lastname, phone, avatarUrl)">Save Changes</v-btn>
                       </v-col>
                       <v-col align="center">
                         <v-btn class="error" @click="dialog=false">Cancel</v-btn>

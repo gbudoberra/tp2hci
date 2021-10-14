@@ -37,7 +37,7 @@
           <v-col align="left" align-self="center">
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
-          <v-col align="right" align-self="end">
+          <v-col align="right" align-self="end" class="mr-5">
             <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{$store.state.security.username}}</v-toolbar-title>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
@@ -47,13 +47,12 @@
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
             <router-link to="/signin">
-              <v-btn  color="#1E3163" class="white--text" rounded large>SIGN UP</v-btn>
+              <v-btn color="#1E3163" class="white--text" rounded large>SIGN UP</v-btn>
             </router-link>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-else>
             <logout-btn/>
           </v-col>
-
         </v-row>
       </v-container>
     </v-app-bar>
@@ -138,5 +137,6 @@ export default {
   text-decoration: blink underline;
   font-weight: bold;
 }
+
 
 </style>
