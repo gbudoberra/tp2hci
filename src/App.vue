@@ -120,7 +120,7 @@ export default {
 
 #sideBarIcon {
   font-size: large;
-  color: white;
+  color: black;
   alignment: center;
   text-decoration: none;
 }
@@ -128,11 +128,11 @@ export default {
 
 
 #nav a.router-link-exact-active {
-  color: lightskyblue;
+  color: white;
 }
 #sideBarIcon:hover{
   font-size: large;
-  color: lightskyblue;
+  color: white;
   alignment: center;
   text-decoration: blink underline;
   font-weight: bold;
