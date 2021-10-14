@@ -14,8 +14,8 @@ export default {
     methods: {
         verify() {
             console.log('email=', this.$route.query.user)
-            console.log('cdoe=', this.$route.query.code)
-            console.log('testt')
+            console.log('code=', this.$route.query.code)
+            console.log('test')
             // let result = await store.dispatch('security/verify', {code, email})
             // console.log(result)
             // await this.$router.push(`/login`)
