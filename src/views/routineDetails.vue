@@ -8,19 +8,20 @@
       <v-row>
         <v-col cols="1"/>
         <v-col>
-          <routine-title-card color-back="indigo lighten-5" :id="routines.routine.id" :color="routines.routine.metadata.color" :title="routines.routine.name"></routine-title-card>
+          <routine-title-card :isMyRoutine="security.username===routines.routine.user.username" color-back="indigo lighten-5" :id="routines.routine.id" :color="routines.routine.metadata.color" :title="routines.routine.name"></routine-title-card>
         </v-col>
       </v-row>
 
       <template v-if="cycles.cycles">
       <v-row  v-for="cycle in cycles.cycles.content" :key="cycle.id">
           <v-col>
-          <workout-cycle :type="cycle.type" :title="cycle.name" :detail="cycle.detail" :repetitions="cycle.repetitions" :id="cycle.id"/>
+          <workout-cycle :isMyRoutine="security.username===routines.routine.user.username" :routineId="routines.routine.id"
+                         :type="cycle.type" :order="cycle.order" :title="cycle.name" :detail="cycle.detail" :repetitions="cycle.repetitions" :id="cycle.id"/>
           </v-col>
       </v-row>
         <v-row>
           <v-col align="center" cols="10">
-            <pop-up-cycle title="New Cycle" :routineId="routines.routine.id" ></pop-up-cycle>
+            <pop-up-cycle v-if="security.username===routines.routine.user.username" title="New Cycle" :routineId="routines.routine.id" ></pop-up-cycle>
           </v-col>
 
         </v-row>
@@ -37,15 +38,16 @@ import {mapState} from "vuex";
 import WorkoutCycle from "../components/workoutCycle";
 import GoBack from "../components/goBack";
 import {store} from "../store";
-import PopUpCycle from "@/components/popUpCycle";
+import PopUpCycle from "../components/popUpCycle";
 export default {
   name: "routineDetails",
   components: {PopUpCycle, WorkoutCycle, RoutineTitleCard , GoBack},
   computed: {
     ...mapState({
       routines: 'routines',
-      cycles: 'cycles'
-    })
+      cycles: 'cycles',
+      security: 'security'
+    }),
     },
   beforeMount(){
     // storeR.actions.getRoutine(this.$route.params.id)

@@ -5,7 +5,7 @@
         >
       <slot name="button"/>
       <v-dialog
-          :value="dialog"
+          v-model="dialog"
           width="500"
           overlay-color="black"
       >

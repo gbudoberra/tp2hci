@@ -28,6 +28,8 @@
                   </v-btn>
                 </template>
                 <v-card>
+                  <v-card-title>Edit Profile</v-card-title>
+                  <v-card-subtitle>(Don't want to edit a field? Leave blank)</v-card-subtitle>
                   <v-form ref="form"
                           v-model="valid"
                           lazy-validation>
@@ -59,6 +61,18 @@
                         <v-btn class="error" @click="dialog=false">Cancel</v-btn>
                       </v-col>
                     </v-row>
+                    <v-alert type="error" v-if="errorCatch">
+                    <v-row>
+                      <v-col>
+                        {{ profileError.description }}: {{profileError.details[0]}}
+                      </v-col>
+                      <v-col cols="1" align="end">
+                        <v-btn @click="closeError">
+                          <v-icon>close</v-icon>
+                        </v-btn>
+                      </v-col>
+                    </v-row>
+                  </v-alert>
                 </v-form>
                 </v-card>
               </v-dialog>
@@ -70,18 +84,7 @@
         <full-exercise-list/>
       </v-row>
     </v-container>
-    <v-alert type="error" v-if="errorCatch">
-      <v-row>
-        <v-col>
-          {{errorFunction}} error ({{profileError.code}}): {{ profileError.description }}
-        </v-col>
-        <v-col cols="1" align="end">
-          <v-btn @click="closeError">
-            <v-icon>close</v-icon>
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-alert>
+
   </v-container>
 </template>
 
@@ -139,7 +142,7 @@ export default {
           console.log('Profile error')
           this.$data.profileError = error;
           this.$data.errorFunction = 'Update profile'
-          this.$data.dialog = false
+          // this.$data.dialog = false
           this.$data.errorCatch = true
       }
     },

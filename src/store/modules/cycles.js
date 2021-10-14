@@ -22,5 +22,10 @@ export default {
             dispatch('get', {routineId: payload.routineId})
             return result
         },
+        async modifyCycle({dispatch}, payload){
+            let result= await cyclesApi.modify(payload.routineId, payload.cycleId, payload.body)
+            dispatch('get', {routineId: payload.routineId})
+            return result
+        }
     }
 }

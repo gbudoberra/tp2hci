@@ -23,12 +23,19 @@
               </v-card-text>
 
               <v-card-actions class="justify-start">
+                <v-row>
+                  <v-col>
+                    <fav-btn :routine-id="routine.id"></fav-btn>
+                  </v-col>
 
-                <v-col>
-                  <fav-btn :routine-id="routine.id"></fav-btn>
-                </v-col>
-
-
+                  <v-col>
+                    <v-btn fab color="blue-grey lighten-3" :to="{name: 'routineDetails', params: { id: routine.id}}">
+                      <v-icon>
+                        visibility
+                      </v-icon>
+                    </v-btn>
+                  </v-col>
+                </v-row>
               </v-card-actions>
             </v-col>
 
@@ -36,13 +43,7 @@
               <blocks-carousel :workouts="cycles"></blocks-carousel>
             </v-col>
 
-            <v-col cols="1">
-              <v-btn fab color="blue-grey lighten-3" :to="{name: 'routineDetails', params: { id: routine.id}}">
-                <v-icon>
-                  visibility
-                </v-icon>
-              </v-btn>
-            </v-col>
+
 
           </v-row>
 
