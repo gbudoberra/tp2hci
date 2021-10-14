@@ -1,6 +1,6 @@
 import {RoutinesApi} from "@/api/routines";
 import {FavoritesApi} from "../../api/favorites";
-import {store} from "../index";
+
 
 export default {
 
