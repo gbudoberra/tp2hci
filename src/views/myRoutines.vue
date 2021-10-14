@@ -1,7 +1,6 @@
-import myRoutines from './myRoutines';
 <template>
-  <v-container v-if="routines">
-    <v-row fluid v-for="routine in routines.routines.content" :key="routine.id">
+  <v-container v-if="myRoutines">
+    <v-row fluid v-for="routine in myRoutines.routines.content" :key="routine.id">
       <routine :routine="routine"/>
     </v-row>
     <v-row>
@@ -11,6 +10,7 @@ import myRoutines from './myRoutines';
             <create-routine-form/>
           </template>
         </pop-up>
+<!--        <pop-up-routine title="New Routine"></pop-up-routine>-->
       </v-col>
 
     </v-row>
@@ -24,6 +24,7 @@ import Routine from "../components/routine";
 import {mapState} from "vuex";
 import PopUp from "../components/popUp";
 import CreateRoutineForm from "../components/createRoutineForm";
+// import PopUpRoutine from "@/components/popUpRoutine";
 
 
 
@@ -31,7 +32,7 @@ export default {
   name: "MyRoutines",
   computed: {
     ...mapState({
-      routines: 'routines',
+      myRoutines: 'myRoutines',
       Loading: 'Loading',
     })
   },
@@ -40,6 +41,7 @@ export default {
     console.log('getAll')
   },
   components: {PopUp, Routine, CreateRoutineForm}
+  // components: { PopUpRoutine, Routine}
 }
 </script>
 

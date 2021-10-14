@@ -77,7 +77,7 @@
 import ProfileAvatar from "../components/profileAvatar";
 
 import {mapState} from "vuex";
-import FullExerciseList from "./fullExerciseList";
+import FullExerciseList from "../components/fullExerciseList";
 import ProfileInfoList from "./profileInfoList";
 import {store} from "../store";
 export default {

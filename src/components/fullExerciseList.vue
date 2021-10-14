@@ -42,12 +42,12 @@
 
             <v-card height="100%" class="elevation-5 flexCard" >
               <v-col cols="8">
-                <v-container>
+
 
                   <v-card-title class="Padding">{{exercise.name}}</v-card-title>
                   <v-card-subtitle class="Padding">{{exercise.detail}}</v-card-subtitle>
 
-                </v-container>
+
               </v-col>
 
                   <v-col>

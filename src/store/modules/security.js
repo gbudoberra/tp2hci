@@ -27,9 +27,9 @@ export default {
     actions: {
         async login({commit}, payload){
             if(payload.user === undefined || payload.password === null)
-            console.log('security.login')
+                console.log('security.login esta fallanmdo')
             await UserApi.login(payload.user, payload.password, null);
-            console.log("paso UserApi")
+             console.log("paso UserApi")
             commit('setIsLoggedIn', true)
             commit('setUsername', payload.user)
         },
@@ -42,13 +42,14 @@ export default {
             await UserApi.register(payload.username, payload.password, payload.firstName,
             payload.lastName, payload.gender, payload.email, payload.avatarUrl);
             commit('setEmail', payload.email)
+            console.log(this.state.email)
             commit('setUsername', payload.user)
         },
         async verify({commit}, payload){
-            let mailV = payload.email || this.state.email
-            console.log('this.state.email: ', mailV)
-           await UserApi.verifyEmail(payload.code, mailV)
-            commit('setIsLoggedIn', true)
+            // let mailV = this.state.email
+            // console.log('this.state.email: ', payload.email)
+           await UserApi.verifyEmail(payload.code, payload.email)
+            commit("setIsLoggedIn", false)
         },
         async getCurrentUser(){
             // if(state.user)
@@ -57,8 +58,10 @@ export default {
             const result = await UserApi.get();
             await store.commit('security/setUser', result)
         },
-        async resendVerify(){
-            await UserApi.resendVerify(this.state.email);
+        async resendVerify({commit}, payload) {
+            console.log(payload)
+            await UserApi.resendVerify(payload.email);
+            commit('setIsLoggedIn', false)
         },
         async updateProfile({dispatch},payload){
             await UserApi.modify(payload)

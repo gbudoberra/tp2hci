@@ -79,7 +79,14 @@ const routes = [
     path: "/verifyEmail",
     name: "VerifyEmail",
     meta: {requiresAuth: false},
-    component: () => import( /* webpackChunkName: "details" */ '../views/verifyEmail'),
+    component: () => import( /* webpackChunkName: "verifyEmail" */ '../views/verifyEmail'),
+  },
+  {
+    path: "/verification",
+    alias: "/verification*",
+    name: "verified",
+    meta: {requiresAuth: false},
+    component: () => import( /* webpackChunkName: "verified" */ '../views/verifyEmail'),
   },
   {
     path: '/notFound',

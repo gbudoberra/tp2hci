@@ -16,6 +16,11 @@ export default {
             commit('replaceAllCycles', result)
             console.log('result cycles', result)
             return result
-        }
+        },
+        async addCycle({dispatch}, payload) {
+            let result= await cyclesApi.add(payload.routineId,payload.body)
+            dispatch('get', {routineId: payload.routineId})
+            return result
+        },
     }
 }

@@ -18,7 +18,7 @@
                                     <v-text-field v-model="email" hide-details="true" loader-height="5" label="Email"></v-text-field>
                                 </v-row>
                                 <v-row>
-                                    <v-col align="center"><v-btn @click="resend" color="#ff5252" dark>RESEND CODE</v-btn></v-col>
+                                    <v-col align="center"><v-btn @click="resend(email)" color="#ff5252" dark>RESEND CODE</v-btn></v-col>
                                     <v-col align="center"><v-btn @click="verify(code, email)"  color="#388E3C" dark>VERIFY</v-btn></v-col>
                                 </v-row>
 
@@ -48,19 +48,12 @@ export default {
         async verify(code, email){
             console.log('email', email)
             let result = await store.dispatch('security/verify', {code, email})
-            if(result != 200)
-                console.error("error")
-            else {
-                console.log(result)
-                await this.$router.push(`/`)
-            }
-        },
-        async resend(){
-            console.log('holas')
+            console.log(result)
+            await this.$router.push(`/login`)
 
-            let result = await store.dispatch('security/resendVerify')
-            if(result != 200)
-                console.error("error")
+        },
+        async resend(email){
+            let result = await store.dispatch('security/resendVerify', {email})
             console.log(result)
         }
     }

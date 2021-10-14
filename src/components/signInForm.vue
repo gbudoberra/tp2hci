@@ -25,6 +25,9 @@
                     v-model="password"
                     label="Password *"
                     :rules="passwordRules"
+                    :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+                    :type="show ? 'text' : 'password'"
+                    @click:append="show = !show"
                     required
                 ></v-text-field>
             </v-col>
@@ -107,6 +110,7 @@ export default {
       lastname: null,
       email: null,
       valid: true,
+      show: false,
       usernameRules: [
         v => !!v || 'Username is required',
         v => (v && v.length <= 25) || 'Name must be less than 25 characters',
@@ -117,7 +121,7 @@ export default {
       nameRules: [
         v => !!v || 'Lastname is required',
       ],
-      genders: [ 'Female', 'male', 'Other' ],
+      genders: [ 'female', 'male', 'other' ],
       gender: 'Other',
       passwordRules: [
           v => !! v || 'password is Required'
@@ -127,18 +131,27 @@ export default {
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
-        let result = await store.dispatch('security/register', {
-            username: this.userRegister,
-            password: this.password,
-            firstName: this.name,
-            lastName: this.lastname,
-            gender: this.gender,
-            email: this.email,
-            avatarUrl: "https://i.stack.imgur.com/34AD2.jpg"
-        })
-          if(result !== 200)
-              console.error("error")
-        await this.$router.push(`/verifyEmail`)
+          try {
+              await store.dispatch('security/register', {
+                  username: this.userRegister,
+                  password: this.password,
+                  firstName: this.name,
+                  lastName: this.lastname,
+                  gender: this.gender,
+                  email: this.email,
+                  avatarUrl: "https://i.stack.imgur.com/34AD2.jpg"
+              })
+              await this.$router.push(`/verifyEmail`)
+          }catch (error){
+              if(error.code === 2){
+                  if (error.details[0]===("UNIQUE constraint failed: User.email"))
+                      console.log('error del mail')
+                  else if (error.details[0]===("UNIQUE constraint failed: User.username"))
+                      console.log('error del user')
+
+              }
+              console.log(error)
+          }
       } else
         console.log('Rejected')
     },

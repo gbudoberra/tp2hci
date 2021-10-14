@@ -6,18 +6,25 @@
         </v-col>
       </v-row>
       <v-row>
+        <v-col cols="1"/>
         <v-col>
           <routine-title-card :id="routines.routine.id" :color="routines.routine.metadata.color" :title="routines.routine.name"></routine-title-card>
         </v-col>
       </v-row>
 
-      <v-row v-if="cycles.cycles">
-      <v-row v-for="cycle in cycles.cycles.content" :key="cycle.id">
+      <template v-if="cycles.cycles">
+      <v-row  v-for="cycle in cycles.cycles.content" :key="cycle.id">
           <v-col>
-          <workout-block :title="cycle.name" :detail="cycle.detail" :repetitions="cycle.repetitions" :id="cycle.id"/>
+          <workout-cycle :type="cycle.type" :title="cycle.name" :detail="cycle.detail" :repetitions="cycle.repetitions" :id="cycle.id"/>
           </v-col>
       </v-row>
-      </v-row>
+        <v-row>
+          <v-col align="center" cols="10">
+            <pop-up-cycle title="New Cycle" :routineId="routines.routine.id" ></pop-up-cycle>
+          </v-col>
+
+        </v-row>
+      </template>
 </v-container>
 </template>
 
@@ -27,12 +34,13 @@
 // import storeC from "../store/modules/cycles";
 import RoutineTitleCard from "../components/routineDetailTitleCard";
 import {mapState} from "vuex";
-import WorkoutBlock from "../components/workoutBlock";
+import WorkoutCycle from "../components/workoutCycle";
 import GoBack from "../components/goBack";
 import {store} from "../store";
+import PopUpCycle from "@/components/popUpCycle";
 export default {
   name: "routineDetails",
-  components: {WorkoutBlock, RoutineTitleCard , GoBack},
+  components: {PopUpCycle, WorkoutCycle, RoutineTitleCard , GoBack},
   computed: {
     ...mapState({
       routines: 'routines',
