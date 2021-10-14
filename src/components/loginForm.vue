@@ -38,7 +38,7 @@
                     <v-btn color="#1E3163" dark :disabled="!valid" @click="validate">LOGIN</v-btn>
                 </v-col>
                 <v-col align="center">
-                    <v-btn :to="{name: 'SignIn'}">REGISTER</v-btn>
+                    <v-btn :to="{name: 'SignIn'}">GO TO REGISTER</v-btn>
                 </v-col>
             </v-row>
 

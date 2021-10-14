@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-card>
-            <h1>LOADING</h1>
+            <h1>LOADING...</h1>
         </v-card>
     </v-container>
 </template>

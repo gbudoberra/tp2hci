@@ -7,7 +7,7 @@
         color="blue darken-4" fixed bottom rounded>
       Add cycle
     <v-dialog
-        :value="dialog"
+        v-model="dialog"
         width="500"
         overlay-color="black"
     >
