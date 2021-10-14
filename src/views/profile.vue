@@ -27,6 +27,7 @@
                   </v-btn>
                 </template>
                 <v-card>
+                  <v-container>
                   <v-card-title>Edit Profile</v-card-title>
                   <v-card-subtitle>(Don't want to edit a field? Leave blank)</v-card-subtitle>
                   <v-form ref="form"
@@ -73,6 +74,7 @@
                     </v-row>
                   </v-alert>
                 </v-form>
+                  </v-container>
                 </v-card>
               </v-dialog>
             </v-col>
@@ -119,6 +121,7 @@ export default {
       nameRules: [
         v => !!v || 'Name is required',
       ],
+
     }
   },
   methods:{

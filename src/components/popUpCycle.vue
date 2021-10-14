@@ -13,7 +13,7 @@
     >
 
 
-      <v-card color="white" height="600" rounded>
+      <v-card color="white" rounded>
         <v-card-title>{{title}}</v-card-title>
         <v-form
             ref="form"
@@ -107,6 +107,17 @@
                 </v-btn>
               </v-col>
             </v-row>
+            <v-row>
+              <v-col>
+                <v-alert type="error"
+                         v-model="alert"
+                         dismissible
+                >
+                  {{this.errorMsg}}
+                </v-alert>
+
+              </v-col>
+            </v-row>
 
           </v-container>
         </v-form>
@@ -142,11 +153,15 @@ export default {
     detail: null,
     type:null,
     repetitions: null,
-    order:null
+    order:null,
+    alert:false,
+    errorMsg: null,
   }),
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
+        try{
+          this.alert=false
         await store.dispatch('addCycle', {
           routineId: this.$props.routineId,
           body: {
@@ -158,8 +173,18 @@ export default {
             metadata:null
           }
 
-        })
-        this.dialog=false
+        })}
+        catch(error){
+          console.log(error)
+          if(error.code===2){
+            if(error.details[0]==="UNIQUE constraint failed: Cycle.routineId, Cycle.order") {
+              this.$data.errorMsg = 'Order ' + this.order + ' is repeated'
+              this.$data.alert = true
+            }
+          }
+        }
+        if(!this.alert)
+          this.dialog=false
       } else
         console.log('Rejected')
     },
