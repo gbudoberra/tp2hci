@@ -1,5 +1,5 @@
 <template>
-<routine-main-card>
+<routine-main-card :color="colorBack">
   <template v-slot:body>
 
     <v-container>
@@ -17,7 +17,7 @@
         <v-col cols="3" align="end" align-self="center">
           <v-row>
             <v-col align-self="center"><fav-btn :routine-id="id"></fav-btn></v-col>
-            <v-col align-self="center"><v-btn rounded elevation="5" fab color="blue-grey lighten-3"><v-icon>edit</v-icon></v-btn></v-col>
+            <v-col align-self="center"><v-btn outlined rounded x-large plain><v-icon>edit</v-icon></v-btn></v-col>
           </v-row>
         </v-col>
         <v-col cols="1"></v-col>
@@ -37,7 +37,7 @@ import RoutineMainCard from "./mainCard";
 export default {
   name: "routineDetailTitleCard",
   components: {RoutineMainCard, FavBtn, ColorPill},
-  props:['color', 'title', 'id']
+  props:['color', 'title', 'id','colorBack']
 }
 </script>
 

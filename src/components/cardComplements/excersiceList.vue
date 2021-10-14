@@ -4,7 +4,7 @@
     <v-row align="center"
            justify="center">
       <v-col cols="1"></v-col>
-      <v-layout row wrap>
+      <v-layout wrap>
         <v-flex
             xs12
             md6

@@ -1,6 +1,6 @@
 <template>
   <v-hover v-if="doHover" v-slot="{ hover }">
-    <v-card color="white" raised outlined rounded="xl" :to="toLink"
+    <v-card :color="color" raised outlined rounded="xl" :to="toLink"
             :elevation="hover ? 12 : 2"
             :class="{ 'on-hover': hover }"
     >
@@ -9,7 +9,7 @@
       </slot>
     </v-card>
   </v-hover>
-  <v-card v-else color="white" raised outlined rounded="xl" :to="toLink"
+  <v-card v-else :color="color" raised outlined rounded="xl" :to="toLink"
   >
     <slot name="body">
       Empty
@@ -23,7 +23,7 @@ export default {
   data: () => ({
     transparent: 'rgba(255, 255, 255, 0)',
   }),
-  props: ['toLink', 'doHover']
+  props: ['toLink', 'doHover','color']
 }
 </script>
 
