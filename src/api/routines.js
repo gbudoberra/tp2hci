@@ -20,8 +20,8 @@ class RoutinesApi {
     static async getAll(page , controller){
         return await Api.get(this.getUrl(`routines?page=${page}`), false, controller);
     }
-    static async getAllFavorites(controller){
-        return await Api.get(this.getUrl('favourites'), true, controller);
+    static async getAllFavorites(page, controller){
+        return await Api.get(this.getUrl(`favourites?page=${page}`), true, controller);
     }
 
 

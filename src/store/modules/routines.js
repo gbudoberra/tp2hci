@@ -96,8 +96,8 @@ export default {
         },
 
 
-        async getAllFavorites({commit}, controller) {
-            const result = await RoutinesApi.getAllFavorites(controller)
+        async getAllFavorites({commit, state}, controller) {
+            const result = await RoutinesApi.getAllFavorites(state.routinesPage, controller)
             commit('replaceAll', result)
             commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)
