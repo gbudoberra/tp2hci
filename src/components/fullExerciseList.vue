@@ -52,7 +52,7 @@
 
                   <v-col>
                   <v-col cols="6">
-                    <v-btn><v-icon>delete</v-icon></v-btn>
+<!--                    <v-btn @click="deleteExercise(exercise.id)"><v-icon>delete</v-icon></v-btn>-->
                   </v-col>
                   <v-col>
                     <v-btn><v-icon>edit</v-icon></v-btn>
@@ -70,11 +70,11 @@
       </v-flex>
 
     </v-layout>
-    <pop-up title="Add Exercise">
+    <pop-up-routine title="Add Exercise">
       <template v-slot:formSlot>
         <add-exercise-form/>
       </template>
-    </pop-up>
+    </pop-up-routine>
   </v-row>
 
 </v-container>
@@ -83,12 +83,12 @@
 <script>
 import {mapState} from "vuex";
 import {store} from "../store";
-import PopUp from "../components/popUp";
+import popUpRoutine from "./popUpRoutine";
 import AddExerciseForm from "../components/addExerciseForm";
 
 export default {
   name: "fullExerciseList",
-  components: {AddExerciseForm, PopUp},
+  components: {AddExerciseForm, popUpRoutine},
   computed:{
     ...mapState({
       allExercises: 'exercises',

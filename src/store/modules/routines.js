@@ -72,9 +72,9 @@ export default {
             commit('replaceAll', result)
             console.log('result',result)
         },
-        async getMyRoutines(controller){
+        async getMyRoutines({commit},controller){
             const result = await RoutinesApi.getMyRoutines(controller)
-            store.commit('replaceAll', result)
+            commit('replaceAll', result)
             console.log('result',result)
         },
         async getAllFavorites(controller) {
