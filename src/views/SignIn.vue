@@ -1,24 +1,18 @@
 <template>
   <v-container>
-    <v-row align="center">
-      <v-col cols="1"></v-col>
-          <v-col >
-              <v-card color="white" raised outlined rounded="xl">
-                <v-container>
-                  <v-row>
-                    <v-col cols="5" align-self="center">
-                      <v-card-title class="text-h4">Create Account</v-card-title>
-                    </v-col>
-                    <v-col>
-                      <sign-in-form></sign-in-form>
-                    </v-col>
-                    <v-col cols="1"/>
-                  </v-row>
-                </v-container>
-
-              </v-card>
-          </v-col>
-      <v-col cols="1"></v-col>
+    <v-row align="center" justify="center">
+      <v-col cols="4">
+          <v-card color="white" raised outlined rounded="xl">
+            <v-container>
+              <v-row>
+                <v-col align-self="center">
+                  <v-card-title class="text-h4">Sign Up</v-card-title>
+                  <sign-in-form></sign-in-form>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+      </v-col>
     </v-row>
   </v-container>
 </template>
