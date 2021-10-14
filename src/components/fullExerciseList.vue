@@ -61,7 +61,11 @@
 
                   <v-col>
                   <v-col cols="6">
-                    <v-btn @click="deleteExercise(exercise.id)"><v-icon>delete</v-icon></v-btn>
+                    <confirmation-pop-up v-on:confirmation="deleteExercise(exercise.id)" msg="Remove exercise from this cycle?">
+                      <template v-slot:button>
+                        <v-icon>delete</v-icon>
+                      </template>
+                    </confirmation-pop-up>
                   </v-col>
                   <v-col>
 
@@ -93,10 +97,11 @@
 import {mapState} from "vuex";
 import {store} from "../store";
 import PopUpExercise from "./popUpExercise";
+import ConfirmationPopUp from "./confirmationPopUp";
 
 export default {
   name: "fullExerciseList",
-  components: {PopUpExercise},
+  components: {ConfirmationPopUp, PopUpExercise},
   computed:{
     ...mapState({
       allExercises: 'exercises',

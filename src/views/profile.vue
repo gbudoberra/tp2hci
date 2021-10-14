@@ -70,6 +70,18 @@
         <full-exercise-list/>
       </v-row>
     </v-container>
+    <v-alert type="error" v-if="errorCatch">
+      <v-row>
+        <v-col>
+          {{errorFunction}} error ({{profileError.code}}): {{ profileError.description }}
+        </v-col>
+        <v-col cols="1" align="end">
+          <v-btn @click="closeError">
+            <v-icon>close</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-alert>
   </v-container>
 </template>
 
@@ -90,6 +102,9 @@ export default {
   },
   data() {
     return {
+      profileError: null,
+      errorFunction: null,
+      errorCatch: false,
       name: null,
       lastname: null,
       phone: null,
@@ -106,23 +121,31 @@ export default {
   },
   methods:{
     async validate(name, lastname, phone, avatarUrl) {
-      if (this.$refs.form.validate()) {
-        let security = store.state.security
-        let result = await store.dispatch('security/updateProfile', {
-          firstName: name || security.user.name,
-          lastName: lastname || security.user.lastname,
-          phone: phone || security.user.phone,
-          avatarUrl: avatarUrl|| security.user.avatarUrl,
-          birthdate: security.user.birthdate,
-          gender: security.user.gender,
-          metadata: null
-        })
-        if(result !== 200)
-          console.error("error")
-        this.$data.dialog = false
-      } else
-        console.log('Rejected')
+      try {
+        if (this.$refs.form.validate()) {
+          let security = store.state.security
+          await store.dispatch('security/updateProfile', {
+            firstName: name || security.user.name,
+            lastName: lastname || security.user.lastname,
+            phone: phone || security.user.phone,
+            avatarUrl: avatarUrl|| security.user.avatarUrl,
+            birthdate: security.user.birthdate,
+            gender: 123,
+            metadata: null
+          })
+          this.$data.dialog = false
+      }
+      }catch (error){
+          console.log('Profile error')
+          this.$data.profileError = error;
+          this.$data.errorFunction = 'Update profile'
+          this.$data.dialog = false
+          this.$data.errorCatch = true
+      }
     },
+    closeError(){
+      this.$data.errorCatch = false
+    }
   },
   beforeMount() {
     store.dispatch('security/getCurrentUser')
