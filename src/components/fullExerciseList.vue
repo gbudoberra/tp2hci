@@ -2,7 +2,38 @@
 <v-container v-if="allExercises">
   <v-row>
     <v-col align="center">
-      <h1 class="text-h4">MyExercises</h1>
+      <v-col>
+
+        <v-row>
+          <h1 class="text-h4">MyExercises</h1>
+        </v-row>
+        <v-row>
+
+          <div v-show="allExercises.exercisePage!==0">
+            <v-btn class="ma-2" color="blue lighten-3" dark @click="prevPage">
+              <v-icon dark left>
+                mdi-arrow-left
+              </v-icon>
+              Previous
+            </v-btn>
+          </div>
+          <div>
+            <v-btn class="ma-2" color="blue lighten-3" dark @click="nextPage" v-show="!allExercises.exerciseLastPage">
+              Next
+              <v-icon dark left>
+                mdi-arrow-right
+              </v-icon>
+            </v-btn>
+          </div>
+          <div>
+            <pop-up-exercise title="New Exercise" :exercise-already-exists="false">
+              <template v-slot:button>
+                <v-icon>add</v-icon>
+              </template>
+            </pop-up-exercise>
+          </div>
+        </v-row>
+      </v-col>
     </v-col>
   </v-row>
   <v-row >
@@ -21,20 +52,29 @@
               <v-col cols="8">
 
 
-                  <v-card-title class="ceroPadding">{{exercise.name}}</v-card-title>
-                  <v-card-subtitle class="ceroPadding">{{exercise.detail}}</v-card-subtitle>
+                  <v-card-title class="Padding">{{exercise.name}}</v-card-title>
+                  <v-card-subtitle class="Padding">{{exercise.detail}}</v-card-subtitle>
+                  <v-card-text class="Padding">Type: {{exercise.type}}</v-card-text>
 
 
               </v-col>
 
                   <v-col>
                   <v-col cols="6">
-                    <v-btn><v-icon>delete</v-icon></v-btn>
+                    <confirmation-pop-up v-on:confirmation="deleteExercise(exercise.id)" msg="Remove exercise from this cycle?">
+                      <template v-slot:button>
+                        <v-icon>delete</v-icon>
+                      </template>
+                    </confirmation-pop-up>
                   </v-col>
                   <v-col>
-                    <v-btn><v-icon>edit</v-icon></v-btn>
-                  </v-col>
 
+                  </v-col>
+                    <pop-up-exercise title="Edit Exercise" :id="exercise.id" :exercise-already-exists="true" :name="exercise.name" :detail="exercise.detail" :type="exercise.type">
+                      <template v-slot:button>
+                        <v-icon>edit</v-icon>
+                      </template>
+                    </pop-up-exercise>
                   </v-col>
 
 
@@ -45,22 +85,41 @@
           </v-container>
 
       </v-flex>
+
     </v-layout>
+
   </v-row>
+
 </v-container>
 </template>
 
 <script>
 import {mapState} from "vuex";
 import {store} from "../store";
+import PopUpExercise from "./popUpExercise";
+import ConfirmationPopUp from "./confirmationPopUp";
 
 export default {
   name: "fullExerciseList",
-  components: {},
+  components: {ConfirmationPopUp, PopUpExercise},
   computed:{
     ...mapState({
-      allExercises: 'exercises'
+      allExercises: 'exercises',
     })
+  },
+  methods:{
+    newExercise(){
+        store.dispatch('newExercise', )
+    },
+    nextPage(){
+      store.dispatch('exerciseNextPage')
+    },
+    prevPage(){
+      store.dispatch("exercisePrevPage")
+    },
+    deleteExercise(id){
+      store.dispatch('deleteExercise', {id})
+    }
   },
   beforeMount() {
       store.dispatch('getAllExercises');
@@ -74,7 +133,7 @@ export default {
   display: flex;
   flex-direction: row;
 }
-.ceroPadding{
+.Padding{
   padding: 10px 0 0;
 }
 </style>

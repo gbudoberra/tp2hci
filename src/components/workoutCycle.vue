@@ -4,7 +4,7 @@
       <v-col cols="1"></v-col>
       <v-col>
 
-  <routine-main-card>
+  <routine-main-card color="indigo lighten-4">
     <template v-slot:body>
 
       <v-container>
@@ -17,6 +17,18 @@
             <v-card-subtitle class="text-h6" v-text="detail">Detail</v-card-subtitle>
             <v-card-subtitle class="text-h7" v-text="type">Type</v-card-subtitle>
             <v-card-subtitle class="text-h7">Repetitions: {{repetitions}}</v-card-subtitle>
+          </v-col>
+          <v-col align="end">
+            <v-row>
+              <v-col align="end">
+                <v-btn outlined rounded x-large >Add exercise</v-btn>
+                <v-btn outlined rounded x-large><v-icon>delete</v-icon></v-btn>
+                <v-btn outlined rounded x-large><v-icon>edit</v-icon></v-btn>
+              </v-col>
+
+            </v-row>
+
+
           </v-col>
 
 <!--          <v-col cols="5" align="end" align-self="center">-->
@@ -61,9 +73,8 @@ export default {
   }
   ,
   async created() {
-    let result = await store.dispatch('getFromCycle', [this.$props.id])
-    console.log('exercises from cycle', result)
-    this.$data.exercises = result
+    let id = this.$props.id;
+    this.$data.exercises = await store.dispatch('getFromCycle', {cycleId: id, page: 0})
   }
 }
 </script>
