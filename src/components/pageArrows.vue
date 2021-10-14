@@ -11,7 +11,7 @@
     <v-col cols="2">
       <v-btn class="ma-2" color="primary" @click="nextPage" :disabled="!nextCondition">
         Next
-        <v-icon dark left>
+        <v-icon dark right>
           mdi-arrow-right
         </v-icon>
       </v-btn>
