@@ -5,8 +5,14 @@
     </v-btn>
 
     <v-btn icon x-large color="red" @click="unFav">
-        <v-icon>mdi-heart-outline</v-icon>
+        <v-icon>mdi-heart-off-outline</v-icon>
     </v-btn>
+        <v-alert type="succes"
+                 v-model="alert"
+                 dismissible
+        >
+            {{this.errorMsg}}
+        </v-alert>
 </div>
 </template>
 
@@ -17,13 +23,19 @@ import {store} from "../../store";
 export default {
   name: "favBtn",
   data: () => ({
+      errorMsg: null,
+      alert: false
   }),
 
   methods:{
     async fav(){
         try{
             await store.dispatch('favRoutine', {id: this.$props.routineId})
+            this.errorMsg = 'Routine Faved'
+            this.alert = true
         }catch (e) {
+            this.errorMsg = 'Routine Faved'
+            this.alert = true
             console.log('error de faveado', e)
         }
     },
