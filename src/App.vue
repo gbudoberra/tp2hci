@@ -13,7 +13,7 @@
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
 
 
-        <v-template v-for="item in menu" :key="item.title">
+        <div v-for="item in menu" :key="item.title">
 
         <v-row justify="space-around">
           <v-col align-self="center" align="center"><v-icon>{{item.icon}}</v-icon></v-col>
@@ -22,7 +22,7 @@
         </v-row>
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
-        </v-template>
+        </div>
 
       </v-container>
 
@@ -82,7 +82,7 @@ export default {
       {
         rout: "/favorites",
         title: "Favorites",
-        icon: "star"
+        icon: "mdi-heart"
       },
       {
         rout: "/profile",
