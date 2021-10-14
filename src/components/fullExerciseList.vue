@@ -9,7 +9,7 @@
         </v-row>
         <v-row>
 
-          <div v-show="this.exercisePage!==0">
+          <div v-show="allExercises.exercisePage!==0">
             <v-btn class="ma-2" color="blue lighten-3" dark @click="prevPage">
               <v-icon dark left>
                 mdi-arrow-left
@@ -17,13 +17,21 @@
               Previous
             </v-btn>
           </div>
-          <v-btn class="ma-2" color="blue lighten-3" dark @click="nextPage" v-show="!this.lastPage">
-            Next
-            <v-icon dark left>
-              mdi-arrow-right
-            </v-icon>
-          </v-btn>
-
+          <div>
+            <v-btn class="ma-2" color="blue lighten-3" dark @click="nextPage" v-show="!allExercises.exerciseLastPage">
+              Next
+              <v-icon dark left>
+                mdi-arrow-right
+              </v-icon>
+            </v-btn>
+          </div>
+          <div>
+            <pop-up-exercise title="New Exercise" :exercise-already-exists="false">
+              <template v-slot:button>
+                <v-icon>add</v-icon>
+              </template>
+            </pop-up-exercise>
+          </div>
         </v-row>
       </v-col>
     </v-col>
@@ -46,18 +54,23 @@
 
                   <v-card-title class="Padding">{{exercise.name}}</v-card-title>
                   <v-card-subtitle class="Padding">{{exercise.detail}}</v-card-subtitle>
+                  <v-card-text class="Padding">Type: {{exercise.type}}</v-card-text>
 
 
               </v-col>
 
                   <v-col>
                   <v-col cols="6">
-<!--                    <v-btn @click="deleteExercise(exercise.id)"><v-icon>delete</v-icon></v-btn>-->
+                    <v-btn @click="deleteExercise(exercise.id)"><v-icon>delete</v-icon></v-btn>
                   </v-col>
                   <v-col>
-                    <v-btn><v-icon>edit</v-icon></v-btn>
-                  </v-col>
 
+                  </v-col>
+                    <pop-up-exercise title="Edit Exercise" :id="exercise.id" :exercise-already-exists="true" :name="exercise.name" :detail="exercise.detail" :type="exercise.type">
+                      <template v-slot:button>
+                        <v-icon>edit</v-icon>
+                      </template>
+                    </pop-up-exercise>
                   </v-col>
 
 
@@ -70,11 +83,7 @@
       </v-flex>
 
     </v-layout>
-    <pop-up-routine title="Add Exercise">
-      <template v-slot:formSlot>
-        <add-exercise-form/>
-      </template>
-    </pop-up-routine>
+
   </v-row>
 
 </v-container>
@@ -83,17 +92,14 @@
 <script>
 import {mapState} from "vuex";
 import {store} from "../store";
-import popUpRoutine from "./popUpRoutine";
-import AddExerciseForm from "../components/addExerciseForm";
+import PopUpExercise from "./popUpExercise";
 
 export default {
   name: "fullExerciseList",
-  components: {AddExerciseForm, popUpRoutine},
+  components: {PopUpExercise},
   computed:{
     ...mapState({
       allExercises: 'exercises',
-      exercisePage: 'exercisePage',
-      lastPage: 'exerciseLastPage'
     })
   },
   methods:{
@@ -105,6 +111,9 @@ export default {
     },
     prevPage(){
       store.dispatch("exercisePrevPage")
+    },
+    deleteExercise(id){
+      store.dispatch('deleteExercise', {id})
     }
   },
   beforeMount() {

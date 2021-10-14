@@ -4,11 +4,11 @@ import {ExerciseApi} from "../../api/exercises";
 
 export default {
     state:{
-        exercises: null,
+        exercises: [],
         exercisePage: 0,
         exerciseLastPage: false,
-        cyclePage: 0,
-        cycleLastPage: false
+        cycleExercisesPage: 0,
+        cycleExercisesLastPage: false
     },
     mutations: {
         replaceAllExercises(state, result) {
@@ -32,9 +32,10 @@ export default {
         setExerciseLastPage(state, bool){
             state.exerciseLastPage = bool
         },
-        setCycleLastPage(state, bool){
-            state.cycleLastPage = bool
+        setCycleExercisesLastPage(state, bool){
+            state.cycleExercisesLastPage = bool
         },
+
 
     },
     getters: {
@@ -42,7 +43,7 @@ export default {
     actions:{
         async getFromCycle({commit}, payload) {
             const result = await ExerciseApi.getFromCycle(payload.cycleId, payload.page)
-            commit("setCycleLastPage", result.isLastPage)
+            commit("setCycleExercisesLastPage", result.isLastPage)
             console.log('result exercises', result)
             return result
         },
@@ -69,6 +70,20 @@ export default {
             commit('prevPageExercises');
             dispatch('getAllExercises')
             console.log('prevPageExercises', state.exercisePage)
+        },
+        async deleteExercise({dispatch, state, commit}, payload){
+            await ExerciseApi.delete(payload.id)
+            let bool = state.exerciseLastPage && state.exercises.content.length===1
+            console.log('bool', bool)
+            console.log('lastPage', state.exerciseLastPage)
+            console.log('length', state.exercises.content.length)
+            if(bool)
+                commit('prevPageExercises')
+            dispatch("getAllExercises")
+        },
+        async modifyExercise({dispatch}, payload){
+            await ExerciseApi.modify(payload.id, payload.name, payload.detail, payload.type)
+            dispatch('getAllExercises')
         }
 
     }

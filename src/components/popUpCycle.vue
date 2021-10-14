@@ -123,7 +123,7 @@ import {store} from "@/store";
 export default {
   name: "popUpCycle",
   components:{  },
-  props:['routineId'],
+  props:['routineId', 'title'],
   data: () => ({
     dialog:false,
     valid: true,

@@ -88,7 +88,6 @@ export default {
   methods: {
     async validate() {
       if (this.$refs.form.validate()) {
-        console.log('WTF')
         await store.dispatch('newExercise', {
           name: this.name,
           detail: this.detail,
