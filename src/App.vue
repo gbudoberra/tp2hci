@@ -49,8 +49,12 @@
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
           <v-col align="right" align-self="end" class="mr-5">
-            <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{ $store.state.security.username }}
+            <router-link to="/profile" style="text-decoration: none;">
+
+            <v-toolbar-title v-if="$store.state.security.isLoggedIn">
+              <v-icon x-large>person</v-icon>         {{ $store.state.security.username }}
             </v-toolbar-title>
+            </router-link>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
             <router-link style="text-decoration: none;" to="/login">
@@ -95,11 +99,6 @@ export default {
         rout: "/favorites",
         title: "Favorites",
         icon: "mdi-heart"
-      },
-      {
-        rout: "/profile",
-        title: "Profile",
-        icon: "person"
       },
       {
         rout: "/MyRoutines",

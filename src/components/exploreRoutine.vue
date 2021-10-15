@@ -22,7 +22,7 @@
                 <v-card-subtitle v-text="routine.detail">RDescription</v-card-subtitle>
 
                 <v-card-text>
-                  <div>Difficulty: {{ routine.difficulty }}</div>
+                  <div>{{ routine.difficulty }}</div>
                   <div>
                     <rating-stars :routine-rating="routine.score"></rating-stars>
                   </div>

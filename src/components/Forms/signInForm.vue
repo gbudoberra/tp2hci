@@ -140,7 +140,7 @@ export default {
     nameRules: [
       v => !!v || 'Name is required',
     ],
-    genders: ['Female', 'Male', 'Other'],
+    genders: ['female', 'male', 'other'],
     gender: 'other',
     passwordRules: [
       v => !!v || 'Password is required'
