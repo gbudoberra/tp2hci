@@ -23,11 +23,11 @@
 export default {
   name: "pageArrows",
   props: ['prevCondition', 'nextCondition'],
-  methods:{
-    prevPage(){
+  methods: {
+    prevPage() {
       this.$emit('prevPage')
     },
-    nextPage(){
+    nextPage() {
       this.$emit('nextPage')
     }
   }

@@ -8,7 +8,7 @@
         max-width="350"
     >
       <v-card color="white" height="600" rounded>
-        <v-card-title>{{title}}</v-card-title>
+        <v-card-title>{{ title }}</v-card-title>
         <v-form
             ref="form"
             v-model="valid"
@@ -104,19 +104,19 @@ import {store} from "../../store";
 
 export default {
   name: "popUpEditCycle",
-  props:['oldTitle', 'oldDetail', 'oldRepetitions', 'oldType', 'oldOrder','routineId','cycleId', 'title'],
+  props: ['oldTitle', 'oldDetail', 'oldRepetitions', 'oldType', 'oldOrder', 'routineId', 'cycleId', 'title'],
   data: () => ({
-    dialog:false,
+    dialog: false,
     valid: true,
     nameRules: [
       v => (!v || v.length <= 25) || 'Name must be less than 25 characters',
     ],
-    types: [ 'warmup', 'exercise', 'cooldown' ],
+    types: ['warmup', 'exercise', 'cooldown'],
     name: null,
     detail: null,
-    type:null,
+    type: null,
     repetitions: null,
-    order:null
+    order: null
   }),
   methods: {
     async validate() {
@@ -130,16 +130,16 @@ export default {
             type: this.type || this.$props.oldType,
             order: parseInt(this.order) || this.$props.oldOrder,
             repetitions: parseInt(this.repetitions) || this.$props.oldRepetitions,
-            metadata:null
+            metadata: null
           }
 
         })
-        this.dialog=false
+        this.dialog = false
         this.$emit('update')
       } else
         console.log('Rejected')
     },
-    reset () {
+    reset() {
       this.$refs.form.reset()
     },
   },

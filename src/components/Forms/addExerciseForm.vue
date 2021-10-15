@@ -80,7 +80,7 @@ export default {
     detailRules: [
       v => !!v || 'Detail is required',
     ],
-    items: [ 'exercise', 'rest' ],
+    items: ['exercise', 'rest'],
     name: null,
     detail: null,
     type: 'exercise'
@@ -97,7 +97,7 @@ export default {
       } else
         console.log('Rejected')
     },
-    reset () {
+    reset() {
       this.$refs.form.reset()
     },
   },
