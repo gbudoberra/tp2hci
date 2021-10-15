@@ -14,7 +14,7 @@
                     <v-col>
                         <v-card-title class="text-h4" v-text="title">RTitle</v-card-title>
                     </v-col>
-                    <v-col cols="3" align="end" align-self="center">
+                    <v-col align-self="center">
                         <v-row>
                             <v-col align-self="center">
                                 <fav-btn :routine-id="id"></fav-btn>

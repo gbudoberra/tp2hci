@@ -1,6 +1,9 @@
 <template>
   <v-btn
       @click="dialog=true"
+      outlined
+      x-large
+      rounded
   >
     <slot name="button"/>
     <v-dialog

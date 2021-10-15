@@ -9,7 +9,7 @@
       <v-col cols="1"/>
       <v-col>
         <routine-title-card :isMyRoutine="security.username===routines.routine.user.username"
-                            color-back="indigo lighten-5" :id="routines.routine.id"
+                            color-back="indigo lighten-4" :id="routines.routine.id"
                             :color="routines.routine.metadata.color" :detail="routines.routine.detail"
                             :title="routines.routine.name" :difficulty="routines.routine.difficulty"
                             :is-public="routines.routine.isPublic"></routine-title-card>
@@ -30,7 +30,7 @@
                      :prev-condition="cycles.cyclesPage!==0"/>
       </v-row>
       <v-row>
-        <v-col align="center" cols="10">
+        <v-col align="center" cols="11">
           <pop-up-cycle v-if="security.username===routines.routine.user.username" title="New Cycle"
                         :routineId="routines.routine.id"></pop-up-cycle>
         </v-col>

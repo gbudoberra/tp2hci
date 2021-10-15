@@ -6,10 +6,7 @@
       </v-col>
 
     </v-row>
-    <v-row>
-      <page-arrows :prev-condition="page!==0" :next-condition="!isLastPage" v-on:nextPage="nextPage"
-                   v-on:prevPage="prevPage"/>
-    </v-row>
+
     <v-row align="center"
            justify="center">
       <v-col cols="1"></v-col>
@@ -30,6 +27,10 @@
       </v-layout>
       <v-col cols="1"></v-col>
 
+    </v-row>
+    <v-row>
+      <page-arrows :prev-condition="page!==0" :next-condition="!isLastPage" v-on:nextPage="nextPage"
+                   v-on:prevPage="prevPage"/>
     </v-row>
   </v-container>
 

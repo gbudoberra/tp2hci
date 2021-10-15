@@ -4,44 +4,88 @@
       <v-col cols="1"></v-col>
       <v-col>
 
-  <routine-main-card color="grey lighten-2">
-    <template v-slot:body>
+        <routine-main-card color="indigo lighten-5">
+          <template v-slot:body>
 
             <v-container>
 
               <v-row>
 
 
+                <v-col cols="1">
+                  <v-btn fab outlined  disabled>{{order}}</v-btn>
+                </v-col>
                 <v-col>
-                  <v-card-title class="text-h5">{{ order }}. {{ title }}</v-card-title>
-                  <v-card-subtitle class="text-h6" v-text="detail">Detail</v-card-subtitle>
+                  <v-card-title class="text-h5">{{ title }}</v-card-title>
+                </v-col>
+                <v-col>
                   <v-card-subtitle class="text-h7" v-text="type">Type</v-card-subtitle>
+                </v-col>
+                <v-col>
                   <v-card-subtitle class="text-h7">Repetitions: {{ repetitions }}</v-card-subtitle>
                 </v-col>
-                <v-col align="end">
-                  <v-row>
-                    <v-col align="end" v-if="isMyRoutine">
+                <v-col align="end" v-if="isMyRoutine">
 
-                      <confirmation-pop-up v-on:confirmation="deleteCycle" msg="Remove cycle from this routine?">
-                        <template v-slot:button>
-                          <v-icon>delete</v-icon>
-                        </template>
-                      </confirmation-pop-up>
-                      <pop-up-edit-cycle title="Edit Cycle" :routine-id="routineId" :cycle-id="id"
-                                         :old-title="title" :old-detail="detail" :old-repetitions="repetitions"
-                                         :old-type="type" :old-order="order"
+
+
+                    <v-btn
+                        outlined
+                        x-large
+                        rounded
+                        @click="dialog=true"
+                    >
+                      <v-icon>delete</v-icon>
+                      <v-dialog
+                          v-model="dialog"
+                          max-width="350"
                       >
-                        <template v-slot:button>
-                          <v-icon>edit</v-icon>
-                        </template>
-                      </pop-up-edit-cycle>
+                        <v-card>
+                          <v-card-title class="text-h5">
+                            Remove cycle from this routine?
+                          </v-card-title>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
 
-                    </v-col>
+                            <v-btn
+                                color="green darken-1"
+                                text
+                                @click="deleteCycle"
+                            >
+                              YES
+                            </v-btn>
 
-                  </v-row>
+                            <v-btn
+                                color="red darken-1"
+                                text
+                                @click="dialog = false"
+                            >
+                              NO
+                            </v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+                    </v-btn>
+                    <pop-up-edit-cycle title="Edit Cycle" :routine-id="routineId" :cycle-id="id"
+                                       :old-title="title" :old-detail="detail" :old-repetitions="repetitions"
+                                       :old-type="type" :old-order="order"
+                    >
+                      <template v-slot:button>
+                        <v-icon>edit</v-icon>
+                      </template>
+                    </pop-up-edit-cycle>
 
-
+                  </v-col>
+              </v-row>
+              <v-row>
+                <v-col>
+                  <v-card-subtitle class="text-h6" v-text="detail">Detail</v-card-subtitle>
                 </v-col>
+              </v-row>
+
+
+
+
+                <v-row>
 
                 <!--          <v-col cols="5" align="end" align-self="center">-->
                 <v-container v-if="cycleExercises">
@@ -72,17 +116,18 @@ import ExerciseList from "./cardComplements/excersiceList"
 import {store} from "../store";
 import PopUpEditCycle from "./popUp/popUpEditCycle";
 
-import confirmationPopUp from "@/components/popUp/confirmationPopUp";
+
 // import {store} from "../store";
 // import storeE from '../store/modules/exercises'
 export default {
   name: "workoutBlock",
-  components: {PopUpEditCycle, RoutineMainCard, ExerciseList, confirmationPopUp},
+  components: {PopUpEditCycle, RoutineMainCard, ExerciseList},
   props: ['title', 'detail', 'id', 'repetitions', 'type', 'isMyRoutine', 'routineId', 'order'],
   data() {
     return {
       // loading: false,
-      cycleExercises: null
+      cycleExercises: null,
+      dialog: false
     }
   }
   ,
@@ -92,6 +137,7 @@ export default {
         routineId: this.$props.routineId,
         cycleId: this.$props.id
       })
+      this.dialog=false
     },
   },
   async created() {
