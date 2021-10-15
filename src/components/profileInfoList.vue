@@ -1,5 +1,7 @@
 <template>
   <v-list>
+
+    <v-divider inset></v-divider>
     <v-list-item>
       <v-list-item-icon>
         <v-icon color="indigo">
@@ -30,6 +32,8 @@
       <v-list-item-icon>
       </v-list-item-icon>
     </v-list-item>
+
+    <v-divider inset></v-divider>
 
 
   </v-list>

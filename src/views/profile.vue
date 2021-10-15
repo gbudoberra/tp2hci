@@ -1,7 +1,13 @@
 <template>
 
   <v-container align="center" v-if="!loading">
-    <v-container v-if="mainUser.user" fluid>
+    <div v-if="mainUser.user">
+      <v-row>
+        <v-col justify="center" align="center">
+          <h1 id="navigation-profile">Profile</h1>
+          <v-divider/>
+        </v-col>
+      </v-row>
       <v-row class="fill-height" justify="space-around">
         <v-col cols="4" align="center">
           <profile-avatar :user="mainUser.user"/>
@@ -10,7 +16,7 @@
           <v-row>
             <v-col>
               <v-card height="100%" align="center">
-                <v-card-title>My Information</v-card-title>
+                <v-card-title>Information</v-card-title>
                 <profile-info-list :email="mainUser.user.email" :phone="mainUser.user.phone"/>
               </v-card>
             </v-col>
@@ -94,7 +100,7 @@
           <full-exercise-list/>
         </v-col>
       </v-row>
-    </v-container>
+    </div>
 
   </v-container>
   <loading-bar v-else :loading="loading"/>
@@ -182,5 +188,7 @@ export default {
 </script>
 
 <style scoped>
-
+#navigation-profile {
+  font-size: xxx-large;
+}
 </style>

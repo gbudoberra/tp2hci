@@ -1,5 +1,11 @@
 <template>
   <v-container v-if="!loading">
+    <v-row>
+      <v-col justify="center" align="center">
+        <h1 id="navigation-myroutines">My Routines</h1>
+        <v-divider/>
+      </v-col>
+    </v-row>
     <v-row fluid v-for="routine in myRoutines.routines.content" :key="routine.id">
       <routine :routine="routine"/>
     </v-row>
@@ -75,5 +81,7 @@ export default {
 </script>
 
 <style scoped>
-
+#navigation-myroutines {
+  font-size: xxx-large;
+}
 </style>

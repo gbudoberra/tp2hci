@@ -1,5 +1,11 @@
 <template>
   <v-container v-if="!loading">
+    <v-row>
+      <v-col justify="center" align="center">
+        <h1 id="navigation-favorites">Favorites</h1>
+        <v-divider/>
+      </v-col>
+    </v-row>
     <v-row fluid v-for="routine in favs.routines.content" :key="routine.id">
       <routine :routine="routine"/>
     </v-row>
@@ -60,5 +66,7 @@ export default {
 </script>
 
 <style scoped>
-
+#navigation-favorites {
+  font-size: xxx-large;
+}
 </style>

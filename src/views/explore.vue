@@ -1,5 +1,11 @@
 <template>
   <v-container v-if="!loading">
+    <v-row>
+      <v-col justify="center" align="center">
+        <h1 id="navigation-explore">Explore</h1>
+        <v-divider/>
+      </v-col>
+    </v-row>
     <v-row fluid
            v-for="routine in routines.routines.content"
            :key="routine.id"
@@ -71,5 +77,7 @@ export default {
 </script>
 
 <style scoped>
-
+#navigation-explore {
+  font-size: xxx-large;
+}
 </style>

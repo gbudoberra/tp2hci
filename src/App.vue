@@ -136,7 +136,7 @@ export default {
 }
 
 #main-content {
-  background-color: #E0F2F1;
+  background-color: #FFFFFF;
 }
 
 #sideBarIcon {
