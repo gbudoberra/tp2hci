@@ -69,9 +69,9 @@
                 <v-col align="center">
                   <v-btn
                       class="secondary mr-4"
-                      @click="dialog=false"
+                      @click="reset()"
                   >
-                    Cancel
+                    Reset Form
                   </v-btn>
                 </v-col>
               </v-row>

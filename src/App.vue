@@ -10,33 +10,33 @@
       >
         <v-container>
           <v-list
-                  shaped>
+              shaped>
 
-          <v-list-item
-              v-for="item in menu"
-              :key="item.title"
-              link
-              :to=item.rout
+            <v-list-item
+                v-for="item in menu"
+                :key="item.title"
+                link
+                :to=item.rout
 
-          >
-            <v-list-item-content >
+            >
+              <v-list-item-content>
 
-              <v-container>
-                <v-row>
-                  <v-col cols="3" align="end" align-self="center">
-                    <v-icon color="black">{{ item.icon }}</v-icon>
-                  </v-col>
-                  <v-col align="start" align-self="center">
-                    <v-list-item-title class="text-h6">{{ item.title }}</v-list-item-title>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-divider></v-divider>
-                </v-row>
-              </v-container>
+                <v-container>
+                  <v-row>
+                    <v-col cols="3" align="end" align-self="center">
+                      <v-icon color="black">{{ item.icon }}</v-icon>
+                    </v-col>
+                    <v-col align="start" align-self="center">
+                      <v-list-item-title class="text-h6">{{ item.title }}</v-list-item-title>
+                    </v-col>
+                  </v-row>
+                  <v-row>
+                    <v-divider></v-divider>
+                  </v-row>
+                </v-container>
 
-            </v-list-item-content>
-          </v-list-item>
+              </v-list-item-content>
+            </v-list-item>
           </v-list>
 
         </v-container>
@@ -63,12 +63,12 @@
           </v-col>
           <v-col align="right" align-self="center" cols="2" v-if="!$store.state.security.isLoggedIn">
 
-              <v-btn rounded large to="/login">LOG IN</v-btn>
+            <v-btn rounded large to="/login">LOG IN</v-btn>
 
           </v-col>
           <v-col align="center" align-self="center" cols="2" v-if="!$store.state.security.isLoggedIn">
 
-              <v-btn class="accent white--text"  to="/signin" rounded large>SIGN UP</v-btn>
+            <v-btn class="accent white--text" to="/signin" rounded large>SIGN UP</v-btn>
 
           </v-col>
           <v-col align="right" align-self="center" cols="2" v-else>

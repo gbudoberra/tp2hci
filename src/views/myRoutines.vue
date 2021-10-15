@@ -11,7 +11,7 @@
     </v-row>
     <v-row>
       <v-col align="center" cols="10">
-        <pop-up-routine title="New Routine">
+        <pop-up-routine title="Create Routine">
           <template v-slot:formSlot>
             <create-routine-form/>
           </template>

@@ -79,7 +79,7 @@
                 <v-col align="center">
                     <v-btn
                         class="secondary mr-4"
-                        @click="reset"
+                        @click="reset()"
                     >
                         Reset Form
                     </v-btn>

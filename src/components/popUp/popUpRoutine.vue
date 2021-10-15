@@ -10,7 +10,7 @@
             x-large
             dark
             v-bind="attrs"
-            v-on="on" color="blue darken-4" fixed bottom rounded>
+            v-on="on" class="accent" fixed bottom rounded>
           {{ title }}
         </v-btn>
       </template>

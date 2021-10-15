@@ -9,7 +9,7 @@
       <v-col cols="1"/>
       <v-col>
         <routine-title-card :isMyRoutine="security.username===routines.routine.user.username"
-                            color-back="indigo lighten-4" :id="routines.routine.id"
+                            :id="routines.routine.id"
                             :color="routines.routine.metadata.color" :detail="routines.routine.detail"
                             :title="routines.routine.name" :difficulty="routines.routine.difficulty"
                             :is-public="routines.routine.isPublic"></routine-title-card>

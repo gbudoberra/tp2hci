@@ -64,8 +64,8 @@
       <p>Right here is where all your routines are stored. You can also create a new one by clicking on the
         <v-btn
             large
-            dark color="blue darken-4" rounded>
-          NEW ROUTINE
+            dark class="accent" rounded>
+          CREATE ROUTINE
         </v-btn>
         . (You can choose the color that is displayed to the left of the routine card!)
       </p>

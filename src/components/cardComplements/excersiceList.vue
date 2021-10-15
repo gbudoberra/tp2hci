@@ -1,12 +1,6 @@
 <template>
   <v-container v-if="exercises">
-    <v-row>
-      <v-col align="center">
-        <add-exercise-btn :cycleId="cycleId" v-on:updateExercises="updateExercises" v-if="isMyRoutine"/>
-      </v-col>
-
-    </v-row>
-
+    <add-exercise-btn :cycleId="cycleId" v-on:updateExercises="updateExercises" v-if="isMyRoutine"/>
     <v-row align="center"
            justify="center">
       <v-col cols="1"></v-col>

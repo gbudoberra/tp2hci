@@ -2,7 +2,6 @@
   <v-btn
       @click="dialog=true"
       outlined rounded
-
   >
     <slot name="button"/>
     <v-dialog

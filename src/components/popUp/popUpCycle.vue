@@ -4,7 +4,7 @@
         x-large
         dark
         @click="dialog=true"
-        color="blue darken-4" fixed bottom rounded>
+        class="accent" fixed bottom rounded>
       Add cycle
       <v-dialog
           v-model="dialog"
