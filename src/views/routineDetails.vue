@@ -6,8 +6,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="1"/>
-      <v-col>
+      <v-col class="offset-3" cols="6">
         <routine-title-card :isMyRoutine="security.username===routines.routine.user.username"
                             :id="routines.routine.id"
                             :color="routines.routine.metadata.color" :detail="routines.routine.detail"

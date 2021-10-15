@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col class="offset-1" cols="10">
-        <routine-main-card color="indigo lighten-5">
+        <routine-main-card class="forth">
           <template v-slot:body>
 
             <v-container>
