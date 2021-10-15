@@ -106,7 +106,7 @@ export default {
       v => !!v || 'Detail is required',
     ],
     items: ['rookie', 'beginner', 'intermediate', 'advanced', 'expert'],
-    colors: ['green', 'blue', 'red', 'orange', 'yellow'],
+    colors: ['teal', 'green', 'light-green', 'lime'],
     newName: null,
     newDetail: null,
     newDifficulty: null,
