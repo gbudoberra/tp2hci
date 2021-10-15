@@ -22,19 +22,21 @@
           <v-spacer></v-spacer>
 
           <v-btn
-              color="red darken-1"
+              rounded
+              class="accent"
               text
               @click="dialog = false"
           >
-            No
+            Stay
           </v-btn>
 
           <v-btn
-              color="green darken-1"
+              rounded
+              class="secondary"
               text
               @click="dialog = false; logoutBtn(); refresh();"
           >
-            Yes
+            Sign Out
           </v-btn>
         </v-card-actions>
       </v-card>

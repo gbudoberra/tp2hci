@@ -67,8 +67,7 @@
         <v-col align="center">
           <v-btn
               :disabled="!valid"
-              color="success"
-              class="mr-4"
+              class="accent mr-4"
               @click="validate"
           >
             Confirm
@@ -76,8 +75,7 @@
         </v-col>
         <v-col align="center">
           <v-btn
-              color="error"
-              class="mr-4"
+              class="secondary mr-4"
               @click="reset"
           >
             Reset Form

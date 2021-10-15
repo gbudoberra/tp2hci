@@ -3,6 +3,7 @@
     <v-btn
         @click="dialog=true"
         outlined rounded
+        class="accent white--text"
     >
       <slot name="button"/>
       <v-dialog
@@ -12,7 +13,7 @@
       >
 
 
-        <v-card color="white" height="500" rounded>
+        <v-card color="white" rounded>
           <v-card-title>{{ title }}</v-card-title>
           <v-form
               ref="form"
@@ -59,8 +60,7 @@
               <v-row>
                 <v-col align="center">
                   <v-btn
-                      color="success"
-                      class="mr-4"
+                      class="accent mr-4"
                       @click="validate"
                   >
                     Confirm
@@ -68,14 +68,14 @@
                 </v-col>
                 <v-col align="center">
                   <v-btn
-                      color="error"
-                      class="mr-4"
-                      @click="reset"
+                      class="secondary mr-4"
+                      @click="dialog=false"
                   >
-                    Reset Form
+                    Cancel
                   </v-btn>
                 </v-col>
               </v-row>
+
               <v-row>
                 <v-col>
                   <v-alert type="error"

@@ -25,9 +25,10 @@
                       v-bind="attrs"
                       v-on="on"
                       @click="getUser"
-
+                      rounded
+                      class="accent"
                   >
-                    Edit Profile
+                    <v-icon>edit</v-icon>
                   </v-btn>
                 </template>
                 <v-card>
@@ -61,10 +62,10 @@
                       </v-row>
                       <v-row>
                         <v-col align="center">
-                          <v-btn color="green" dark @click="validate(name, lastname, phone, avatarUrl)">Confirm</v-btn>
+                          <v-btn class="accent" dark @click="validate(name, lastname, phone, avatarUrl)">Confirm</v-btn>
                         </v-col>
                         <v-col align="center">
-                          <v-btn class="error" @click="dialog=false">Cancel</v-btn>
+                          <v-btn class="secondary" @click="dialog=false">Cancel</v-btn>
                         </v-col>
                       </v-row>
                       <v-alert type="error" v-if="errorCatch">
@@ -87,6 +88,7 @@
           </v-row>
         </v-col>
       </v-row>
+      <v-divider class="mt-5"/>
       <v-row>
         <v-col>
           <full-exercise-list/>

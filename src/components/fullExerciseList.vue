@@ -6,7 +6,7 @@
           </v-col>
           <v-col align-self="center" align="left">
             <pop-up-exercise title="New Exercise" :exercise-already-exists="false">
-              <template v-slot:button>
+              <template v-slot:button >
                 <v-icon>add</v-icon>
               </template>
             </pop-up-exercise>
