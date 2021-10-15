@@ -17,12 +17,16 @@
         <v-col cols="3" align="end" align-self="center">
           <v-row>
             <v-col align-self="center"><fav-btn :routine-id="id"></fav-btn></v-col>
-              <pop-up-edit-routine title="Edit Routine">
-                  <template v-slot:formSlot>
-                      <create-routine-form :routine-already-exists=true :id="id"
-                                           :title="title" :color="color" :difficulty="difficulty" :isPublic="isPublic"/>
-                  </template>
-              </pop-up-edit-routine>
+              <v-col align-self="center" v-if="isMyRoutine">
+                  <pop-up-edit-routine title="Edit Routine">
+                      <template v-slot:formSlot>
+                          <create-routine-form :routine-already-exists=true :id="id"
+                                               :title="title" :color="color" :difficulty="difficulty" :isPublic="isPublic"
+                          :detail="detail"/>
+                      </template>
+                  </pop-up-edit-routine>
+              </v-col>
+
 <!--            <v-col align-self="center" v-if="isMyRoutine"><v-btn outlined rounded x-large plain><v-icon>edit</v-icon></v-btn></v-col>-->
           </v-row>
         </v-col>

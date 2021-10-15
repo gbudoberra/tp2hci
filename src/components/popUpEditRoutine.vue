@@ -14,7 +14,7 @@
 
             <v-card color="white" height="600" rounded>
                 <v-card-title>{{title}}</v-card-title>
-                <slot name="formSlot">
+                <slot name="formSlot" v-on:dialog="dialog=false">
                     Form
                 </slot>
             </v-card>
