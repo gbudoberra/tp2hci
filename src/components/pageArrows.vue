@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row justify="center">
     <v-col cols="2">
       <v-btn :disabled="!prevCondition" class="ma-2" color="primary" @click="prevPage">
         <v-icon dark left>

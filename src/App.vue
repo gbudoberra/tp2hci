@@ -15,10 +15,9 @@
 
         <div v-for="item in menu" :key="item.title">
 
-        <v-row justify="space-around">
-          <v-col align-self="center" align="center"><v-icon>{{item.icon}}</v-icon></v-col>
-          <v-col align-self="center" align="start"><router-link :to=item.rout  id="sideBarIcon">{{ item.title }}</router-link></v-col>
-          <v-col></v-col>
+        <v-row>
+          <v-col cols="4" align="end"><v-icon>{{item.icon}}</v-icon></v-col>
+          <v-col align="start"><router-link :to=item.rout  id="sideBarIcon">{{ item.title }}</router-link></v-col>
         </v-row>
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
@@ -41,12 +40,12 @@
             <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{$store.state.security.username}}</v-toolbar-title>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
-            <router-link to="/login">
+            <router-link style="text-decoration: none;" to="/login">
               <v-btn rounded large>LOG IN</v-btn>
             </router-link>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
-            <router-link to="/signin">
+            <router-link style="text-decoration: none;" to="/signin">
               <v-btn color="#1E3163" class="white--text" rounded large>SIGN UP</v-btn>
             </router-link>
           </v-col>
@@ -120,7 +119,7 @@ export default {
 
 #sideBarIcon {
   font-size: large;
-  color: white;
+  color: black;
   alignment: center;
   text-decoration: none;
 }
@@ -128,11 +127,11 @@ export default {
 
 
 #nav a.router-link-exact-active {
-  color: lightskyblue;
+  color: white;
 }
 #sideBarIcon:hover{
   font-size: large;
-  color: lightskyblue;
+  color: white;
   alignment: center;
   text-decoration: blink underline;
   font-weight: bold;
