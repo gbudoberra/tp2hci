@@ -1,5 +1,5 @@
 <template>
-<v-container v-if="allExercises">
+<v-container v-if="!loading">
   <v-row>
     <v-col align="center">
       <v-col>
@@ -76,6 +76,7 @@
   </v-row>
   <page-arrows v-on:nextPage="nextPage" v-on:prevPage="prevPage" :prev-condition="allExercises.exercisePage!==0" :next-condition="allExercises.isRoutinesLast"/>
 </v-container>
+  <loading-bar v-else :loading="loading"/>
 </template>
 
 <script>
@@ -84,32 +85,48 @@ import {store} from "../store";
 import PopUpExercise from "./popUpExercise";
 import ConfirmationPopUp from "./confirmationPopUp";
 import PageArrows from "./pageArrows";
+import LoadingBar from "./loadingBar";
 
 export default {
   name: "fullExerciseList",
-  components: {PageArrows, ConfirmationPopUp, PopUpExercise},
+  components: {LoadingBar, PageArrows, ConfirmationPopUp, PopUpExercise},
   computed:{
     ...mapState({
       allExercises: 'exercises',
     })
   },
-  methods:{
-    newExercise(){
-        store.dispatch('newExercise', )
-    },
-    nextPage(){
-      store.dispatch('exerciseNextPage')
-    },
-    prevPage(){
-      store.dispatch("exercisePrevPage")
-    },
-    deleteExercise(id){
-      store.dispatch('deleteExercise', {id})
+  data() {
+    return {
+      loading: false
     }
   },
-  beforeMount() {
-      store.dispatch('getAllExercises');
-      console.log('getAllExercises')
+  methods:{
+    async newExercise(){
+      this.$data.loading = true
+        await store.dispatch('newExercise', )
+      this.$data.loading = false
+    },
+    async nextPage(){
+      this.$data.loading = true
+      await store.dispatch('exerciseNextPage')
+      this.$data.loading = false
+    },
+    async prevPage(){
+      this.$data.loading = true
+      await store.dispatch("exercisePrevPage")
+      this.$data.loading = false
+    },
+    async deleteExercise(id){
+      this.$data.loading = true
+      await store.dispatch('deleteExercise', {id})
+      this.$data.loading = false
+    }
+  },
+  async beforeMount() {
+    this.$data.loading = true
+      await store.dispatch('getAllExercises');
+      await console.log('getAllExercises')
+    this.$data.loading = false
   },
 }
 </script>

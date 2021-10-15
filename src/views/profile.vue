@@ -1,6 +1,6 @@
 <template>
 
-  <v-container align="center">
+  <v-container align="center" v-if="!loading">
     <v-container v-if="mainUser.user" fluid>
       <v-row class="fill-height">
         <v-col cols="4" align="center">
@@ -95,6 +95,7 @@
     </v-container>
 
   </v-container>
+  <loading-bar v-else :loading="loading"/>
 </template>
 
 <script>
@@ -104,9 +105,10 @@ import {mapState} from "vuex";
 import FullExerciseList from "../components/fullExerciseList";
 import ProfileInfoList from "../components/profileInfoList";
 import {store} from "../store";
+import LoadingBar from "../components/loadingBar";
 export default {
   name: "Profile",
-  components: {ProfileInfoList, FullExerciseList, ProfileAvatar},
+  components: {LoadingBar, ProfileInfoList, FullExerciseList, ProfileAvatar},
   computed: {
     ...mapState({
       mainUser: 'security',
@@ -114,6 +116,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       profileError: null,
       errorFunction: null,
       errorCatch: false,
@@ -134,14 +137,17 @@ export default {
   },
   methods:{
     async getUser(){
+      this.loading = true
       await store.dispatch('security/getCurrentUser')
       this.name=this.mainUser.user.firstName
       this.lastname=this.mainUser.user.lastName
       this.phone=this.mainUser.user.phone
       this.avatarUrl=this.mainUser.user.avatarUrl
+      this.loading = false
     },
     async validate(name, lastname, phone, avatarUrl) {
       try {
+        this.loading = true
         if (this.$refs.form.validate()) {
           let security = store.state.security
           await store.dispatch('security/updateProfile', {
@@ -151,6 +157,7 @@ export default {
             avatarUrl: avatarUrl|| security.user.avatarUrl,
           })
           this.$data.dialog = false
+          this.loading = false
       }
       }catch (error){
           console.log('Profile error', error)
@@ -165,8 +172,10 @@ export default {
     }
   },
   beforeMount() {
+    this.loading = true
     store.dispatch('security/getCurrentUser')
     console.log('getCurrentUser')
+    this.loading = false
 
   }
 }
