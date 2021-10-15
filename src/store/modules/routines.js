@@ -134,7 +134,10 @@ export default {
             console.log(result)
             console.log(state)
         },
-
-    }
+        async review({state},payload){
+            console.log(state.routine)
+            await RoutinesApi.review(payload.routineId,payload.rating);
+        }
+    },
 }
 

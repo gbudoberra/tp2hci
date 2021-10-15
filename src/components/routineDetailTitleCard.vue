@@ -19,12 +19,12 @@
 
                             <v-col align-self="center">
                                 <pop-up-edit-routine title="Edit Routine" v-if="isMyRoutine">
-                                    <template v-slot:formSlot>
-                                        <create-routine-form :routine-already-exists=true :id="id"
-                                                             :name="title" :color="color" :difficulty="difficulty"
-                                                             :isPublic="isPublic"
-                                                             :detail="detail"/>
-                                    </template>
+<!--                                    <template v-slot:formSlot>-->
+<!--                                        <create-routine-form :routine-already-exists=true :id="id"-->
+<!--                                                             :name="title" :color="color" :difficulty="difficulty"-->
+<!--                                                             :isPublic="isPublic"-->
+<!--                                                             :detail="detail"/>-->
+<!--                                    </template>-->
                                 </pop-up-edit-routine>
                             </v-col>
                             <v-col align-self="center">
@@ -32,8 +32,11 @@
                                 <v-icon>mdi-delete</v-icon>
                               </v-btn>
                             </v-col>
-                          <v-col align-self="center">
+                          <v-col align-self="center" cols="2">
                             <fav-btn :routine-id="id"></fav-btn>
+                          </v-col>
+                          <v-col align-self="center" cols="2">
+                            <pop-up-review :routine-id="id"/>
                           </v-col>
 
                         </v-row>
@@ -53,12 +56,13 @@ import ColorPill from "./cardComplements/colorPill";
 import FavBtn from "./cardComplements/favBtn";
 import RoutineMainCard from "./mainCard";
 import PopUpEditRoutine from "./popUp/popUpEditRoutine";
-import createRoutineForm from "./Forms/createRoutineForm";
+// import createRoutineForm from "./Forms/createRoutineForm";
 import {store} from "../store";
+import PopUpReview from "./popUp/popUpReview";
 
 export default {
     name: "routineDetailTitleCard",
-    components: {PopUpEditRoutine, RoutineMainCard, FavBtn, ColorPill, createRoutineForm},
+    components: {PopUpReview, PopUpEditRoutine, RoutineMainCard, FavBtn, ColorPill},
     props: ['color', 'title', 'id', 'colorBack', 'isMyRoutine', 'isPublic', 'detail', 'difficulty'],
     methods: {
         async deleteRoutine(id){

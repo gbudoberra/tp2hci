@@ -51,6 +51,9 @@ class RoutinesApi {
     static async delete(routineId, controller){
         return await Api.delete(this.getUrl(`routines/${routineId}`), true, controller)
     }
+    static async review(routineId, rating, controller){
+        await Api.post(this.getUrl(`reviews/${routineId}`), true, {review:"", score:rating}, controller)
+    }
 
 
 }
