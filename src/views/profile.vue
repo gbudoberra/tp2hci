@@ -40,7 +40,6 @@
                 <v-card>
                   <v-container>
                     <v-card-title>Edit Profile</v-card-title>
-                    <v-card-subtitle>(Don't want to edit a field? Leave blank)</v-card-subtitle>
 
 
                     <v-form ref="form"
@@ -63,7 +62,7 @@
                       </v-row>
                       <v-row>
                         <v-col>
-                          <v-text-field v-model="phone" type="number" label="Phone"></v-text-field>
+                          <v-text-field v-model="phone" label="Phone"></v-text-field>
                         </v-col>
                       </v-row>
                       <v-row>
@@ -151,7 +150,6 @@ export default {
       this.lastname = this.mainUser.user.lastName
       this.phone = this.mainUser.user.phone
       this.avatarUrl = this.mainUser.user.avatarUrl
-      this.loading = false
     },
     async validate(name, lastname, phone, avatarUrl) {
       try {
@@ -160,7 +158,7 @@ export default {
           await store.dispatch('security/updateProfile', {
             firstName: name || security.user.name,
             lastName: lastname || security.user.lastname,
-            phone: phone || security.user.phone,
+            phone: phone || security.user.phone || '',
             avatarUrl: avatarUrl || security.user.avatarUrl,
           })
           this.$data.dialog = false
