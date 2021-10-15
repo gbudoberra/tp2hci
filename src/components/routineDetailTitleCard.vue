@@ -14,10 +14,10 @@
                     <v-col>
                         <v-card-title class="text-h4" v-text="title">RTitle</v-card-title>
                     </v-col>
-                    <v-col align-self="center">
-                        <v-row>
+                    <v-col align-self="center" cols="6">
+                        <v-row justify="space-around">
 
-                            <v-col align-self="center" cols="2">
+                            <v-col align-self="center" cols="2" align="center">
                                 <pop-up-edit-routine title="Edit Routine" v-if="isMyRoutine" :routine-already-exists=true :id="id"
                                                      :name="title" :color="color" :difficulty="difficulty"
                                                      :isPublic="isPublic"
@@ -30,12 +30,12 @@
 <!--                                    </template>-->
                                 </pop-up-edit-routine>
                             </v-col>
-                            <v-col align-self="center" cols="2">
+                            <v-col align-self="center" cols="2" >
                               <v-btn @click="dialog=true" fab x-large plain v-if="isMyRoutine">
-                                <v-icon>mdi-delete</v-icon>
+                                <v-icon>delete</v-icon>
                                 <v-dialog v-model="dialog" width="unset">
                                   <v-card width="300">
-                                    <v-card-title>Delete Routine?</v-card-title>
+                                    <v-card-title>Remove routine?</v-card-title>
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
                                       <v-btn color="green darken-1" text @click="dialog = false; deleteRoutine(id)">YES</v-btn>
@@ -48,7 +48,7 @@
                           <v-col align-self="center" cols="2">
                             <fav-btn :routine-id="id"></fav-btn>
                           </v-col>
-                          <v-col align-self="center" align="center">
+                          <v-col align-self="center" align="end">
                             <pop-up-review :routine-id="id"/>
                           </v-col>
 

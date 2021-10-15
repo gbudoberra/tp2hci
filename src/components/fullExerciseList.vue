@@ -39,7 +39,7 @@
                         </template>
                       </pop-up-exercise>
                       <confirmation-pop-up v-on:confirmation="deleteExercise(exercise.id)"
-                                           msg="Delete exercise?">
+                                           msg="Remove exercise?">
                         <template v-slot:button>
                           <v-icon>delete</v-icon>
                         </template>
