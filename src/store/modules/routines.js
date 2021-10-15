@@ -76,11 +76,12 @@ export default {
             console.log(commit)
         return result
         },
-        async delete({getters, commit}, routine) {
+        async delete({commit}, routine) {
             await RoutinesApi.delete(routine.id)
-            const index = getters.findIndex(routine)
-            if (index >= 0)
-                commit('splice', index)
+            console.log(commit)
+            // const index = getters.findIndex(routine)
+            // if (index >= 0)
+            //     commit('splice', index)
         },
         async getRoutine({commit}, payload, controller) {
             const result = await RoutinesApi.get(payload.routineId, controller)
