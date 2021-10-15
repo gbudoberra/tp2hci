@@ -2,34 +2,46 @@
 
   <v-app id="inspire">
     <div id="nav">
-    <v-navigation-drawer
-        v-model="drawer"
-        app
-        class="primary"
-    >
-      <v-container>
+      <v-navigation-drawer
+          v-model="drawer"
+          app
+          class="secondary"
+      >
+        <v-container>
 
 
-        <v-row><v-col><v-divider></v-divider></v-col></v-row>
+          <v-row>
+            <v-col>
+              <v-divider></v-divider>
+            </v-col>
+          </v-row>
 
 
-        <div v-for="item in menu" :key="item.title">
+          <div v-for="item in menu" :key="item.title">
 
-        <v-row>
-          <v-col cols="4" align="end"><v-icon>{{item.icon}}</v-icon></v-col>
-          <v-col align="start"><router-link :to=item.rout  id="sideBarIcon">{{ item.title }}</router-link></v-col>
-        </v-row>
+            <v-row>
+              <v-col cols="4" align="end">
+                <v-icon>{{ item.icon }}</v-icon>
+              </v-col>
+              <v-col align="start">
+                <router-link :to=item.rout id="sideBarIcon">{{ item.title }}</router-link>
+              </v-col>
+            </v-row>
 
-        <v-row><v-col><v-divider></v-divider></v-col></v-row>
-        </div>
+            <v-row>
+              <v-col>
+                <v-divider></v-divider>
+              </v-col>
+            </v-row>
+          </div>
 
-      </v-container>
+        </v-container>
 
-    </v-navigation-drawer>
-      </div>
+      </v-navigation-drawer>
+    </div>
 
     <v-app-bar app
-    class="secondary">
+               class="secondary">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-container fluid>
         <v-row justify="space-between">
@@ -37,7 +49,8 @@
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
           <v-col align="right" align-self="end" class="mr-5">
-            <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{$store.state.security.username}}</v-toolbar-title>
+            <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{ $store.state.security.username }}
+            </v-toolbar-title>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
             <router-link style="text-decoration: none;" to="/login">
@@ -72,7 +85,7 @@ export default {
   components: {LogoutBtn},
   data: () => ({
     drawer: null,
-    menu:[
+    menu: [
       {
         rout: "/explore",
         title: "Explore",
@@ -125,11 +138,11 @@ export default {
 }
 
 
-
 #nav a.router-link-exact-active {
   color: white;
 }
-#sideBarIcon:hover{
+
+#sideBarIcon:hover {
   font-size: large;
   color: white;
   alignment: center;

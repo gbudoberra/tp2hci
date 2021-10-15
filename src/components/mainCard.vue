@@ -23,7 +23,7 @@ export default {
   data: () => ({
     transparent: 'rgba(255, 255, 255, 0)',
   }),
-  props: ['toLink', 'doHover','color']
+  props: ['toLink', 'doHover', 'color']
 }
 </script>
 
@@ -31,9 +31,11 @@ export default {
 .v-card {
   transition: opacity .4s ease-in-out;
 }
+
 .v-card:not(.on-hover) {
   opacity: 0.9;
 }
+
 .show-btns {
   color: rgba(255, 255, 255, 1) !important;
 }

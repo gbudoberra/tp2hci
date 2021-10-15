@@ -1,6 +1,6 @@
 <template>
 
-  <v-btn @click="goBack"  rounded color="blue darken-4" dark fixed large elevation="5">
+  <v-btn @click="goBack" rounded color="blue darken-4" dark fixed large elevation="5">
     <v-icon>
       arrow_back
     </v-icon>
@@ -11,7 +11,7 @@
 export default {
   name: "goBack",
   methods: {
-    goBack(){
+    goBack() {
       return this.$router.go(-1);
     }
   }

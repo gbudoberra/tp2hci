@@ -1,24 +1,24 @@
 <template>
-  <v-card rounded elevation="5" color="grey lighten-3" >
-    <v-container  >
+  <v-card rounded elevation="5" color="grey lighten-3">
+    <v-container>
       <v-row>
-            <v-card-title class="font-weight-bold">
-               {{order + '. ' + name}}
-            </v-card-title>
+        <v-card-title class="font-weight-bold">
+          {{ order + '. ' + name }}
+        </v-card-title>
 
         <v-card-text>
-          {{reps}} Repetitions
+          {{ reps }} Repetitions
         </v-card-text>
 
         <v-card-text>
-          Duration: {{duration}} s
+          Duration: {{ duration }} s
         </v-card-text>
       </v-row>
       <v-row>
 
         <v-col align="end">
 
-          <confirmation-pop-up v-on:confirmation="deleteCycleExercise" msg="Remove exercise from this cycle?" >
+          <confirmation-pop-up v-on:confirmation="deleteCycleExercise" msg="Remove exercise from this cycle?">
             <template v-slot:button>
               <v-icon>delete</v-icon>
             </template>
@@ -26,7 +26,6 @@
           <!--v-btn outlined rounded small><v-icon>edit</v-icon></v-btn-->
         </v-col>
       </v-row>
-
 
 
     </v-container>
@@ -42,15 +41,15 @@ import ConfirmationPopUp from "@/components/popUp/confirmationPopUp";
 export default {
   name: "exerciseVCard",
   props: ['name', 'reps', 'duration', 'order', 'id', 'cycleId', 'routineId'],
-  methods:{
-    async deleteCycleExercise(){
+  methods: {
+    async deleteCycleExercise() {
       console.log(this.$props.id)
-      await store.dispatch('deleteCycleExercise',{cycleId: this.$props.cycleId, exerciseId: this.$props.id})
-       this.$emit('delete')
+      await store.dispatch('deleteCycleExercise', {cycleId: this.$props.cycleId, exerciseId: this.$props.id})
+      this.$emit('delete')
 
     }
   },
-  components:{ConfirmationPopUp},
+  components: {ConfirmationPopUp},
 }
 </script>
 

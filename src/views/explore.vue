@@ -1,25 +1,26 @@
-
 <template>
   <v-container v-if="!loading">
-      <v-row fluid
-             v-for="routine in routines.routines.content"
-             :key="routine.id"
-      >
-        <explore-routine :routine="routine"/>
-      </v-row>
-    <page-arrows v-if="routines" v-on:nextPage="nextPageRoutines" v-on:prevPage="prevPageRoutines" :next-condition="!routines.isRoutinesLast" :prev-condition="routines.routinesPage!==0"/>
+    <v-row fluid
+           v-for="routine in routines.routines.content"
+           :key="routine.id"
+    >
+      <explore-routine :routine="routine"/>
+    </v-row>
+    <page-arrows v-if="routines" v-on:nextPage="nextPageRoutines" v-on:prevPage="prevPageRoutines"
+                 :next-condition="!routines.isRoutinesLast" :prev-condition="routines.routinesPage!==0"/>
   </v-container>
   <v-container v-else>
-      <loading-bar :loading="loading"/>
+    <loading-bar :loading="loading"/>
   </v-container>
 </template>
 
 <script>
 import ExploreRoutine from "../components/exploreRoutine";
-import { mapState } from 'vuex'
+import {mapState} from 'vuex'
 import {store} from "../store";
 import PageArrows from "../components/pageArrows";
 import LoadingBar from "../components/loadingBar";
+
 export default {
   name: "Explore",
   components: {LoadingBar, PageArrows, ExploreRoutine},
@@ -33,14 +34,14 @@ export default {
       loading: false
     }
   },
-  methods:{
-    async nextPageRoutines(){
+  methods: {
+    async nextPageRoutines() {
       this.$data.loading = true
-        await store.commit('nextPageRoutines')
-        await store.dispatch('getAllRoutines')
+      await store.commit('nextPageRoutines')
+      await store.dispatch('getAllRoutines')
       this.$data.loading = false
     },
-    async prevPageRoutines(){
+    async prevPageRoutines() {
       this.$data.loading = true
       await store.commit('prevPageRoutines')
       await store.dispatch('getAllRoutines')
