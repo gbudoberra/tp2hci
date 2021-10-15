@@ -3,7 +3,7 @@
     <v-btn
         v-if="$store.state.security.isLoggedIn"
         @click.stop="dialog = true"
-        color="#1E3163" class="white--text" rounded large
+        class="accent white--text" rounded large
     >
       <v-icon large>logout</v-icon>
       logout

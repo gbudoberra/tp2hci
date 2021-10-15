@@ -2,7 +2,7 @@
 <v-container v-if="!loading">
   <v-row>
           <v-col align-self="center" align="right">
-            <h1 class="text-h4">MyExercises</h1>
+            <h1 class="text-h4">My Exercises</h1>
           </v-col>
           <v-col align-self="center" align="left">
             <pop-up-exercise title="New Exercise" :exercise-already-exists="false">

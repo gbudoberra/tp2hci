@@ -5,7 +5,8 @@
       <v-navigation-drawer
           v-model="drawer"
           app
-          class="secondary"
+          clipped
+          class="primary"
       >
         <v-container>
 
@@ -41,18 +42,22 @@
     </div>
 
     <v-app-bar app
-               class="secondary">
+               clipped-left
+               class="primary">
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <v-container fluid>
         <v-row justify="space-between">
           <v-col align="left" align-self="center">
             <v-toolbar-title>TrainMe</v-toolbar-title>
           </v-col>
-          <v-col align="right" align-self="end" class="mr-5">
+          <v-col align="right" align-self="end">
             <router-link to="/profile" style="text-decoration: none;">
 
-            <v-toolbar-title v-if="$store.state.security.isLoggedIn">
-              <v-icon x-large>person</v-icon>         {{ $store.state.security.username }}
+            <v-toolbar-title class="black--text" v-if="$store.state.security.isLoggedIn">
+              <span id="profile">
+                <v-icon x-large>person</v-icon>
+                {{ $store.state.security.username }}
+              </span>
             </v-toolbar-title>
             </router-link>
           </v-col>
@@ -63,7 +68,7 @@
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
             <router-link style="text-decoration: none;" to="/signin">
-              <v-btn color="#1E3163" class="white--text" rounded large>SIGN UP</v-btn>
+              <v-btn class="accent white--text" rounded large>SIGN UP</v-btn>
             </router-link>
           </v-col>
           <v-col align="right" align-self="center" cols="2" v-else>
@@ -73,7 +78,7 @@
       </v-container>
     </v-app-bar>
 
-    <v-main>
+    <v-main id="main-content">
       <router-view :key="$route.path"/>
     </v-main>
   </v-app>
@@ -127,6 +132,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin-top: 60px;
+  background-color: #E0F2F1;
+}
+
+#main-content {
+  background-color: #E0F2F1;
 }
 
 #sideBarIcon {
@@ -135,7 +145,6 @@ export default {
   alignment: center;
   text-decoration: none;
 }
-
 
 #nav a.router-link-exact-active {
   color: white;
@@ -149,5 +158,19 @@ export default {
   font-weight: bold;
 }
 
+#profile {
+  font-size: x-large;
+  color: black;
+  alignment: center;
+  text-decoration: none;
+}
+
+#profile:hover {
+  font-size: x-large;
+  color: white;
+  alignment: center;
+  text-decoration: blink underline;
+  font-weight: bold;
+}
 
 </style>

@@ -35,7 +35,7 @@
         </v-row>
         <v-row>
           <v-col align="center">
-            <v-btn rounded color="#1E3163" class="white--text" :disabled="!valid" @click="validate">LOG IN</v-btn>
+            <v-btn rounded class="accent white--text" :disabled="!valid" @click="validate">LOG IN</v-btn>
           </v-col>
         </v-row>
         <v-row>
