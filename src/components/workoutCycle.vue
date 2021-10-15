@@ -45,7 +45,7 @@
 
                 <!--          <v-col cols="5" align="end" align-self="center">-->
                 <v-container v-if="cycleExercises">
-                  <exercise-list :cycleId="id" :routineId="routineId"></exercise-list>
+                  <exercise-list :cycleId="id" :routineId="routineId" :isMyRoutine="isMyRoutine"></exercise-list>
                 </v-container>
                 <!--          </v-col>-->
 
