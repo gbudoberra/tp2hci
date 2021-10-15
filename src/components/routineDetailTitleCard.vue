@@ -17,7 +17,7 @@
                     <v-col align-self="center">
                         <v-row>
 
-                            <v-col align-self="center">
+                            <v-col align-self="center" cols="2">
                                 <pop-up-edit-routine title="Edit Routine" v-if="isMyRoutine">
 <!--                                    <template v-slot:formSlot>-->
 <!--                                        <create-routine-form :routine-already-exists=true :id="id"-->
@@ -27,8 +27,8 @@
 <!--                                    </template>-->
                                 </pop-up-edit-routine>
                             </v-col>
-                            <v-col align-self="center">
-                              <v-btn @click="dialog=true" outlined rounded x-large plain v-if="isMyRoutine">
+                            <v-col align-self="center" cols="2">
+                              <v-btn @click="dialog=true" fab x-large plain v-if="isMyRoutine">
                                 <v-icon>mdi-delete</v-icon>
                                 <v-dialog v-model="dialog" width="unset">
                                   <v-card width="300">
@@ -45,7 +45,7 @@
                           <v-col align-self="center" cols="2">
                             <fav-btn :routine-id="id"></fav-btn>
                           </v-col>
-                          <v-col align-self="center" cols="2">
+                          <v-col align-self="center" align="center">
                             <pop-up-review :routine-id="id"/>
                           </v-col>
 

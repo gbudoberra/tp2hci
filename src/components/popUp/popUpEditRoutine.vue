@@ -6,8 +6,8 @@
             overlay-color="black"
         >
             <template v-slot:activator="{ on, attrs }">
-                <v-btn outlined
-                       rounded
+                <v-btn
+                       fab
                        x-large plain v-bind="attrs"
                        v-on="on"><v-icon>edit</v-icon></v-btn>
             </template>
