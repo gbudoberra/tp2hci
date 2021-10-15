@@ -18,7 +18,10 @@
                         <v-row>
 
                             <v-col align-self="center">
-                                <pop-up-edit-routine title="Edit Routine" v-if="isMyRoutine">
+                                <pop-up-edit-routine title="Edit Routine" v-if="isMyRoutine" :routine-already-exists=true :id="id"
+                                                     :name="title" :color="color" :difficulty="difficulty"
+                                                     :isPublic="isPublic"
+                                                     :detail="detail">
 <!--                                    <template v-slot:formSlot>-->
 <!--                                        <create-routine-form :routine-already-exists=true :id="id"-->
 <!--                                                             :name="title" :color="color" :difficulty="difficulty"-->
