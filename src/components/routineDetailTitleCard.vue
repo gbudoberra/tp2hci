@@ -44,8 +44,8 @@
 import ColorPill from "./cardComplements/colorPill";
 import FavBtn from "./cardComplements/favBtn";
 import RoutineMainCard from "./mainCard";
-import PopUpEditRoutine from "./popUpEditRoutine";
-import createRoutineForm from "./createRoutineForm";
+import PopUpEditRoutine from "./popUp/popUpEditRoutine";
+import createRoutineForm from "./Forms/createRoutineForm";
 export default {
   name: "routineDetailTitleCard",
   components: {PopUpEditRoutine, RoutineMainCard, FavBtn, ColorPill, createRoutineForm},

@@ -2,14 +2,15 @@
 
   <v-container align="center" v-if="!loading">
     <v-container v-if="mainUser.user" fluid>
-      <v-row class="fill-height">
+      <v-row class="fill-height" justify="space-around">
         <v-col cols="4" align="center">
           <profile-avatar :user="mainUser.user"/>
         </v-col>
-        <v-col align-self="center">
+        <v-col cols="4" align-self="center">
           <v-row>
             <v-col>
-              <v-card height="100%" align="center" >
+              <v-card height="100%" align="center">
+                <v-card-title>My Information</v-card-title>
                 <profile-info-list :email="mainUser.user.email" :phone="mainUser.user.phone" />
               </v-card>
             </v-col>
@@ -137,7 +138,6 @@ export default {
   },
   methods:{
     async getUser(){
-      this.loading = true
       await store.dispatch('security/getCurrentUser')
       this.name=this.mainUser.user.firstName
       this.lastname=this.mainUser.user.lastName
@@ -147,7 +147,6 @@ export default {
     },
     async validate(name, lastname, phone, avatarUrl) {
       try {
-        this.loading = true
         if (this.$refs.form.validate()) {
           let security = store.state.security
           await store.dispatch('security/updateProfile', {
@@ -157,7 +156,6 @@ export default {
             avatarUrl: avatarUrl|| security.user.avatarUrl,
           })
           this.$data.dialog = false
-          this.loading = false
       }
       }catch (error){
           console.log('Profile error', error)

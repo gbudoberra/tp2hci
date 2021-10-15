@@ -44,7 +44,7 @@ import {mapState} from "vuex";
 import WorkoutCycle from "../components/workoutCycle";
 import GoBack from "../components/goBack";
 import {store} from "../store";
-import PopUpCycle from "../components/popUpCycle";
+import PopUpCycle from "../components/popUp/popUpCycle";
 import PageArrows from "../components/pageArrows";
 import LoadingBar from "../components/loadingBar";
 export default {

@@ -71,7 +71,7 @@
                         class="mr-4"
                         @click="validate"
                     >
-                        Submit
+                        Confirm
                     </v-btn>
                 </v-col>
                 <v-col align="center">

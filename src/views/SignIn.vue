@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import SignInForm from "../components/signInForm";
+import SignInForm from "../components/Forms/signInForm";
 export default {
   name: "SignIn",
   components: {SignInForm},

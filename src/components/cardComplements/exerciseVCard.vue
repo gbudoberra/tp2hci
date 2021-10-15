@@ -37,7 +37,7 @@
 
 <script>
 import {store} from "@/store";
-import ConfirmationPopUp from "@/components/confirmationPopUp";
+import ConfirmationPopUp from "@/components/popUp/confirmationPopUp";
 
 export default {
   name: "exerciseVCard",

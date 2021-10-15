@@ -5,7 +5,7 @@
         @click.stop="dialog = true"
         color="#1E3163" class="white--text" rounded large
     >
-      <v-icon large>logout</v-icon>
+      <v-icon large>logout</v-icon>logout
 
     </v-btn>
 

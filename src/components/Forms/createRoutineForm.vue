@@ -74,7 +74,7 @@
                         class="mr-4"
                         @click="validate"
                     >
-                        Submit
+                        Confirm
                     </v-btn>
                 </v-col>
                 <v-col align="center">
@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import {store} from "../store";
+import {store} from "../../store";
 
 export default {
     props: ['name', 'detail', 'difficulty', 'isPublic', 'color', 'routineAlreadyExists', 'id'],

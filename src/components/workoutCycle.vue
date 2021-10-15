@@ -70,9 +70,9 @@
 import RoutineMainCard from "./mainCard";
 import ExerciseList from "./cardComplements/excersiceList"
 import {store} from "../store";
-import PopUpEditCycle from "./popUpEditCycle";
+import PopUpEditCycle from "./popUp/popUpEditCycle";
 
-import confirmationPopUp from "@/components/confirmationPopUp";
+import confirmationPopUp from "@/components/popUp/confirmationPopUp";
 // import {store} from "../store";
 // import storeE from '../store/modules/exercises'
 export default {

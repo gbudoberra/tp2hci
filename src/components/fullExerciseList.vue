@@ -82,8 +82,8 @@
 <script>
 import {mapState} from "vuex";
 import {store} from "../store";
-import PopUpExercise from "./popUpExercise";
-import ConfirmationPopUp from "./confirmationPopUp";
+import PopUpExercise from "./popUp/popUpExercise";
+import ConfirmationPopUp from "./popUp/confirmationPopUp";
 import PageArrows from "./pageArrows";
 import LoadingBar from "./loadingBar";
 
