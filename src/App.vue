@@ -9,32 +9,35 @@
           class="primary"
       >
         <v-container>
+          <v-list
+                  shaped>
 
+          <v-list-item
+              v-for="item in menu"
+              :key="item.title"
+              link
+              :to=item.rout
 
-          <v-row>
-            <v-col>
-              <v-divider></v-divider>
-            </v-col>
-          </v-row>
+          >
+            <v-list-item-content >
 
+              <v-container>
+                <v-row>
+                  <v-col cols="3" align="end" align-self="center">
+                    <v-icon color="black">{{ item.icon }}</v-icon>
+                  </v-col>
+                  <v-col align="start" align-self="center">
+                    <v-list-item-title class="text-h6">{{ item.title }}</v-list-item-title>
+                  </v-col>
+                </v-row>
+                <v-row>
+                  <v-divider></v-divider>
+                </v-row>
+              </v-container>
 
-          <div v-for="item in menu" :key="item.title">
-
-            <v-row>
-              <v-col cols="4" align="end">
-                <v-icon>{{ item.icon }}</v-icon>
-              </v-col>
-              <v-col align="start">
-                <router-link :to=item.rout id="sideBarIcon">{{ item.title }}</router-link>
-              </v-col>
-            </v-row>
-
-            <v-row>
-              <v-col>
-                <v-divider></v-divider>
-              </v-col>
-            </v-row>
-          </div>
+            </v-list-item-content>
+          </v-list-item>
+          </v-list>
 
         </v-container>
 
@@ -48,28 +51,25 @@
       <v-container fluid>
         <v-row justify="space-between">
           <v-col align="left" align-self="center">
-            <v-toolbar-title>TrainMe</v-toolbar-title>
+            <v-toolbar-title class="text-h4">TrainMe</v-toolbar-title>
           </v-col>
-          <v-col align="right" align-self="end">
-            <router-link to="/profile" style="text-decoration: none;">
+          <v-col align="right" align-self="center" v-if="$store.state.security.isLoggedIn">
+            <v-btn to="/profile" plain id="profile" rounded large :$btn-text-transform=false>
+              <v-icon x-large>person</v-icon>
+              {{ $store.state.security.username }}
 
-            <v-toolbar-title class="black--text" v-if="$store.state.security.isLoggedIn">
-              <span id="profile">
-                <v-icon x-large>person</v-icon>
-                {{ $store.state.security.username }}
-              </span>
-            </v-toolbar-title>
-            </router-link>
+            </v-btn>
+
           </v-col>
-          <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
-            <router-link style="text-decoration: none;" to="/login">
-              <v-btn rounded large>LOG IN</v-btn>
-            </router-link>
+          <v-col align="right" align-self="center" cols="2" v-if="!$store.state.security.isLoggedIn">
+
+              <v-btn rounded large to="/login">LOG IN</v-btn>
+
           </v-col>
-          <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
-            <router-link style="text-decoration: none;" to="/signin">
-              <v-btn class="accent white--text" rounded large>SIGN UP</v-btn>
-            </router-link>
+          <v-col align="center" align-self="center" cols="2" v-if="!$store.state.security.isLoggedIn">
+
+              <v-btn class="accent white--text"  to="/signin" rounded large>SIGN UP</v-btn>
+
           </v-col>
           <v-col align="right" align-self="center" cols="2" v-else>
             <logout-btn/>
@@ -159,17 +159,18 @@ export default {
 }
 
 #profile {
-  font-size: x-large;
+  font-size: large;
   color: black;
   alignment: center;
   text-decoration: none;
+
 }
 
 #profile:hover {
-  font-size: x-large;
+  font-size: large;
   color: white;
   alignment: center;
-  text-decoration: blink underline;
+  text-decoration: blink;
   font-weight: bold;
 }
 

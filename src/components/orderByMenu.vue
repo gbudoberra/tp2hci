@@ -38,7 +38,7 @@ export default {
   name: "filterOrderMenu",
   data() {
     return {
-      items: ['date','score', 'difficulty', 'category', 'name']
+      items: ['date','score', 'difficulty', 'name']
     }
   },
   props:['dispatchToUpdate'],
