@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import loginForm from "../components/loginForm";
+import loginForm from "../components/Forms/loginForm";
 // import {store} from "../store";
 export default {
     name: "Login",

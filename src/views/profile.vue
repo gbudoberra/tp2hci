@@ -137,7 +137,6 @@ export default {
   },
   methods:{
     async getUser(){
-      this.loading = true
       await store.dispatch('security/getCurrentUser')
       this.name=this.mainUser.user.firstName
       this.lastname=this.mainUser.user.lastName
@@ -147,7 +146,6 @@ export default {
     },
     async validate(name, lastname, phone, avatarUrl) {
       try {
-        this.loading = true
         if (this.$refs.form.validate()) {
           let security = store.state.security
           await store.dispatch('security/updateProfile', {
@@ -157,7 +155,6 @@ export default {
             avatarUrl: avatarUrl|| security.user.avatarUrl,
           })
           this.$data.dialog = false
-          this.loading = false
       }
       }catch (error){
           console.log('Profile error', error)

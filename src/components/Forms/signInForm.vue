@@ -115,7 +115,7 @@
 </template>
 
 <script>
-import {store} from "../store";
+import {store} from "../../store";
 // import ErrorPopUp from "./errorPopUp";
 
 export default {

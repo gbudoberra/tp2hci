@@ -93,7 +93,7 @@
 </template>
 
 <script>
-import {store} from "../store";
+import {store} from "../../store";
 
 export default {
     props: ['name', 'detail', 'difficulty', 'isPublic', 'color', 'routineAlreadyExists', 'id'],

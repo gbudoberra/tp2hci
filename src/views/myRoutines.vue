@@ -24,8 +24,8 @@ import {store} from "../store";
 import Routine from "../components/routine";
 
 import {mapState} from "vuex";
-import CreateRoutineForm from "../components/createRoutineForm";
-import PopUpRoutine from "../components/popUpRoutine";
+import CreateRoutineForm from "../components/Forms/createRoutineForm";
+import PopUpRoutine from "../components/popUp/popUpRoutine";
 import PageArrows from "../components/pageArrows";
 import LoadingBar from "../components/loadingBar";
 

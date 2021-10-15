@@ -49,7 +49,7 @@
               <v-btn color="#1E3163" class="white--text" rounded large>SIGN UP</v-btn>
             </router-link>
           </v-col>
-          <v-col align="right" align-self="center" cols="1" v-else>
+          <v-col align="right" align-self="center" cols="2" v-else>
             <logout-btn/>
           </v-col>
         </v-row>
