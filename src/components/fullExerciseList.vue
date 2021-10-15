@@ -74,7 +74,7 @@
     </v-layout>
 
   </v-row>
-  <page-arrows v-on:nextPage="nextPage" v-on:prevPage="prevPage" :prev-condition="allExercises.exercisePage!==0" :next-condition="allExercises.isRoutinesLast"/>
+  <page-arrows v-on:nextPage="nextPage" v-on:prevPage="prevPage" :prev-condition="allExercises.exercisePage!==0" :next-condition="!allExercises.exerciseLastPage"/>
 </v-container>
   <loading-bar v-else :loading="loading"/>
 </template>
