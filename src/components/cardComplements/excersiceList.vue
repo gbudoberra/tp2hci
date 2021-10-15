@@ -2,7 +2,7 @@
   <v-container v-if="exercises">
     <v-row>
       <v-col align="center">
-        <add-exercise-btn :cycleId="cycleId" v-on:updateExercises="updateExercises"/>
+        <add-exercise-btn :cycleId="cycleId" v-on:updateExercises="updateExercises" v-if="isMyRoutine"/>
       </v-col>
 
     </v-row>
@@ -45,7 +45,7 @@ import PageArrows from "../pageArrows";
 export default {
   name: "exerciseList",
   components: {PageArrows, ExerciseVCard, AddExerciseBtn},
-  props: ['cycleId', 'routineId'],
+  props: ['cycleId', 'routineId', 'isMyRoutine'],
   data() {
     return {
       page: 0,
