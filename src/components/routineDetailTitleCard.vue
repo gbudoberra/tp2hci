@@ -28,8 +28,18 @@
                                 </pop-up-edit-routine>
                             </v-col>
                             <v-col align-self="center">
-                              <v-btn @click="deleteRoutine(id)" outlined rounded x-large plain v-if="isMyRoutine">
+                              <v-btn @click="dialog=true" outlined rounded x-large plain v-if="isMyRoutine">
                                 <v-icon>mdi-delete</v-icon>
+                                <v-dialog v-model="dialog" width="unset">
+                                  <v-card width="300">
+                                    <v-card-title>Delete Routine?</v-card-title>
+                                    <v-card-actions>
+                                      <v-spacer></v-spacer>
+                                      <v-btn color="green darken-1" text @click="dialog = false; deleteRoutine(id)">YES</v-btn>
+                                      <v-btn color="red darken-1" text @click="dialog = false">NO</v-btn>
+                                    </v-card-actions>
+                                  </v-card>
+                                </v-dialog>
                               </v-btn>
                             </v-col>
                           <v-col align-self="center" cols="2">
@@ -63,14 +73,19 @@ import PopUpReview from "./popUp/popUpReview";
 export default {
     name: "routineDetailTitleCard",
     components: {PopUpReview, PopUpEditRoutine, RoutineMainCard, FavBtn, ColorPill},
-    props: ['color', 'title', 'id', 'colorBack', 'isMyRoutine', 'isPublic', 'detail', 'difficulty'],
+    props: ['color', 'title', 'id', 'isMyRoutine', 'isPublic', 'detail', 'difficulty'],
     methods: {
         async deleteRoutine(id){
             console.log(id)
             await store.dispatch('delete', {id: id})
             return this.$router.go(-1);
         }
+    },
+  data() {
+    return {
+      dialog: false
     }
+  }
 }
 </script>
 
