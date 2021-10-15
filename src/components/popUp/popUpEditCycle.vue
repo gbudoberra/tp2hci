@@ -4,6 +4,7 @@
       outlined
       x-large
       rounded
+      class="accent white--text"
   >
     <slot name="button"/>
     <v-dialog

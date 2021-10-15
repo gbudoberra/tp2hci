@@ -7,7 +7,9 @@
       </v-col>
     </v-row>
     <v-row fluid v-for="routine in myRoutines.routines.content" :key="routine.id">
-      <routine :routine="routine"/>
+      <v-col cols="6">
+        <routine :routine="routine"/>
+      </v-col>
     </v-row>
     <v-row>
       <v-col align="center" cols="10">
