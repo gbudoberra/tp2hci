@@ -4,7 +4,7 @@
       <v-col cols="1"></v-col>
       <v-col>
 
-  <routine-main-card color="indigo lighten-4">
+  <routine-main-card color="grey lighten-2">
     <template v-slot:body>
 
       <v-container>

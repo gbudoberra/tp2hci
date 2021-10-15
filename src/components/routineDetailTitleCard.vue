@@ -1,5 +1,5 @@
 <template>
-<routine-main-card :color="colorBack">
+<routine-main-card>
   <template v-slot:body>
 
     <v-container>
@@ -18,16 +18,8 @@
           <v-row>
             <v-col align-self="center"><fav-btn :routine-id="id"></fav-btn></v-col>
               <v-col align-self="center" v-if="isMyRoutine">
-                  <pop-up-edit-routine title="Edit Routine">
-                      <template v-slot:formSlot>
-                          <create-routine-form :routine-already-exists=true :id="id"
-                                               :title="title" :color="color" :difficulty="difficulty" :isPublic="isPublic"
-                          :detail="detail"/>
-                      </template>
-                  </pop-up-edit-routine>
+                  <pop-up-edit-routine title="Edit Routine" :routine-already-exists=true :id="id" :name="title" :color="color" :difficulty="difficulty" :isPublic="isPublic" :detail="detail"/>
               </v-col>
-
-<!--            <v-col align-self="center" v-if="isMyRoutine"><v-btn outlined rounded x-large plain><v-icon>edit</v-icon></v-btn></v-col>-->
           </v-row>
         </v-col>
         <v-col cols="1"></v-col>
@@ -45,10 +37,9 @@ import ColorPill from "./cardComplements/colorPill";
 import FavBtn from "./cardComplements/favBtn";
 import RoutineMainCard from "./mainCard";
 import PopUpEditRoutine from "./popUp/popUpEditRoutine";
-import createRoutineForm from "./Forms/createRoutineForm";
 export default {
   name: "routineDetailTitleCard",
-  components: {PopUpEditRoutine, RoutineMainCard, FavBtn, ColorPill, createRoutineForm},
+  components: {PopUpEditRoutine, RoutineMainCard, FavBtn, ColorPill},
   props:['color', 'title', 'id','colorBack', 'isMyRoutine', 'isPublic', 'detail', 'difficulty']
 }
 </script>
