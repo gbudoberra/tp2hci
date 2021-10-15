@@ -13,6 +13,12 @@
       </v-col>
       <page-arrows v-on:nextPage="nextPageRoutines" v-on:prevPage="prevPageRoutines" :next-condition="!myRoutines.isRoutinesLast" :prev-condition="myRoutines.routinesPage!==0"/>
     </v-row>
+    <v-row>
+      <v-col cols="11"/>
+      <v-col>
+        <order-by-menu dispatch-to-update="getMyRoutines"/>
+      </v-col>
+    </v-row>
   </v-container>
   <v-container v-else>
     <loading-bar :loading="loading"/>
@@ -22,7 +28,7 @@
 <script>
 import {store} from "../store";
 import Routine from "../components/routine";
-
+import OrderByMenu from "../components/orderByMenu"
 import {mapState} from "vuex";
 import CreateRoutineForm from "../components/Forms/createRoutineForm";
 import PopUpRoutine from "../components/popUp/popUpRoutine";
@@ -64,7 +70,7 @@ export default {
     console.log('getAllMyRoutines')
     this.$data.loading = false
   },
-  components: {LoadingBar, PageArrows, PopUpRoutine, Routine, CreateRoutineForm}
+  components: {OrderByMenu, LoadingBar, PageArrows, PopUpRoutine, Routine, CreateRoutineForm}
 }
 </script>
 

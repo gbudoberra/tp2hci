@@ -6,13 +6,24 @@ export default {
 
     state:{
         routines: [],
+        orderBy: 'date',
+        direction: 'desc',
+        filter: null,
         routinesPage: 0,
         isRoutinesLast: false,
         favorites: [],
         routine: null
-
     },
     mutations: {
+        setOrderBy(state, orderBy){
+            state.orderBy = orderBy
+        },
+        setFilter(state, filter){
+            state.filter = filter
+        },
+        setDirection(state, direc){
+            state.direction = direc
+        },
         setFavs(state, result){
             state.favorites=result
         },
@@ -90,13 +101,13 @@ export default {
             // return result
         },
         async getAllRoutines({commit, state}, controller) {
-            const result = await RoutinesApi.getAll(state.routinesPage, controller)
+            const result = await RoutinesApi.getAll(state.routinesPage, state.orderBy, state.direction, controller)
             commit('replaceAll', result)
             commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)
         },
         async getMyRoutines({commit, state},controller){
-            const result = await RoutinesApi.getMyRoutines(state.routinesPage, controller)
+            const result = await RoutinesApi.getMyRoutines(state.routinesPage, state.orderBy, state.direction, controller)
             commit('replaceAll', result)
             commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)
@@ -104,7 +115,7 @@ export default {
 
 
         async getAllFavorites({commit, state}, controller) {
-            const result = await RoutinesApi.getAllFavorites(state.routinesPage, controller)
+            const result = await RoutinesApi.getAllFavorites(state.routinesPage, state.orderBy, state.direction, controller)
             commit('replaceAll', result)
             commit('setRoutinesLastPage', result.isLastPage)
             console.log('result',result)

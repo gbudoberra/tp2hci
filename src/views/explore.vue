@@ -8,6 +8,15 @@
     </v-row>
     <page-arrows v-if="routines" v-on:nextPage="nextPageRoutines" v-on:prevPage="prevPageRoutines"
                  :next-condition="!routines.isRoutinesLast" :prev-condition="routines.routinesPage!==0"/>
+    <v-row>
+      <v-col cols="11"/>
+      <v-col>
+        <order-by-menu dispatch-to-update="getAllRoutines"/>
+      </v-col>
+<!--      <v-col>-->
+<!--        <filter-menu dispatch-to-update="getAllRoutines"/>-->
+<!--      </v-col>-->
+    </v-row>
   </v-container>
   <v-container v-else>
     <loading-bar :loading="loading"/>
@@ -20,10 +29,12 @@ import {mapState} from 'vuex'
 import {store} from "../store";
 import PageArrows from "../components/pageArrows";
 import LoadingBar from "../components/loadingBar";
+import OrderByMenu from "../components/orderByMenu";
+// import FilterMenu from "../components/cardComplements/filterMenu";
 
 export default {
   name: "Explore",
-  components: {LoadingBar, PageArrows, ExploreRoutine},
+  components: { OrderByMenu, LoadingBar, PageArrows, ExploreRoutine},
   computed: {
     ...mapState({
       routines: 'routines',
