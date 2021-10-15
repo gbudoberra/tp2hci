@@ -18,7 +18,7 @@
                 <v-card-subtitle v-text="routine.detail">RDescription</v-card-subtitle>
 
                 <v-card-text>
-                  <div>Difficulty: {{ routine.difficulty }}</div>
+                  <div>{{ routine.difficulty }}</div>
 
                 </v-card-text>
 
