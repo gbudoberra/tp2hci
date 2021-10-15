@@ -1,7 +1,15 @@
 <template>
   <v-row justify="space-around">
-    <v-col align-self="center" align="center"><v-icon><slot name="icon"/></v-icon></v-col>
-    <v-col align-self="center" align="start"><router-link  id="sideBarIcon"><slot name="title"/></router-link></v-col>
+    <v-col align-self="center" align="center">
+      <v-icon>
+        <slot name="icon"/>
+      </v-icon>
+    </v-col>
+    <v-col align-self="center" align="start">
+      <router-link id="sideBarIcon">
+        <slot name="title"/>
+      </router-link>
+    </v-col>
     <v-col></v-col>
   </v-row>
 </template>
@@ -22,11 +30,11 @@ export default {
 }
 
 
-
 #nav a.router-link-exact-active {
   color: lightskyblue;
 }
-#sideBarIcon:hover{
+
+#sideBarIcon:hover {
   font-size: large;
   color: lightskyblue;
   alignment: center;

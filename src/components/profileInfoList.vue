@@ -8,7 +8,7 @@
       </v-list-item-icon>
 
       <v-list-item-content>
-        <v-list-item-title>{{phone}}</v-list-item-title>
+        <v-list-item-title>{{ phone }}</v-list-item-title>
       </v-list-item-content>
 
       <v-list-item-icon>
@@ -25,12 +25,11 @@
       </v-list-item-icon>
 
       <v-list-item-content>
-        <v-list-item-title>{{email}}</v-list-item-title>
+        <v-list-item-title>{{ email }}</v-list-item-title>
       </v-list-item-content>
       <v-list-item-icon>
       </v-list-item-icon>
     </v-list-item>
-
 
 
   </v-list>
@@ -40,13 +39,13 @@
 export default {
   name: "profileInfoList",
   props: ['email', 'phone'],
-  methods:{
-    updateProfile(){
+  methods: {
+    updateProfile() {
 
     }
   },
   data() {
-    return { newPhone: null}
+    return {newPhone: null}
   }
 }
 </script>

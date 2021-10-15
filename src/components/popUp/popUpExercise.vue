@@ -2,7 +2,7 @@
   <v-container>
     <v-btn
         @click="dialog=true"
-        >
+    >
       <slot name="button"/>
       <v-dialog
           v-model="dialog"
@@ -12,7 +12,7 @@
 
 
         <v-card color="white" height="500" rounded>
-          <v-card-title>{{title}}</v-card-title>
+          <v-card-title>{{ title }}</v-card-title>
           <v-form
               ref="form"
               v-model="valid"
@@ -81,7 +81,7 @@
                            v-model="alert"
                            dismissible
                   >
-                    {{this.errorMsg}}
+                    {{ this.errorMsg }}
                   </v-alert>
                 </v-col>
 
@@ -103,68 +103,68 @@ import {store} from "../../store";
 
 export default {
   name: "popUpExercise",
-  components:{  },
-  props:['title', 'exerciseAlreadyExists', 'name', 'detail', 'type', 'id'],
+  components: {},
+  props: ['title', 'exerciseAlreadyExists', 'name', 'detail', 'type', 'id'],
   data: () => ({
-    dialog:false,
+    dialog: false,
     valid: true,
     nameRules: [
       v => !!v || 'Name is required',
       v => (v && v.length <= 25) || 'Name must be less than 25 characters',
     ],
-    nameRules1:[
+    nameRules1: [
       v => (!v || v.length <= 25) || 'Name must be less than 25 characters',
     ],
     detailRules: [
       v => !!v || 'Detail is required',
     ],
-    typeRules:[
+    typeRules: [
       v => !!v || 'Type is required',
     ],
-    items: [ 'exercise','rest' ],
+    items: ['exercise', 'rest'],
     newName: null,
     newDetail: null,
-    newType:null,
-    alert:false,
+    newType: null,
+    alert: false,
     errorMsg: null,
   }),
-    methods: {
-      async validate() {
-        if (this.$refs.form.validate()) {
-          try {
-            this.alert = false
-            if (this.$props.exerciseAlreadyExists) {
-              await store.dispatch('modifyExercise', {
-                id: this.$props.id,
-                name: this.$data.newName || this.$props.name,
-                detail: this.$data.newDetail || this.$props.detail,
-                type: this.$data.newType || this.$props.type,
-              })
-            } else {
-              await store.dispatch('newExercise', {
-                name: this.newName,
-                detail: this.newDetail,
-                type: this.newType
-              })
-            }
-          }catch(error){
-            console.log(error)
-            if (error.code === 2) {
-              if (error.details[0] === ("UNIQUE constraint failed: Exercise.userId, Exercise.name")) {
-                this.$data.errorMsg = 'Exercise ' + this.newName + ' already exists'
-                this.$data.alert = true
-              }
+  methods: {
+    async validate() {
+      if (this.$refs.form.validate()) {
+        try {
+          this.alert = false
+          if (this.$props.exerciseAlreadyExists) {
+            await store.dispatch('modifyExercise', {
+              id: this.$props.id,
+              name: this.$data.newName || this.$props.name,
+              detail: this.$data.newDetail || this.$props.detail,
+              type: this.$data.newType || this.$props.type,
+            })
+          } else {
+            await store.dispatch('newExercise', {
+              name: this.newName,
+              detail: this.newDetail,
+              type: this.newType
+            })
+          }
+        } catch (error) {
+          console.log(error)
+          if (error.code === 2) {
+            if (error.details[0] === ("UNIQUE constraint failed: Exercise.userId, Exercise.name")) {
+              this.$data.errorMsg = 'Exercise ' + this.newName + ' already exists'
+              this.$data.alert = true
             }
           }
-          if(!this.alert)
-            this.dialog=false
-        } else
-          console.log('Rejected')
-      },
-      reset() {
-        this.$refs.form.reset()
-      },
-    }
+        }
+        if (!this.alert)
+          this.dialog = false
+      } else
+        console.log('Rejected')
+    },
+    reset() {
+      this.$refs.form.reset()
+    },
+  }
 }
 </script>
 

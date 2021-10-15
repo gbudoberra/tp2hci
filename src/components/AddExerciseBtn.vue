@@ -71,7 +71,7 @@
                            v-model="alert"
                            dismissible
                   >
-                    {{this.errorMsg}}
+                    {{ this.errorMsg }}
                   </v-alert>
                 </v-col>
 
@@ -99,7 +99,8 @@
                       </v-btn>
                     </div>
                     <div>
-                      <v-btn class="ma-2" color="blue lighten-3" dark @click="nextPage" v-show="!exercises.exerciseLastPage">
+                      <v-btn class="ma-2" color="blue lighten-3" dark @click="nextPage"
+                             v-show="!exercises.exerciseLastPage">
                         Next
                         <v-icon dark right>
                           mdi-arrow-right
@@ -110,7 +111,7 @@
                 </v-col>
               </v-col>
             </v-row>
-            <v-row >
+            <v-row>
               <v-layout>
                 <v-flex>
                   <v-container fluid grid-list-md>
@@ -122,13 +123,14 @@
                           v-for="exercise in exercises.exercises.content" v-bind:key="exercise.id"
                       >
 
-                        <v-card height="100%" class="elevation-5 flexCard" :disabled="!valid" @click="validate(exercise.id,exercise.name)">
+                        <v-card height="100%" class="elevation-5 flexCard" :disabled="!valid"
+                                @click="validate(exercise.id,exercise.name)">
                           <v-col cols="8">
 
 
-                            <v-card-title class="Padding">{{exercise.name}}</v-card-title>
-                            <v-card-subtitle class="Padding">{{exercise.detail}}</v-card-subtitle>
-                            <v-card-text class="Padding">Type: {{exercise.type}}</v-card-text>
+                            <v-card-title class="Padding">{{ exercise.name }}</v-card-title>
+                            <v-card-subtitle class="Padding">{{ exercise.detail }}</v-card-subtitle>
+                            <v-card-text class="Padding">Type: {{ exercise.type }}</v-card-text>
 
 
                           </v-col>
@@ -162,62 +164,62 @@ import {mapState} from "vuex";
 
 export default {
   name: "AddExerciseBtn",
-  props:[ 'cycleId'],
-  components:{},
-  computed:{
+  props: ['cycleId'],
+  components: {},
+  computed: {
     ...mapState({
       exercises: 'exercises'
     })
   },
-  data:()=>({
+  data: () => ({
     dialog: false,
-    repetitions:null,
-    duration:null,
-    order:null,
-    valid:true,
-    alert:false,
+    repetitions: null,
+    duration: null,
+    order: null,
+    valid: true,
+    alert: false,
     errorMsg: null,
   }),
-  methods:{
-    nextPage(){
+  methods: {
+    nextPage() {
       store.dispatch('exerciseNextPage')
     },
-    prevPage(){
+    prevPage() {
       store.dispatch("exercisePrevPage")
     },
     async addCycleExercise(exerciseId) {
-      await store.dispatch('addCycleExercise',{
+      await store.dispatch('addCycleExercise', {
         cycleId: this.$props.cycleId,
         exerciseId: exerciseId,
         body: {
           repetitions: parseInt(this.repetitions),
           order: parseInt(this.order),
-        duration: parseInt(this.duration)}
+          duration: parseInt(this.duration)
+        }
 
       })
 
     },
-    async validate(exerciseId,exerciseName) {
+    async validate(exerciseId, exerciseName) {
       if (this.$refs.form.validate()) {
-        try{
-          this.alert=false
-        await this.addCycleExercise(exerciseId)
-        this.$emit('updateExercises')}
-
-        catch(error) {
+        try {
+          this.alert = false
+          await this.addCycleExercise(exerciseId)
+          this.$emit('updateExercises')
+        } catch (error) {
           console.log(error)
           if (error.code === 2) {
-            if(error.details[0]===("UNIQUE constraint failed: Cycle_Exercise.cycleId, Cycle_Exercise.order")){
-              this.$data.errorMsg = 'Order '+ this.order + ' already exists'
+            if (error.details[0] === ("UNIQUE constraint failed: Cycle_Exercise.cycleId, Cycle_Exercise.order")) {
+              this.$data.errorMsg = 'Order ' + this.order + ' already exists'
               this.$data.alert = true
-            }else if(error.details[0]==="UNIQUE constraint failed: Cycle_Exercise.cycleId, Cycle_Exercise.exerciseId"){
-              this.$data.errorMsg = 'Exercise '+ exerciseName + ' already exists'
+            } else if (error.details[0] === "UNIQUE constraint failed: Cycle_Exercise.cycleId, Cycle_Exercise.exerciseId") {
+              this.$data.errorMsg = 'Exercise ' + exerciseName + ' already exists'
               this.$data.alert = true
-            }
             }
           }
-          if(!this.alert)
-            this.dialog=false
+        }
+        if (!this.alert)
+          this.dialog = false
 
       } else
         console.log('Rejected')

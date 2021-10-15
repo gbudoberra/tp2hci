@@ -1,13 +1,14 @@
 <template>
   <v-container v-if="exercises">
-<v-row>
-  <v-col align="center">
-    <add-exercise-btn :cycleId="cycleId" v-on:updateExercises="updateExercises"/>
-  </v-col>
-
-</v-row>
     <v-row>
-      <page-arrows :prev-condition="page!==0" :next-condition="!isLastPage" v-on:nextPage="nextPage" v-on:prevPage="prevPage"/>
+      <v-col align="center">
+        <add-exercise-btn :cycleId="cycleId" v-on:updateExercises="updateExercises"/>
+      </v-col>
+
+    </v-row>
+    <v-row>
+      <page-arrows :prev-condition="page!==0" :next-condition="!isLastPage" v-on:nextPage="nextPage"
+                   v-on:prevPage="prevPage"/>
     </v-row>
     <v-row align="center"
            justify="center">
@@ -20,10 +21,11 @@
             lg4
             v-for="exercise in exercises.content" v-bind:key="exercise.id"
         >
-      <v-col align-self="center" >
-        <exercise-v-card v-on:delete="updateExercises" :cycleId="cycleId" :routineId="routineId" :name="exercise.exercise.name" :reps="exercise.repetitions"
-                         :duration="exercise.duration" :order="exercise.order" :id="exercise.exercise.id"/>
-      </v-col>
+          <v-col align-self="center">
+            <exercise-v-card v-on:delete="updateExercises" :cycleId="cycleId" :routineId="routineId"
+                             :name="exercise.exercise.name" :reps="exercise.repetitions"
+                             :duration="exercise.duration" :order="exercise.order" :id="exercise.exercise.id"/>
+          </v-col>
         </v-flex>
       </v-layout>
       <v-col cols="1"></v-col>
@@ -39,10 +41,11 @@ import ExerciseVCard from "./exerciseVCard";
 import {store} from "@/store";
 import AddExerciseBtn from "@/components/AddExerciseBtn";
 import PageArrows from "../pageArrows";
+
 export default {
   name: "exerciseList",
   components: {PageArrows, ExerciseVCard, AddExerciseBtn},
-  props: [ 'cycleId', 'routineId'],
+  props: ['cycleId', 'routineId'],
   data() {
     return {
       page: 0,

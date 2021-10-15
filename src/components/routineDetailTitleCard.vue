@@ -1,6 +1,6 @@
 <template>
-    <routine-main-card :color="colorBack">
-        <template v-slot:body>
+<routine-main-card>
+  <template v-slot:body>
 
             <v-container>
 

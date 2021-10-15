@@ -14,9 +14,8 @@
 
             <v-card color="white" height="600" rounded>
                 <v-card-title>{{title}}</v-card-title>
-                <slot name="formSlot" v-on:dialog="dialog=false">
-                    Form
-                </slot>
+              <create-routine-form :routine-already-exists=true :id="id" v-on:dialogDisable="dialog=false"
+                                   :name="name" :color="color" :difficulty="difficulty" :isPublic="isPublic" :detail="detail"/>
             </v-card>
 
         </v-dialog>
@@ -24,13 +23,14 @@
 </template>
 
 <script>
+import CreateRoutineForm from "../Forms/createRoutineForm";
 export default {
-    components: {},
+    components: {CreateRoutineForm},
     data () {
         return {
             dialog: false,
         }
     },
-    props: ['title']
+  props: ['name', 'detail', 'difficulty', 'isPublic', 'color', 'routineAlreadyExists', 'id', 'title'],
 }
 </script>

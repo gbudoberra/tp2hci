@@ -7,8 +7,8 @@ class ExerciseApi {
         return `${Api.baseURL}${ slug ? `/${slug}` : ''}`;
     }
     static async getFromCycle(cycleId, page, controller){
-        let desc = 'desc'
-        return await Api.get(this.getUrl(`cycles/${cycleId}/exercises?page=${page}&direction=${desc}&size=6`),true,controller)
+        let order = 'order'
+        return await Api.get(this.getUrl(`cycles/${cycleId}/exercises?page=${page}&orderBy=${order}&size=6`),true,controller)
     }
     static async getAll(page, controller){
         let desc = 'desc'

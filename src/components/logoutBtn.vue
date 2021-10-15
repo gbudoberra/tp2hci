@@ -5,7 +5,8 @@
         @click.stop="dialog = true"
         color="#1E3163" class="white--text" rounded large
     >
-      <v-icon large>logout</v-icon>logout
+      <v-icon large>logout</v-icon>
+      logout
 
     </v-btn>
 
@@ -45,16 +46,16 @@ import {store} from "../store";
 
 export default {
   name: "logoutBtn",
-  data () {
+  data() {
     return {
       dialog: false,
     }
   },
-  methods:{
-    logoutBtn(){
+  methods: {
+    logoutBtn() {
       store.dispatch('security/logout')
     },
-    refresh(){
+    refresh() {
       location.reload()
     }
   }

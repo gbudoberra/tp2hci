@@ -6,17 +6,17 @@
         overlay-color="black"
     >
       <template v-slot:activator="{ on, attrs }">
-          <v-btn
-              x-large
-              dark
-              v-bind="attrs"
-              v-on="on" color="blue darken-4" fixed bottom rounded>
-            {{title}}
-          </v-btn>
+        <v-btn
+            x-large
+            dark
+            v-bind="attrs"
+            v-on="on" color="blue darken-4" fixed bottom rounded>
+          {{ title }}
+        </v-btn>
       </template>
 
       <v-card color="white" height="600" rounded>
-        <v-card-title>{{title}}</v-card-title>
+        <v-card-title>{{ title }}</v-card-title>
         <slot name="formSlot">
           Form
         </slot>
@@ -29,7 +29,7 @@
 <script>
 export default {
   components: {},
-  data () {
+  data() {
     return {
       dialog: false,
     }
