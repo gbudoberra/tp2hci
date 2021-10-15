@@ -23,8 +23,6 @@ export default {
       async fav() {
           try {
               await store.dispatch('favRoutine', {id: this.$props.routineId})
-              // this.errorMsg = 'Routine Faved'
-              // this.alert = true
               this.isFav = true
           } catch (e) {
               console.log('error de faveado', e)
