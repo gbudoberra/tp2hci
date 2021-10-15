@@ -12,7 +12,7 @@ class ExerciseApi {
     }
     static async getAll(page, controller){
         let desc = 'desc'
-        return await Api.get(this.getUrl(`exercises?page=${page}&size=9&direction=${desc}`),true,controller)
+        return await Api.get(this.getUrl(`exercises?page=${page}&size=8&direction=${desc}`),true,controller)
     }
     static async add(name, detail, type){
         return await Api.post(this.getUrl(`exercises`), true, {name: name, detail:detail, type:type}, null)
