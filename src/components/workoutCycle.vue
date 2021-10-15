@@ -9,22 +9,33 @@
 
             <v-container>
 
-              <v-row>
+              <v-row no-gutters>
 
 
-                <v-col cols="1">
+                <v-col align-self="center" align="left" cols="1">
                   <v-btn fab outlined  disabled>{{order}}</v-btn>
                 </v-col>
-                <v-col>
+                <v-col align-self="center" align="center">
                   <v-card-title class="text-h5">{{ title }}</v-card-title>
                 </v-col>
-                <v-col>
-                  <v-card-subtitle class="text-h7" v-text="type">Type</v-card-subtitle>
+                <v-col align-self="center" align="center">
+                  <v-text class="text-h7" v-text="type">Type</v-text>
                 </v-col>
-                <v-col>
-                  <v-card-subtitle class="text-h7">Repetitions: {{ repetitions }}</v-card-subtitle>
+                <v-col align-self="center" align="center">
+                  <v-text class="text-h7">{{ repetitions }} repetitons</v-text>
                 </v-col>
-                <v-col align="end" v-if="isMyRoutine">
+                <v-col align="right" v-if="isMyRoutine">
+                <pop-up-edit-cycle title="Edit Cycle" :routine-id="routineId" :cycle-id="id"
+                                   :old-title="title" :old-detail="detail" :old-repetitions="repetitions"
+                                   :old-type="type" :old-order="order"
+                >
+                  <template v-slot:button>
+                    <v-icon>edit</v-icon>
+                  </template>
+                </pop-up-edit-cycle>
+
+              </v-col>
+                <v-col align="center" v-if="isMyRoutine">
 
 
 
@@ -65,20 +76,12 @@
                         </v-card>
                       </v-dialog>
                     </v-btn>
-                    <pop-up-edit-cycle title="Edit Cycle" :routine-id="routineId" :cycle-id="id"
-                                       :old-title="title" :old-detail="detail" :old-repetitions="repetitions"
-                                       :old-type="type" :old-order="order"
-                    >
-                      <template v-slot:button>
-                        <v-icon>edit</v-icon>
-                      </template>
-                    </pop-up-edit-cycle>
-
                   </v-col>
+
               </v-row>
               <v-row>
                 <v-col>
-                  <v-card-subtitle class="text-h6" v-text="detail">Detail</v-card-subtitle>
+                  <v-text class="text-h6" v-text="detail">Detail</v-text>
                 </v-col>
               </v-row>
 

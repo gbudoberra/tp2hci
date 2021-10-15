@@ -28,20 +28,24 @@
                     <fav-btn :routine-id="routine.id"></fav-btn>
                   </v-col>
 
-                  <v-col cols="3">
-                    <v-btn fab outlined color="grey darken-3" :to="{name: 'routineDetails', params: { id: routine.id}}">
-                      <v-icon>
-                        mdi-playlist-edit
-                      </v-icon>
+                  <v-col cols="3" align-self="center">
+                    <v-btn large rounded outlined :to="{name: 'routineDetails', params: { id: routine.id}}">
+                      Details
                     </v-btn>
                   </v-col>
                 </v-row>
               </v-card-actions>
             </v-col>
 
+
+
+
               <v-col align-self="center" v-if="cycles">
                 <blocks-carousel :workouts="cycles"></blocks-carousel>
               </v-col>
+
+
+
 
 
             </v-row>

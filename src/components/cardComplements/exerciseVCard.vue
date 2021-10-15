@@ -18,7 +18,7 @@
 
         <v-col align="end">
 
-          <confirmation-pop-up v-on:confirmation="deleteCycleExercise" msg="Remove exercise from this cycle?">
+          <confirmation-pop-up v-if="isMyRoutine" v-on:confirmation="deleteCycleExercise" msg="Remove exercise from this cycle?">
             <template v-slot:button>
               <v-icon>delete</v-icon>
             </template>
@@ -40,7 +40,7 @@ import ConfirmationPopUp from "@/components/popUp/confirmationPopUp";
 
 export default {
   name: "exerciseVCard",
-  props: ['name', 'reps', 'duration', 'order', 'id', 'cycleId', 'routineId'],
+  props: ['name', 'reps', 'duration', 'order', 'id', 'cycleId', 'routineId', 'isMyRoutine'],
   methods: {
     async deleteCycleExercise() {
       console.log(this.$props.id)

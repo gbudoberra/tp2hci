@@ -124,7 +124,7 @@
                       >
 
                         <v-card height="100%" class="elevation-5 flexCard" :disabled="!valid"
-                                @click="validate(exercise.id,exercise.name)">
+                                @click="validate(exercise.id,exercise.name)" color="indigo lighten-5">
                           <v-col cols="8">
 
 

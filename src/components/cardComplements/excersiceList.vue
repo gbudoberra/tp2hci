@@ -19,7 +19,7 @@
             v-for="exercise in exercises.content" v-bind:key="exercise.id"
         >
           <v-col align-self="center">
-            <exercise-v-card v-on:delete="updateExercises" :cycleId="cycleId" :routineId="routineId"
+            <exercise-v-card v-on:delete="updateExercises" :isMyRoutine="isMyRoutine" :cycleId="cycleId" :routineId="routineId"
                              :name="exercise.exercise.name" :reps="exercise.repetitions"
                              :duration="exercise.duration" :order="exercise.order" :id="exercise.exercise.id"/>
           </v-col>

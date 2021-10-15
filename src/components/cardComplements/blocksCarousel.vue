@@ -3,21 +3,24 @@
     <v-carousel-item v-for="block in workouts.content" v-bind:key="block.id">
       <v-container>
         <v-row align="center" justify="center">
-          <v-col cols="3" align-self="left"/>
+
           <v-col cols="6" align-self="center">
-            <v-card height="100%" width="100%" rounded elevation="5" color="grey lighten-2">
-              <v-row>
-                <v-col cols="12">
+            <v-card  rounded elevation="5" class="flexCard" color="grey lighten-2">
+              <v-container>
+              <v-row no-gutters justify="space-around">
+                <v-col cols="3" align="left" align-self="center">
+                  <v-btn outlined disabled fab>{{ block.order }}</v-btn>
+                </v-col>
+                <v-col align-self="center" align="left">
                   <v-card-title>{{ block.name }}</v-card-title>
-                  <v-card-subtitle>Sets: {{ block.repetitions }}</v-card-subtitle>
                 </v-col>
               </v-row>
+              </v-container>
             </v-card>
           </v-col>
-          <v-col cols="3" align-self="right"/>
-          <!--          <h3> {{block.name}}: {{block.repetitions}} sets </h3>-->
+
         </v-row>
-        <!--        <exercise-list :exercises="block.detail"></exercise-list>-->
+
       </v-container>
 
     </v-carousel-item>
@@ -42,5 +45,9 @@ export default {
 </script>
 
 <style scoped>
+.flexCard {
+  display: flex;
+  flex-direction: row;
+}
 
 </style>

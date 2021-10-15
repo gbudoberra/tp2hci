@@ -1,23 +1,16 @@
 <template>
 <v-container v-if="!loading">
   <v-row>
-    <v-col align="center">
-      <v-col>
-
-        <v-row>
-          <h1 class="text-h4">MyExercises</h1>
-        </v-row>
-        <v-row>
-          <div>
+          <v-col align-self="center" align="right">
+            <h1 class="text-h4">MyExercises</h1>
+          </v-col>
+          <v-col align-self="center" align="left">
             <pop-up-exercise title="New Exercise" :exercise-already-exists="false">
               <template v-slot:button>
                 <v-icon>add</v-icon>
               </template>
             </pop-up-exercise>
-          </div>
-        </v-row>
-      </v-col>
-    </v-col>
+          </v-col>
   </v-row>
   <v-row >
     <v-layout>
@@ -31,7 +24,7 @@
               v-for="exercise in allExercises.exercises.content" v-bind:key="exercise.id"
           >
 
-            <v-card height="100%" class="elevation-5 flexCard" >
+            <v-card height="100%" class="elevation-5 flexCard" color="indigo lighten-5" >
               <v-col cols="8">
 
 

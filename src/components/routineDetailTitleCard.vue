@@ -16,11 +16,9 @@
                     </v-col>
                     <v-col align-self="center">
                         <v-row>
+
                             <v-col align-self="center">
-                                <fav-btn :routine-id="id"></fav-btn>
-                            </v-col>
-                            <v-col align-self="center" v-if="isMyRoutine">
-                                <pop-up-edit-routine title="Edit Routine">
+                                <pop-up-edit-routine title="Edit Routine" v-if="isMyRoutine">
                                     <template v-slot:formSlot>
                                         <create-routine-form :routine-already-exists=true :id="id"
                                                              :name="title" :color="color" :difficulty="difficulty"
@@ -29,8 +27,15 @@
                                     </template>
                                 </pop-up-edit-routine>
                             </v-col>
-                            <v-col v-if="isMyRoutine" align-self="center"><v-btn @click="deleteRoutine(id)" outlined rounded x-large plain ><v-icon>mdi-delete</v-icon></v-btn></v-col>
-                            <!--            <v-col align-self="center" v-if="isMyRoutine"><v-btn outlined rounded x-large plain><v-icon>edit</v-icon></v-btn></v-col>-->
+                            <v-col align-self="center">
+                              <v-btn @click="deleteRoutine(id)" outlined rounded x-large plain v-if="isMyRoutine">
+                                <v-icon>mdi-delete</v-icon>
+                              </v-btn>
+                            </v-col>
+                          <v-col align-self="center">
+                            <fav-btn :routine-id="id"></fav-btn>
+                          </v-col>
+
                         </v-row>
                     </v-col>
                     <v-col cols="1"></v-col>
