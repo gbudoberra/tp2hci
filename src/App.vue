@@ -15,10 +15,9 @@
 
         <div v-for="item in menu" :key="item.title">
 
-        <v-row justify="space-around">
-          <v-col align-self="center" align="center"><v-icon>{{item.icon}}</v-icon></v-col>
-          <v-col align-self="center" align="start"><router-link :to=item.rout  id="sideBarIcon">{{ item.title }}</router-link></v-col>
-          <v-col></v-col>
+        <v-row>
+          <v-col cols="4" align="end"><v-icon>{{item.icon}}</v-icon></v-col>
+          <v-col align="start"><router-link :to=item.rout  id="sideBarIcon">{{ item.title }}</router-link></v-col>
         </v-row>
 
         <v-row><v-col><v-divider></v-divider></v-col></v-row>
