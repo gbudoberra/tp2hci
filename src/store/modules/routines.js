@@ -67,11 +67,13 @@ export default {
             return await RoutinesApi.add(routine)
         },
 
-        async modify({getters, commit}, routine) {
-        const result = await RoutinesApi.modify(routine)
-        const index = getters.findIndex(result)
-        if (index >= 0)
-            commit('replace', index, result)
+        async modify({commit}, payload) {
+            console.log(payload)
+        const result = await RoutinesApi.modifyRoutine(payload.body, payload.id)
+        // const index = getters.findIndex(result)
+        // if (index >= 0)
+        //     commit('replace', index, result)
+            console.log(commit)
         return result
         },
         async delete({getters, commit}, routine) {

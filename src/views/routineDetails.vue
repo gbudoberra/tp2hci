@@ -8,7 +8,11 @@
       <v-row>
         <v-col cols="1"/>
         <v-col>
-          <routine-title-card :isMyRoutine="security.username===routines.routine.user.username" color-back="indigo lighten-5" :id="routines.routine.id" :color="routines.routine.metadata.color" :title="routines.routine.name"></routine-title-card>
+          <routine-title-card :isMyRoutine="security.username===routines.routine.user.username"
+                              color-back="indigo lighten-5" :id="routines.routine.id"
+                              :color="routines.routine.metadata.color" :detail="routines.routine.detail"
+                              :title="routines.routine.name" :difficulty="routines.routine.difficulty"
+          :is-public="routines.routine.isPublic"></routine-title-card>
         </v-col>
       </v-row>
 

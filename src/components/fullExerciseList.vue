@@ -54,7 +54,9 @@
                   <v-col>
 
                   </v-col>
-                    <pop-up-exercise title="Edit Exercise" :id="exercise.id" :exercise-already-exists="true" :name="exercise.name" :detail="exercise.detail" :type="exercise.type">
+                    <pop-up-exercise title="Edit Exercise" :id="exercise.id"
+                                     :exercise-already-exists="true" :name="exercise.name"
+                                     :detail="exercise.detail" :type="exercise.type">
                       <template v-slot:button>
                         <v-icon>edit</v-icon>
                       </template>
