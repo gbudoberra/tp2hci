@@ -8,7 +8,6 @@
           <h1 class="text-h4">MyExercises</h1>
         </v-row>
         <v-row>
-          <page-arrows v-on:nextPage="nextPage" v-on:prevPage="prevPage" :prev-condition="allExercises.exercisePage!==0" :next-condition="allExercises.isRoutinesLast"/>
           <div>
             <pop-up-exercise title="New Exercise" :exercise-already-exists="false">
               <template v-slot:button>
@@ -75,7 +74,7 @@
     </v-layout>
 
   </v-row>
-
+  <page-arrows v-on:nextPage="nextPage" v-on:prevPage="prevPage" :prev-condition="allExercises.exercisePage!==0" :next-condition="allExercises.isRoutinesLast"/>
 </v-container>
 </template>
 

@@ -101,7 +101,7 @@
                     <div>
                       <v-btn class="ma-2" color="blue lighten-3" dark @click="nextPage" v-show="!exercises.exerciseLastPage">
                         Next
-                        <v-icon dark left>
+                        <v-icon dark right>
                           mdi-arrow-right
                         </v-icon>
                       </v-btn>

@@ -1,12 +1,12 @@
 <template>
   <v-row justify="end">
     <v-btn
-         v-if="$store.state.security.isLoggedIn"
-
+        v-if="$store.state.security.isLoggedIn"
         @click.stop="dialog = true"
-        outlined rounded x-large plain
+        color="#1E3163" class="white--text" rounded large
     >
       <v-icon large>logout</v-icon>
+
     </v-btn>
 
     <v-dialog
@@ -15,7 +15,7 @@
     >
       <v-card>
         <v-card-title class="text-h5">
-          Logout? :(
+          Sign out now?
         </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
