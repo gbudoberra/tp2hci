@@ -40,12 +40,12 @@
             <v-toolbar-title v-if="$store.state.security.isLoggedIn">{{$store.state.security.username}}</v-toolbar-title>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
-            <router-link to="/login">
+            <router-link style="text-decoration: none;" to="/login">
               <v-btn rounded large>LOG IN</v-btn>
             </router-link>
           </v-col>
           <v-col align="right" align-self="center" cols="1" v-if="!$store.state.security.isLoggedIn">
-            <router-link to="/signin">
+            <router-link style="text-decoration: none;" to="/signin">
               <v-btn color="#1E3163" class="white--text" rounded large>SIGN UP</v-btn>
             </router-link>
           </v-col>
