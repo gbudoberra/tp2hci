@@ -67,6 +67,9 @@ export default {
       await this.updateExercises()
     },
   },
+  created() {
+    this.exercises=this.updateExercises()
+  }
 }
 </script>
 
