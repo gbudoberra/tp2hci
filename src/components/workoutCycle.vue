@@ -17,10 +17,10 @@
                   <v-card-title class="text-h5">{{ title }}</v-card-title>
                 </v-col>
                 <v-col align-self="center" align="center">
-                  <v-text class="text-h7" v-text="type">Type</v-text>
+                  <p class="text-h7" v-text="type">Type</p>
                 </v-col>
                 <v-col align-self="center" align="center">
-                  <v-text class="text-h7">{{ repetitions }} repetitions</v-text>
+                  <p class="text-h7">{{ repetitions }} repetitions</p>
                 </v-col>
                 <v-col align="right" v-if="isMyRoutine">
                   <pop-up-edit-cycle title="Edit Cycle" :routine-id="routineId" :cycle-id="id"
@@ -78,7 +78,7 @@
               </v-row>
               <v-row>
                 <v-col>
-                  <v-text class="text-h6" v-text="detail">Detail</v-text>
+                  <p class="text-h6" v-text="detail">Detail</p>
                 </v-col>
               </v-row>
 

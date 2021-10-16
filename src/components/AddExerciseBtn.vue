@@ -86,7 +86,7 @@
 
             <v-card-title>Select exercise</v-card-title>
 
-            <v-container v-if="exercises">
+            <v-container v-if="exercises.exercises.totalCount!==0">
               <v-row>
                 <v-col align="center">
                   <v-col>
@@ -134,7 +134,7 @@
 
                               <v-card-title class="Padding">{{ exercise.name }}</v-card-title>
                               <v-card-subtitle class="Padding">{{ exercise.detail }}</v-card-subtitle>
-                              <v-card-text class="Padding">Type: {{ exercise.type }}</v-card-text>
+                              <v-card-text class="Padding">{{ exercise.type }}</v-card-text>
 
 
                             </v-col>
@@ -151,6 +151,22 @@
                 </v-layout>
 
               </v-row>
+
+            </v-container>
+            <v-container v-else>
+              <v-row>
+                <v-col align-self="center" align="center">
+                  <h3>You do not have exercises yet. Go to profile and add some !</h3>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col align-self="center" align="center">
+                  <v-btn outlined rounded class="accent white--text" to="/profile">
+                    Go to profile
+                  </v-btn>
+                </v-col>
+              </v-row>
+
 
             </v-container>
 
