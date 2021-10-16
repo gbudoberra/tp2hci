@@ -118,47 +118,17 @@ export default {
         icon: "help"
       }]
   }),
-  /*methods:{
-    logout(){
-      security.actions.logout()
-    }
-  }*/
 
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  margin-top: 60px;
-  background-color: #E0F2F1;
-}
 
 #main-content {
   background-color: #FFFFFF;
 }
 
-#sideBarIcon {
-  font-size: large;
-  color: black;
-  alignment: center;
-  text-decoration: none;
-}
 
-#nav a.router-link-exact-active {
-  color: white;
-}
-
-#sideBarIcon:hover {
-  font-size: large;
-  color: white;
-  alignment: center;
-  text-decoration: blink underline;
-  font-weight: bold;
-}
 
 #profile {
   font-size: large;
