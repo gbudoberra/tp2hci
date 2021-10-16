@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-col>
-      <routine-main-card :do-hover="true">
+      <routine-main-card>
         <template v-slot:body>
           <v-container>
 
