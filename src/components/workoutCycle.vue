@@ -82,15 +82,13 @@
                 </v-col>
               </v-row>
 
-              <v-divider light/>
+              <v-row><v-divider light/></v-row>
               <v-row>
-
-                <v-container v-if="cycleExercises">
-                  <exercise-list :cycleId="id" :routineId="routineId" :isMyRoutine="isMyRoutine"></exercise-list>
-                </v-container>
-
-                <v-col cols="1"></v-col>
-
+                <v-col>
+                  <v-container v-if="cycleExercises">
+                    <exercise-list :cycleId="id" :routineId="routineId" :isMyRoutine="isMyRoutine"></exercise-list>
+                  </v-container>
+                </v-col>
               </v-row>
 
             </v-container>
