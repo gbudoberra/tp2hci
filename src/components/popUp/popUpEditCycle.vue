@@ -145,6 +145,13 @@ export default {
       this.$refs.form.reset()
     },
   },
+  created() {
+        this.name = this.$props.oldTitle
+        this.detail = this.$props.oldDetail
+        this.type=this.$props.oldType
+        this.order= this.$props.oldOrder
+        this.repetitions = this.$props.oldRepetitions
+  }
 }
 </script>
 

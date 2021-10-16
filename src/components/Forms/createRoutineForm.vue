@@ -151,7 +151,13 @@ export default {
     reset() {
       this.$refs.form.reset()
     },
+  },
+  created() {
+        this.$data.newName = this.$props.name
+        this.$data.newDetail = this.$props.detail
+        this.$data.newDifficulty = this.$props.difficulty
+        this.$data.newIsPublic = this.$props.isPublic
+        this.$data.newColor= this.$props.color
   }
-  ,
 }
 </script>

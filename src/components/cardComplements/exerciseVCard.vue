@@ -18,7 +18,7 @@
 
         <v-col align="end">
 
-          <confirmation-pop-up v-if="isMyRoutine" v-on:confirmation="deleteCycleExercise" msg="Remove exercise from this cycle?">
+          <confirmation-pop-up v-if="isMyRoutine" v-on:confirmation="deleteCycleExercise" msg="Remove exercise?">
             <template v-slot:button>
               <v-icon>delete</v-icon>
             </template>

@@ -165,6 +165,12 @@ export default {
     reset() {
       this.$refs.form.reset()
     },
+
+  },
+  created() {
+        this.$data.newName = this.$props.name
+        this.$data.newDetail = this.$props.detail
+        this.$data.newType = this.$props.type
   }
 }
 </script>

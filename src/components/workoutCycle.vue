@@ -49,7 +49,7 @@
                     >
                       <v-card>
                         <v-card-title class="text-h5">
-                          Remove cycle from this routine?
+                          Remove cycle?
                         </v-card-title>
                         <v-card-actions>
                           <v-spacer></v-spacer>
