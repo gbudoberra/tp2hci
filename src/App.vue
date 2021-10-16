@@ -63,12 +63,12 @@
           </v-col>
           <v-col align="right" align-self="center" cols="2" v-if="!$store.state.security.isLoggedIn">
 
-            <v-btn rounded large to="/login">LOG IN</v-btn>
+            <login-btn/>
 
           </v-col>
           <v-col align="center" align-self="center" cols="2" v-if="!$store.state.security.isLoggedIn">
 
-            <v-btn class="accent white--text" to="/signin" rounded large>SIGN UP</v-btn>
+            <sign-up-btn/>
 
           </v-col>
           <v-col align="right" align-self="center" cols="2" v-else>
@@ -87,11 +87,13 @@
 <script>
 
 import LogoutBtn from "./components/logoutBtn";
+import SignUpBtn from "./components/signUpBtn";
+import LoginBtn from "./components/loginBtn";
 
 export default {
   name: 'App',
 
-  components: {LogoutBtn},
+  components: {LoginBtn, SignUpBtn, LogoutBtn},
   data: () => ({
     drawer: null,
     menu: [
